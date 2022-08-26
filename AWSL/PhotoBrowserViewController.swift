@@ -23,6 +23,7 @@ class PhotoBrowserViewController: UIViewController {
     private let scrollView: UIScrollView = UIScrollView()
     private let imageView: UIImageView = UIImageView()
     private let progressView: CircleProgressView = CircleProgressView()
+    private let moreButton: UIButton = UIButton()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,6 +57,22 @@ class PhotoBrowserViewController: UIViewController {
             scrollView.setZoomScale(scrollView.maximumZoomScale, animated: true)
         }
     }
+    
+    @objc private func showMoreMenu() {
+        let sheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        sheet.addAction(UIAlertAction(title: "保存到相册", style: .default, handler: { action in
+            self.savePhoto()
+        }))
+        sheet.addAction(UIAlertAction(title: "查看原微博", style: .default, handler: { action in
+            UIApplication.shared.open(self.photo.weiboUrl)
+        }))
+        sheet.addAction(UIAlertAction(title: "取消", style: .cancel, handler: nil))
+        present(sheet, animated: true)
+    }
+    
+    private func savePhoto() {
+        
+    }
 }
 
 extension PhotoBrowserViewController: UIScrollViewDelegate {
@@ -77,9 +94,19 @@ extension PhotoBrowserViewController {
         scrollView.delegate = self
         scrollView.decelerationRate = .fast
         
+        let config = UIImage.SymbolConfiguration(pointSize: 22)
+        let image = UIImage(systemName: "ellipsis.circle.fill", withConfiguration: config)
+        moreButton.setImage(image, for: .normal)
+        moreButton.tintColor = .white
+        moreButton.backgroundColor = UIColor(white: 0, alpha: 0.5)
+        moreButton.layer.cornerRadius = 6
+        moreButton.clipsToBounds = true
+        moreButton.addTarget(self, action: #selector(showMoreMenu), for: .touchUpInside)
+        
         view.addSubview(progressView)
         view.addSubview(scrollView)
         scrollView.addSubview(imageView)
+        view.addSubview(moreButton)
         
         scrollView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
@@ -92,6 +119,12 @@ extension PhotoBrowserViewController {
         progressView.snp.makeConstraints { make in
             make.center.equalToSuperview()
             make.width.height.equalTo(44)
+        }
+        
+        moreButton.snp.makeConstraints { make in
+            make.bottom.right.equalTo(view.safeAreaLayoutGuide).offset(-16)
+            make.width.equalTo(48)
+            make.height.equalTo(36)
         }
     }
 }

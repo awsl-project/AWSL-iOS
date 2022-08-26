@@ -33,7 +33,7 @@ extension Api {
 
 struct Photo: Codable {
     let id: String
-    let weiboUrl: String
+    let weiboUrl: URL
     
     let info: InfoContainer
     
