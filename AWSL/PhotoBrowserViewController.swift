@@ -72,20 +72,18 @@ class PhotoBrowserViewController: UIViewController {
     }
     
     private func savePhoto() {
-        func showAlert(msg: String) {
-            let alert = UIAlertController(title: nil, message: msg, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "确定", style: .default))
-            self.present(alert, animated: true)
-        }
         checkAuthorizationStatus { isLimited in
             do {
                 try self.savePhotoToAlbum()
+                Toast.show("保存成功")
             } catch {
                 print(error)
-                showAlert(msg: "保存失败")
+                Toast.show("保存失败")
             }
         } denied: { msg in
-            showAlert(msg: msg)
+            let alert = UIAlertController(title: nil, message: msg, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "确定", style: .default))
+            self.present(alert, animated: true)
         }
     }
     

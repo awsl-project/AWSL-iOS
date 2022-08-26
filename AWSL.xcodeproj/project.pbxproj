@@ -22,6 +22,7 @@
 		42FDB9E728B869B400979471 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42FDB9E628B869B400979471 /* SceneDelegate.swift */; };
 		42FDB9EE28B869B500979471 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42FDB9ED28B869B500979471 /* Assets.xcassets */; };
 		42FDB9F128B869B500979471 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42FDB9EF28B869B500979471 /* LaunchScreen.storyboard */; };
+		A6F4F57128B8FE3000AC03CF /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F4F57028B8FE3000AC03CF /* Toast.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,7 @@
 		42FDB9F028B869B500979471 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		42FDB9F228B869B500979471 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6329CAC9989CF49DF01C9A2C /* Pods-AWSL.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AWSL.debug.xcconfig"; path = "Target Support Files/Pods-AWSL/Pods-AWSL.debug.xcconfig"; sourceTree = "<group>"; };
+		A6F4F57028B8FE3000AC03CF /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		EECD763E72D0C4B5201A2D38 /* Pods-AWSL.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AWSL.release.xcconfig"; path = "Target Support Files/Pods-AWSL/Pods-AWSL.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -105,6 +107,7 @@
 				42DAD95E28B8BE2A00C5FCA3 /* LoadingCell.swift */,
 				42DAD96428B8CCB000C5FCA3 /* PhotoBrowserViewController.swift */,
 				42DAD96628B8D07700C5FCA3 /* CircleProgressView.swift */,
+				A6F4F57028B8FE3000AC03CF /* Toast.swift */,
 				42DAD95528B8960D00C5FCA3 /* Network.swift */,
 				42DAD95C28B8A25A00C5FCA3 /* ViewReusable.swift */,
 				42DAD95928B89CBD00C5FCA3 /* Api */,
@@ -249,6 +252,7 @@
 				42DAD95B28B89EEC00C5FCA3 /* PhotoCell.swift in Sources */,
 				42FDB9E728B869B400979471 /* SceneDelegate.swift in Sources */,
 				42DAD96328B8CA4800C5FCA3 /* AddProducer.swift in Sources */,
+				A6F4F57128B8FE3000AC03CF /* Toast.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

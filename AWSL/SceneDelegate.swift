@@ -23,6 +23,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window.backgroundColor = .systemBackground
         window.makeKeyAndVisible()
         self.window = window
+        
+        Toast.setup(with: scene)
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
