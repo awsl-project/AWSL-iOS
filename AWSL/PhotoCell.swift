@@ -14,7 +14,7 @@ class PhotoCell: UICollectionViewCell {
         didSet {
             loadingView.isHidden = false
             loadingView.startAnimating()
-            imageView.kf.setImage(with: imageUrl) { result in
+            imageView.kf.setImage(with: imageUrl, options: [.transition(.fade(0.25))]) { result in
                 self.loadingView.stopAnimating()
                 self.loadingView.isHidden = true
             }
