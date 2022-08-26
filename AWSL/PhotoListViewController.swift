@@ -40,8 +40,17 @@ class PhotoListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
-        refreshControl.beginRefreshing()
-        refresh()
+        if let manager = NetworkReachabilityManager.default, !manager.isReachable {
+            manager.startListening(onUpdatePerforming: { status in
+                guard case .reachable = status else { return }
+                self.refreshControl.beginRefreshing()
+                self.refresh()
+                manager.stopListening()
+            })
+        } else {
+            refreshControl.beginRefreshing()
+            refresh()
+        }
     }
     
     @objc private func refresh() {
