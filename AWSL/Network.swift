@@ -20,9 +20,10 @@ protocol AwslApi: URLConvertible {
 class Network {
     static let domain: URL = URL(string: "https://awsl-api.aks.dreamhunter2333.com/")!
     
+    @discardableResult
     static func request<Api: AwslApi>(_ api: Api,
                                       queue: DispatchQueue = .main,
-                                      completion: @escaping (Result<Api.ResponseType, Error>) -> Void) {
+                                      completion: @escaping (Result<Api.ResponseType, Error>) -> Void) -> DataRequest {
         let task = AF.request(api, method: api.method, parameters: api.params, encoding: api.encoding, headers: api.header)
         task.responseDecodable(of: Api.ResponseType.self, queue: queue) { dataResponse in
             switch dataResponse.result {
@@ -33,6 +34,7 @@ class Network {
             }
         }
         task.resume()
+        return task
     }
 }
 

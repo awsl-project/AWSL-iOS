@@ -7,9 +7,11 @@
 
 import UIKit
 import SnapKit
+import Alamofire
 
 class PhotoListViewController: UIViewController {
     
+    private let refreshControl: UIRefreshControl = UIRefreshControl()
     private let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
     private let collectionView: UICollectionView
     
@@ -22,11 +24,13 @@ class PhotoListViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private let lineSpacing: CGFloat = 2
-    private let interItemSpacing: CGFloat = 2
+    private let maximumItemPerRow: Int = 2
+    private let lineSpacing: CGFloat = 3
+    private let interItemSpacing: CGFloat = 3
     private let padding: CGFloat = 16
     
     private var isLoading: Bool = false
+    private var currentTask: DataRequest?
     private var contents: [WeiboInfo] = []
     private var cellSizeMap: [String: CGSize] = [:]
     
@@ -35,22 +39,44 @@ class PhotoListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
+        refreshControl.beginRefreshing()
+        refresh()
+    }
+    
+    @objc private func refresh() {
         loadData(offset: 0)
     }
     
     private func loadData(offset: Int) {
         guard !isLoading else { return }
         isLoading = true
-        Network.request(GetPhotoList(offset: offset), queue: queue) { result in
+        currentTask = Network.request(GetPhotoList(offset: offset), queue: queue) { result in
             switch result {
             case let .success(infoList):
                 self.handleWeiboInfo(infoList)
                 DispatchQueue.main.async {
-                    self.isLoading = false
-                    self.collectionView.reloadData()
+                    if offset == 0 {
+                        self.contents = infoList
+                        self.collectionView.reloadSections([0])
+                    } else {
+                        var indexPaths: [IndexPath] = []
+                        for index in 0 ..< infoList.count {
+                            indexPaths.append(IndexPath(item: self.contents.count + index, section: 0))
+                        }
+                        if self.contents.count % 2 == 1 {
+                            let indexPath = IndexPath(item: self.contents.count - 1, section: 0)
+                            self.collectionView.reloadItems(at: [indexPath])
+                        }
+                        self.contents.append(contentsOf: infoList)
+                        self.collectionView.insertItems(at: indexPaths)
+                    }
                 }
             case let .failure(error):
                 print(error)
+            }
+            DispatchQueue.main.async {
+                self.isLoading = false
+                self.refreshControl.endRefreshing()
             }
         }
     }
@@ -86,7 +112,6 @@ class PhotoListViewController: UIViewController {
                 }
             }
         }
-        contents.append(contentsOf: infoList)
     }
     
     override func viewWillLayoutSubviews() {
@@ -98,10 +123,15 @@ class PhotoListViewController: UIViewController {
 
 extension PhotoListViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return contents.count
+        return contents.isEmpty ? 0 : contents.count + 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if indexPath.item == contents.count {
+            let cell = collectionView.ch.dequeueReusableCell(LoadingCell.self, for: indexPath)
+            cell.startAnimating()
+            return cell
+        }
         let cell = collectionView.ch.dequeueReusableCell(PhotoCell.self, for: indexPath)
         cell.imageUrl = contents[indexPath.item].pictureInfo.large?.url
         return cell
@@ -120,12 +150,15 @@ extension PhotoListViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if indexPath.item == contents.count {
+            return CGSize(width: min(view.bounds.width, view.bounds.height) - padding * 2, height: 80)
+        }
         let info = contents[indexPath.item]
         return cellSizeMap[info.pictureInfo.objectId] ?? .zero
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if indexPath.item == contents.count - 1 {
+        if indexPath.item == contents.count {
             loadData(offset: contents.count)
         }
     }
@@ -133,8 +166,12 @@ extension PhotoListViewController: UICollectionViewDelegateFlowLayout {
 
 extension PhotoListViewController {
     private func setupViews() {
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        
+        collectionView.refreshControl = refreshControl
         collectionView.backgroundColor = .systemGray6
         collectionView.ch.register(PhotoCell.self)
+        collectionView.ch.register(LoadingCell.self)
         collectionView.dataSource = self
         collectionView.delegate = self
         layout.minimumLineSpacing = lineSpacing
