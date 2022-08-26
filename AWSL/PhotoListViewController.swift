@@ -32,7 +32,7 @@ class PhotoListViewController: UIViewController {
     
     private var isLoading: Bool = false
     private var currentTask: DataRequest?
-    private var contents: [WeiboInfo] = []
+    private var contents: [Photo] = []
     private var cellSizeMap: [String: CGSize] = [:]
     
     private let queue: DispatchQueue = DispatchQueue(label: "com.FlyKite.AWSL.PLVC")
@@ -53,22 +53,22 @@ class PhotoListViewController: UIViewController {
         isLoading = true
         currentTask = Network.request(GetPhotoList(offset: offset), queue: queue) { result in
             switch result {
-            case let .success(infoList):
-                self.handleWeiboInfo(infoList)
+            case let .success(photos):
+                self.handlePhotos(photos)
                 DispatchQueue.main.async {
                     if offset == 0 {
-                        self.contents = infoList
+                        self.contents = photos
                         self.collectionView.reloadSections([0])
                     } else {
                         var indexPaths: [IndexPath] = []
-                        for index in 0 ..< infoList.count {
+                        for index in 0 ..< photos.count {
                             indexPaths.append(IndexPath(item: self.contents.count + index, section: 0))
                         }
                         if self.contents.count % 2 == 1 {
                             let indexPath = IndexPath(item: self.contents.count - 1, section: 0)
                             self.collectionView.reloadItems(at: [indexPath])
                         }
-                        self.contents.append(contentsOf: infoList)
+                        self.contents.append(contentsOf: photos)
                         self.collectionView.insertItems(at: indexPaths)
                     }
                 }
@@ -82,8 +82,8 @@ class PhotoListViewController: UIViewController {
         }
     }
     
-    private func handleWeiboInfo(_ infoList: [WeiboInfo]) {
-        var list = infoList
+    private func handlePhotos(_ photos: [Photo]) {
+        var list = photos
         if contents.count % 2 == 1 {
             list.insert(contents[contents.count - 1], at: 0)
         }
@@ -92,25 +92,19 @@ class PhotoListViewController: UIViewController {
             let leftInfo = list.removeFirst()
             if !list.isEmpty {
                 let rightInfo = list.removeFirst()
-                if let left = leftInfo.pictureInfo.large, let right = rightInfo.pictureInfo.large {
-                    let leftScale = totalWidth / (CGFloat(left.width) + CGFloat(right.width * left.height) / CGFloat(right.height))
-                    let leftWidth = round(CGFloat(left.width) * leftScale)
-                    let rightWidth = totalWidth - leftWidth
-                    let height = round(CGFloat(left.height) * leftScale)
-                    cellSizeMap[leftInfo.pictureInfo.objectId] = CGSize(width: leftWidth, height: height)
-                    cellSizeMap[rightInfo.pictureInfo.objectId] = CGSize(width: rightWidth, height: height)
-                } else {
-                    cellSizeMap[leftInfo.pictureInfo.objectId] = CGSize(width: totalWidth / 2, height: 0)
-                    cellSizeMap[rightInfo.pictureInfo.objectId] = CGSize(width: totalWidth / 2, height: 0)
-                }
+                let left = leftInfo.info.large
+                let right = rightInfo.info.large
+                let leftScale = totalWidth / (CGFloat(left.width) + CGFloat(right.width * left.height) / CGFloat(right.height))
+                let leftWidth = round(CGFloat(left.width) * leftScale)
+                let rightWidth = totalWidth - leftWidth
+                let height = round(CGFloat(left.height) * leftScale)
+                cellSizeMap[leftInfo.id] = CGSize(width: leftWidth, height: height)
+                cellSizeMap[rightInfo.id] = CGSize(width: rightWidth, height: height)
             } else {
-                if let largeInfo = leftInfo.pictureInfo.large {
-                    let width = totalWidth / 2
-                    let height = width / CGFloat(largeInfo.width) * CGFloat(largeInfo.height)
-                    cellSizeMap[leftInfo.pictureInfo.objectId] = CGSize(width: width, height: height)
-                } else {
-                    cellSizeMap[leftInfo.pictureInfo.objectId] = .zero
-                }
+                let largeInfo = leftInfo.info.large
+                let width = totalWidth / 2
+                let height = width / CGFloat(largeInfo.width) * CGFloat(largeInfo.height)
+                cellSizeMap[leftInfo.id] = CGSize(width: width, height: height)
             }
         }
     }
@@ -134,7 +128,7 @@ extension PhotoListViewController: UICollectionViewDataSource {
             return cell
         }
         let cell = collectionView.ch.dequeueReusableCell(PhotoCell.self, for: indexPath)
-        cell.imageUrl = contents[indexPath.item].pictureInfo.large?.url
+        cell.imageUrl = contents[indexPath.item].info.large.url
         return cell
     }
 }
@@ -155,7 +149,7 @@ extension PhotoListViewController: UICollectionViewDelegateFlowLayout {
             return CGSize(width: min(view.bounds.width, view.bounds.height) - padding * 2, height: 80)
         }
         let info = contents[indexPath.item]
-        return cellSizeMap[info.pictureInfo.objectId] ?? .zero
+        return cellSizeMap[info.id] ?? .zero
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
