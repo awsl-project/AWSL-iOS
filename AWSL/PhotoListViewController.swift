@@ -151,7 +151,12 @@ extension PhotoListViewController: UICollectionViewDataSourcePrefetching {
 extension PhotoListViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard indexPath.item < contents.count else { return }
-        let controller = PhotoBrowserViewController(contents[indexPath.item])
+        var animationInfo: PhotoBrowserViewController.AnimationInfo?
+        if let cell = collectionView.cellForItem(at: indexPath) as? PhotoCell, let image = cell.image {
+            let fromRect = cell.convert(cell.bounds, to: view)
+            animationInfo = PhotoBrowserViewController.AnimationInfo(image: image, fromRect: fromRect)
+        }
+        let controller = PhotoBrowserViewController(contents[indexPath.item], animationInfo: animationInfo)
         present(controller, animated: true)
     }
     

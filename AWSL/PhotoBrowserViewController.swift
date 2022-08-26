@@ -11,9 +11,16 @@ import Photos
 class PhotoBrowserViewController: UIViewController {
     
     let photo: Photo
+    let animationInfo: AnimationInfo?
     
-    init(_ photo: Photo) {
+    struct AnimationInfo {
+        let image: UIImage
+        let fromRect: CGRect
+    }
+    
+    init(_ photo: Photo, animationInfo: AnimationInfo?) {
         self.photo = photo
+        self.animationInfo = animationInfo
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -21,6 +28,8 @@ class PhotoBrowserViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    private let animationImageView: UIImageView = UIImageView()
+    private let container: UIView = UIView()
     private let scrollView: UIScrollView = UIScrollView()
     private let imageView: UIImageView = UIImageView()
     private let progressView: CircleProgressView = CircleProgressView()
@@ -35,6 +44,7 @@ class PhotoBrowserViewController: UIViewController {
     private func loadImage() {
         progressView.isHidden = false
         imageView.kf.setImage(with: photo.info.original.url,
+                              placeholder: animationInfo?.image,
                               options: [.transition(.fade(0.25))],
                               progressBlock: { [weak self] receivedSize, totalSize in
             guard let self = self else { return }
@@ -44,11 +54,15 @@ class PhotoBrowserViewController: UIViewController {
             self.progressView.isHidden = true
             switch result {
             case let .success(imageResult):
-                self.scrollView.maximumZoomScale = max(1, imageResult.image.size.width / self.view.bounds.width)
+                self.scrollView.maximumZoomScale = max(1.5, imageResult.image.size.width / self.view.bounds.width)
             case let .failure(error):
                 print(error)
             }
         }
+    }
+    
+    @objc private func onSingleTap() {
+        dismiss(animated: true)
     }
     
     @objc private func onDoubleTap() {
@@ -160,14 +174,73 @@ extension PhotoBrowserViewController: UIScrollViewDelegate {
     }
 }
 
+extension PhotoBrowserViewController: CustomPresentableViewController {
+    func presentationAnimationConfigs() -> AnimationConfig {
+        var config = AnimationConfig()
+        config.duration = 0.2
+        config.maskType = .black(alpha: 1)
+        return config
+    }
+    
+    func presentationWillBeginTransition(type: TransitionType) {
+        if animationInfo != nil {
+            animationImageView.isHidden = false
+            container.isHidden = true
+        } else {
+            container.alpha = 0
+        }
+    }
+    
+    func presentationUpdateViewsForTransition(type: TransitionType,
+                                              duration: TimeInterval,
+                                              completeCallback: @escaping () -> Void) {
+        UIView.animate(withDuration: duration, delay: 0, options: type == .presenting ? .curveEaseOut : .curveEaseIn) {
+            if let info = self.animationInfo {
+                switch type {
+                case .presenting:
+                    self.animationImageView.frame = self.view.bounds
+                case .dismissing:
+                    self.animationImageView.frame = info.fromRect
+                }
+            } else {
+                switch type {
+                case .presenting:
+                    self.container.alpha = 1
+                case .dismissing:
+                    self.container.alpha = 0
+                }
+            }
+        } completion: { finished in
+            if self.animationInfo != nil {
+                self.animationImageView.isHidden = true
+                self.container.isHidden = false
+            }
+            completeCallback()
+        }
+
+    }
+    
+    func presentationDidEndTransition(type: TransitionType, wasCancelled: Bool) {
+        container.isHidden = false
+    }
+}
+
 extension PhotoBrowserViewController {
     private func setupViews() {
-        view.backgroundColor = .systemBackground
+        if let info = animationInfo {
+            animationImageView.frame = info.fromRect
+            animationImageView.contentMode = .scaleAspectFit
+            animationImageView.image = info.image
+            view.addSubview(animationImageView)
+        }
         
         imageView.isUserInteractionEnabled = true
         imageView.contentMode = .scaleAspectFit
         let doubleTap = UITapGestureRecognizer(target: self, action: #selector(onDoubleTap))
         doubleTap.numberOfTapsRequired = 2
+        let tap = UITapGestureRecognizer(target: self, action: #selector(onSingleTap))
+        tap.require(toFail: doubleTap)
+        imageView.addGestureRecognizer(tap)
         imageView.addGestureRecognizer(doubleTap)
         
         scrollView.delegate = self
@@ -182,10 +255,15 @@ extension PhotoBrowserViewController {
         moreButton.clipsToBounds = true
         moreButton.addTarget(self, action: #selector(showMoreMenu), for: .touchUpInside)
         
-        view.addSubview(progressView)
-        view.addSubview(scrollView)
+        view.addSubview(container)
+        container.addSubview(progressView)
+        container.addSubview(scrollView)
         scrollView.addSubview(imageView)
-        view.addSubview(moreButton)
+        container.addSubview(moreButton)
+        
+        container.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
         
         scrollView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
@@ -201,7 +279,7 @@ extension PhotoBrowserViewController {
         }
         
         moreButton.snp.makeConstraints { make in
-            make.bottom.right.equalTo(view.safeAreaLayoutGuide).offset(-16)
+            make.bottom.right.equalTo(container.safeAreaLayoutGuide).offset(-16)
             make.width.equalTo(48)
             make.height.equalTo(36)
         }

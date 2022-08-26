@@ -21,6 +21,8 @@ class PhotoCell: UICollectionViewCell {
         }
     }
     
+    var image: UIImage? { imageView.image }
+    
     private let loadingView: UIActivityIndicatorView = UIActivityIndicatorView(style: .medium)
     private let imageView: UIImageView = UIImageView()
     
