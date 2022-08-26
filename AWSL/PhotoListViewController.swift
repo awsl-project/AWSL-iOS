@@ -17,6 +17,7 @@ class PhotoListViewController: UIViewController {
     
     init() {
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        padding = UIDevice.current.userInterfaceIdiom == .phone ? 16 : 64
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -27,7 +28,7 @@ class PhotoListViewController: UIViewController {
     private let maximumItemPerRow: Int = 2
     private let lineSpacing: CGFloat = 3
     private let interItemSpacing: CGFloat = 3
-    private let padding: CGFloat = 16
+    private let padding: CGFloat
     
     private var isLoading: Bool = false
     private var currentTask: DataRequest?
@@ -176,7 +177,7 @@ extension PhotoListViewController {
         collectionView.delegate = self
         layout.minimumLineSpacing = lineSpacing
         layout.minimumInteritemSpacing = interItemSpacing
-        layout.sectionInset = UIEdgeInsets(top: padding, left: padding, bottom: padding, right: padding)
+        layout.sectionInset = UIEdgeInsets(top: 16, left: padding, bottom: 16, right: padding)
         
         view.addSubview(collectionView)
         
