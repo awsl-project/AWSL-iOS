@@ -7,25 +7,27 @@
 
 import Foundation
 
-struct GetPhotoList: AwslApi {
-    let uid: String
-    let offset: Int
-    let limit: Int
-    
-    init(uid: String = "", offset: Int, limit: Int = 20) {
-        self.uid = uid
-        self.offset = offset
-        self.limit = limit
-    }
-    
-    typealias ResponseType = [Photo]
-    var path: String { "v2/list" }
-    var params: [String : Any]? {
-        [
-            "uid": uid,
-            "offset": offset,
-            "limit": limit
-        ]
+extension Api {
+    struct GetPhotoList: AwslApi {
+        let uid: String
+        let offset: Int
+        let limit: Int
+        
+        init(uid: String = "", offset: Int, limit: Int = 20) {
+            self.uid = uid
+            self.offset = offset
+            self.limit = limit
+        }
+        
+        typealias ResponseType = [Photo]
+        var path: String { "v2/list" }
+        var params: [String : Any]? {
+            [
+                "uid": uid,
+                "offset": offset,
+                "limit": limit
+            ]
+        }
     }
 }
 

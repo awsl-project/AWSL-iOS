@@ -8,18 +8,20 @@
 import Foundation
 import Alamofire
 
-struct AddProducer: AwslApi {
-    let uid: String
-    let keyword: String
-    
-    typealias ResponseType = String
-    var path: String { "producers" }
-    var method: HTTPMethod { .post }
-    var encoding: ParameterEncoding { JSONEncoding.default }
-    var params: [String : Any]? {
-        [
-            "uid": uid,
-            "keyword": keyword
-        ]
+extension Api {
+    struct AddProducer: AwslApi {
+        let uid: String
+        let keyword: String
+        
+        typealias ResponseType = String
+        var path: String { "producers" }
+        var method: HTTPMethod { .post }
+        var encoding: ParameterEncoding { JSONEncoding.default }
+        var params: [String : Any]? {
+            [
+                "uid": uid,
+                "keyword": keyword
+            ]
+        }
     }
 }

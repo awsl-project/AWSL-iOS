@@ -17,6 +17,8 @@ protocol AwslApi: URLConvertible {
     var encoding: ParameterEncoding { get }
 }
 
+struct Api { }
+
 class Network {
     static let domain: URL = URL(string: "https://awsl-api.aks.dreamhunter2333.com/")!
     

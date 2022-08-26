@@ -7,9 +7,11 @@
 
 import Foundation
 
-struct GetProducers: AwslApi {
-    typealias ResponseType = [Producer]
-    var path: String { "producers" }
+extension Api {
+    struct GetProducers: AwslApi {
+        typealias ResponseType = [Producer]
+        var path: String { "producers" }
+    }
 }
 
 struct Producer: Codable {
