@@ -40,7 +40,27 @@ class PhotoBrowserViewController: UIViewController {
         }) { [weak self] result in
             guard let self = self else { return }
             self.progressView.isHidden = true
+            switch result {
+            case let .success(imageResult):
+                self.scrollView.maximumZoomScale = max(1, imageResult.image.size.width / self.view.bounds.width)
+            case let .failure(error):
+                print(error)
+            }
         }
+    }
+    
+    @objc private func onDoubleTap() {
+        if scrollView.zoomScale == scrollView.maximumZoomScale {
+            scrollView.setZoomScale(1, animated: true)
+        } else {
+            scrollView.setZoomScale(scrollView.maximumZoomScale, animated: true)
+        }
+    }
+}
+
+extension PhotoBrowserViewController: UIScrollViewDelegate {
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return imageView
     }
 }
 
@@ -50,6 +70,12 @@ extension PhotoBrowserViewController {
         
         imageView.isUserInteractionEnabled = true
         imageView.contentMode = .scaleAspectFit
+        let doubleTap = UITapGestureRecognizer(target: self, action: #selector(onDoubleTap))
+        doubleTap.numberOfTapsRequired = 2
+        imageView.addGestureRecognizer(doubleTap)
+        
+        scrollView.delegate = self
+        scrollView.decelerationRate = .fast
         
         view.addSubview(progressView)
         view.addSubview(scrollView)
