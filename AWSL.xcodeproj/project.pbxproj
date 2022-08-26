@@ -391,6 +391,7 @@
 				DEVELOPMENT_TEAM = 77M64ZZJGP;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AWSL/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "请允许 AWSL 访问您的相册以将图片保存到您的相册";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -420,6 +421,7 @@
 				DEVELOPMENT_TEAM = 77M64ZZJGP;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AWSL/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "请允许 AWSL 访问您的相册以将图片保存到您的相册";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

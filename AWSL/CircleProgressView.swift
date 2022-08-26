@@ -28,7 +28,7 @@ class CircleProgressView: UIView {
     
     private func setupViews() {
         shapeLayer.strokeColor = UIColor.white.cgColor
-        shapeLayer.lineWidth = 3
+        shapeLayer.lineWidth = 4
         shapeLayer.lineCap = .round
         shapeLayer.fillColor = UIColor.clear.cgColor
         shapeLayer.strokeEnd = 0
@@ -39,7 +39,7 @@ class CircleProgressView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         let path = UIBezierPath(arcCenter: CGPoint(x: bounds.width / 2, y: bounds.height / 2),
-                                radius: min(bounds.width, bounds.height) / 2 - 1.5,
+                                radius: min(bounds.width, bounds.height) / 2 - 2,
                                 startAngle: -CGFloat.pi / 2,
                                 endAngle: CGFloat.pi * 1.5,
                                 clockwise: true)

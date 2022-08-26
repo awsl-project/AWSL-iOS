@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Photos
 
 class PhotoBrowserViewController: UIViewController {
     
@@ -71,7 +72,87 @@ class PhotoBrowserViewController: UIViewController {
     }
     
     private func savePhoto() {
-        
+        func showAlert(msg: String) {
+            let alert = UIAlertController(title: nil, message: msg, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "确定", style: .default))
+            self.present(alert, animated: true)
+        }
+        checkAuthorizationStatus { isLimited in
+            do {
+                try self.savePhotoToAlbum()
+            } catch {
+                print(error)
+                showAlert(msg: "保存失败")
+            }
+        } denied: { msg in
+            showAlert(msg: msg)
+        }
+    }
+    
+    private func checkAuthorizationStatus(authorized: @escaping (_ isLimited: Bool) -> Void,
+                                          denied: @escaping (_ msg: String) -> Void) {
+        checkStatus(PHPhotoLibrary.authorizationStatus())
+        func checkStatus(_ status: PHAuthorizationStatus) {
+            switch status {
+            case .notDetermined:
+                PHPhotoLibrary.requestAuthorization() { status in
+                    DispatchQueue.main.async {
+                        checkStatus(status)
+                    }
+                }
+            case .restricted:
+                denied("请允许 AWSL 访问您的相册")
+            case .denied:
+                denied("请允许 AWSL 访问您的相册")
+            case .authorized:
+                authorized(false)
+            case .limited:
+                authorized(true)
+            @unknown default:
+                denied("未知错误")
+            }
+        }
+    }
+    
+    private func savePhotoToAlbum() throws {
+        guard let image = imageView.image, let collection = try findAwslAlbum() else {
+            return
+        }
+        var placeholder: PHObjectPlaceholder?
+        try PHPhotoLibrary.shared().performChangesAndWait {
+            let request = PHAssetChangeRequest.creationRequestForAsset(from: image)
+            placeholder = request.placeholderForCreatedAsset
+        }
+        guard let placeholder = placeholder else {
+            return
+        }
+        let assets = PHAsset.fetchAssets(withLocalIdentifiers: [placeholder.localIdentifier], options: nil)
+        try PHPhotoLibrary.shared().performChangesAndWait {
+            let request = PHAssetCollectionChangeRequest(for: collection)
+            request?.addAssets(assets)
+        }
+    }
+    
+    private func findAwslAlbum() throws -> PHAssetCollection? {
+        let title = "AWSL"
+        let collections = PHAssetCollection.fetchAssetCollections(with: .album, subtype: .albumRegular, options: nil)
+        var targetCollection: PHAssetCollection?
+        collections.enumerateObjects { collection, index, stop in
+            if collection.localizedTitle == title {
+                targetCollection = collection
+                stop.pointee = ObjCBool(true)
+            }
+        }
+        if let targetCollection = targetCollection {
+            return targetCollection
+        }
+        var placeholder: PHObjectPlaceholder?
+        try PHPhotoLibrary.shared().performChangesAndWait {
+            let request = PHAssetCollectionChangeRequest.creationRequestForAssetCollection(withTitle: title)
+            placeholder = request.placeholderForCreatedAssetCollection
+        }
+        guard let identifier = placeholder?.localIdentifier else { return nil }
+        return PHAssetCollection.fetchAssetCollections(withLocalIdentifiers: [identifier], options: nil).firstObject
     }
 }
 
