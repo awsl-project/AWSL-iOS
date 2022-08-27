@@ -108,23 +108,55 @@
 			children = (
 				42FDB9E428B869B400979471 /* AppDelegate.swift */,
 				42FDB9E628B869B400979471 /* SceneDelegate.swift */,
-				A64DBB8328BA20C300F83D01 /* NavigationController.swift */,
-				42DAD95328B8853900C5FCA3 /* PhotoListViewController.swift */,
-				42DAD95A28B89EEC00C5FCA3 /* PhotoCell.swift */,
-				42DAD95E28B8BE2A00C5FCA3 /* LoadingCell.swift */,
-				A64DBB8128BA144900F83D01 /* ProducerCell.swift */,
-				42DAD96428B8CCB000C5FCA3 /* PhotoBrowserViewController.swift */,
-				42DAD96628B8D07700C5FCA3 /* CircleProgressView.swift */,
-				A6F4F57028B8FE3000AC03CF /* Toast.swift */,
-				A6F4F57228B909B700AC03CF /* PresentationAnimator.swift */,
-				42DAD95528B8960D00C5FCA3 /* Network.swift */,
-				42DAD95C28B8A25A00C5FCA3 /* ViewReusable.swift */,
-				42DAD95928B89CBD00C5FCA3 /* Api */,
+				A64DBB8528BA37BD00F83D01 /* Controller */,
+				A64DBB8628BA37C300F83D01 /* Model */,
+				A64DBB8728BA37C800F83D01 /* View */,
+				A64DBB8828BA37FC00F83D01 /* Util */,
 				42FDB9ED28B869B500979471 /* Assets.xcassets */,
 				42FDB9EF28B869B500979471 /* LaunchScreen.storyboard */,
 				42FDB9F228B869B500979471 /* Info.plist */,
 			);
 			path = AWSL;
+			sourceTree = "<group>";
+		};
+		A64DBB8528BA37BD00F83D01 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A64DBB8328BA20C300F83D01 /* NavigationController.swift */,
+				42DAD95328B8853900C5FCA3 /* PhotoListViewController.swift */,
+				42DAD96428B8CCB000C5FCA3 /* PhotoBrowserViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		A64DBB8628BA37C300F83D01 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				42DAD95528B8960D00C5FCA3 /* Network.swift */,
+				42DAD95928B89CBD00C5FCA3 /* Api */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A64DBB8728BA37C800F83D01 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				42DAD95A28B89EEC00C5FCA3 /* PhotoCell.swift */,
+				42DAD95E28B8BE2A00C5FCA3 /* LoadingCell.swift */,
+				A64DBB8128BA144900F83D01 /* ProducerCell.swift */,
+				42DAD96628B8D07700C5FCA3 /* CircleProgressView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A64DBB8828BA37FC00F83D01 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				A6F4F57028B8FE3000AC03CF /* Toast.swift */,
+				A6F4F57228B909B700AC03CF /* PresentationAnimator.swift */,
+				42DAD95C28B8A25A00C5FCA3 /* ViewReusable.swift */,
+			);
+			path = Util;
 			sourceTree = "<group>";
 		};
 		B80906257F0FD35411ED9687 /* Frameworks */ = {

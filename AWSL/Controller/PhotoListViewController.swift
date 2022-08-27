@@ -342,10 +342,10 @@ extension PhotoListViewController {
     
     private func buildMoreMenu() -> UIMenu? {
         guard let nav = navigationController as? NavigationController else { return nil }
-        let addProducer = UIAction(title: "瑟瑟生产机", image: UIImage(systemName: "plus.circle")) { [weak self] action in
-            guard let self = self else { return }
-            
-        }
+//        let addProducer = UIAction(title: "瑟瑟生产机", image: UIImage(systemName: "plus.circle")) { [weak self] action in
+//            guard let self = self else { return }
+//
+//        }
         var autoMode: UIAction?
         var darkMode: UIAction?
         var lightMode: UIAction?
@@ -371,7 +371,7 @@ extension PhotoListViewController {
             self.moreItem.menu = self.buildMoreMenu()
         }
         return UIMenu(children: [
-            addProducer,
+//            addProducer,
             UIMenu(options: .displayInline, children: [autoMode!, darkMode!, lightMode!])
         ])
     }
