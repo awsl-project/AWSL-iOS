@@ -12,6 +12,7 @@ import Alamofire
 class PhotoListViewController: UIViewController {
     
     private let titleButton: UIButton = UIButton()
+    private let moreItem: UIBarButtonItem = UIBarButtonItem(title: nil, image: UIImage(systemName: "ellipsis.circle"), primaryAction: nil, menu: nil)
     
     private let refreshControl: UIRefreshControl = UIRefreshControl()
     private let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
@@ -286,6 +287,9 @@ extension PhotoListViewController {
         titleButton.addTarget(self, action: #selector(toggleProducersList), for: .touchUpInside)
         titleButton.frame = CGRect(x: 0, y: 0, width: view.bounds.width / 2, height: 36)
         
+        moreItem.menu = buildMoreMenu()
+        navigationItem.rightBarButtonItem = moreItem
+        
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         
         collectionView.refreshControl = refreshControl
@@ -334,5 +338,41 @@ extension PhotoListViewController {
             make.top.left.right.equalToSuperview()
             make.height.equalTo(0)
         }
+    }
+    
+    private func buildMoreMenu() -> UIMenu? {
+        guard let nav = navigationController as? NavigationController else { return nil }
+        let addProducer = UIAction(title: "瑟瑟生产机", image: UIImage(systemName: "plus.circle")) { [weak self] action in
+            guard let self = self else { return }
+            
+        }
+        var autoMode: UIAction?
+        var darkMode: UIAction?
+        var lightMode: UIAction?
+        autoMode = UIAction(title: "跟随系统",
+                            image: UIImage(systemName: "switch.2"),
+                            state: nav.themeMode == .automatic ? .on : .off) { [weak self] action in
+            guard let self = self else { return }
+            nav.themeMode = .automatic
+            self.moreItem.menu = self.buildMoreMenu()
+        }
+        darkMode = UIAction(title: "深色模式",
+                            image: UIImage(systemName: "moon.stars"),
+                            state: nav.themeMode == .dark ? .on : .off) { [weak self] action in
+            guard let self = self else { return }
+            nav.themeMode = .dark
+            self.moreItem.menu = self.buildMoreMenu()
+        }
+        lightMode = UIAction(title: "浅色模式",
+                             image: UIImage(systemName: "sun.max"),
+                             state: nav.themeMode == .light ? .on : .off) { [weak self] action in
+            guard let self = self else { return }
+            nav.themeMode = .light
+            self.moreItem.menu = self.buildMoreMenu()
+        }
+        return UIMenu(children: [
+            addProducer,
+            UIMenu(options: .displayInline, children: [autoMode!, darkMode!, lightMode!])
+        ])
     }
 }

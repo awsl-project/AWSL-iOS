@@ -23,6 +23,7 @@
 		42FDB9EE28B869B500979471 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42FDB9ED28B869B500979471 /* Assets.xcassets */; };
 		42FDB9F128B869B500979471 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42FDB9EF28B869B500979471 /* LaunchScreen.storyboard */; };
 		A64DBB8228BA144900F83D01 /* ProducerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64DBB8128BA144900F83D01 /* ProducerCell.swift */; };
+		A64DBB8428BA20C300F83D01 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64DBB8328BA20C300F83D01 /* NavigationController.swift */; };
 		A6F4F57128B8FE3000AC03CF /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F4F57028B8FE3000AC03CF /* Toast.swift */; };
 		A6F4F57328B909B700AC03CF /* PresentationAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F4F57228B909B700AC03CF /* PresentationAnimator.swift */; };
 /* End PBXBuildFile section */
@@ -47,6 +48,7 @@
 		42FDB9F228B869B500979471 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6329CAC9989CF49DF01C9A2C /* Pods-AWSL.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AWSL.debug.xcconfig"; path = "Target Support Files/Pods-AWSL/Pods-AWSL.debug.xcconfig"; sourceTree = "<group>"; };
 		A64DBB8128BA144900F83D01 /* ProducerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProducerCell.swift; sourceTree = "<group>"; };
+		A64DBB8328BA20C300F83D01 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		A6F4F57028B8FE3000AC03CF /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		A6F4F57228B909B700AC03CF /* PresentationAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationAnimator.swift; sourceTree = "<group>"; };
 		EECD763E72D0C4B5201A2D38 /* Pods-AWSL.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AWSL.release.xcconfig"; path = "Target Support Files/Pods-AWSL/Pods-AWSL.release.xcconfig"; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 			children = (
 				42FDB9E428B869B400979471 /* AppDelegate.swift */,
 				42FDB9E628B869B400979471 /* SceneDelegate.swift */,
+				A64DBB8328BA20C300F83D01 /* NavigationController.swift */,
 				42DAD95328B8853900C5FCA3 /* PhotoListViewController.swift */,
 				42DAD95A28B89EEC00C5FCA3 /* PhotoCell.swift */,
 				42DAD95E28B8BE2A00C5FCA3 /* LoadingCell.swift */,
@@ -255,6 +258,7 @@
 				42DAD96728B8D07700C5FCA3 /* CircleProgressView.swift in Sources */,
 				A6F4F57328B909B700AC03CF /* PresentationAnimator.swift in Sources */,
 				42DAD95828B89A4400C5FCA3 /* GetPhotoList.swift in Sources */,
+				A64DBB8428BA20C300F83D01 /* NavigationController.swift in Sources */,
 				42DAD96128B8C9B500C5FCA3 /* GetProducers.swift in Sources */,
 				42DAD96528B8CCB000C5FCA3 /* PhotoBrowserViewController.swift in Sources */,
 				42DAD95B28B89EEC00C5FCA3 /* PhotoCell.swift in Sources */,
@@ -328,7 +332,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -382,7 +386,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -408,7 +412,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -438,7 +442,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
