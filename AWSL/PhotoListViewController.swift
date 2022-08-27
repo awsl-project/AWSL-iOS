@@ -11,9 +11,14 @@ import Alamofire
 
 class PhotoListViewController: UIViewController {
     
+    private let titleButton: UIButton = UIButton()
+    
     private let refreshControl: UIRefreshControl = UIRefreshControl()
     private let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
     private let collectionView: UICollectionView
+    
+    private let producerView: UIView = UIView()
+    private let producerTableView: UITableView = UITableView()
     
     init() {
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -35,11 +40,15 @@ class PhotoListViewController: UIViewController {
     private var contents: [Photo] = []
     private var cellSizeMap: [String: CGSize] = [:]
     
+    private var producers: [Producer] = []
+    private var selectedProducerIndex: Int?
+    
     private let queue: DispatchQueue = DispatchQueue(label: "com.FlyKite.AWSL.PLVC")
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
+        loadProducers()
         if let manager = NetworkReachabilityManager.default, !manager.isReachable {
             manager.startListening(onUpdatePerforming: { status in
                 guard case .reachable = status else { return }
@@ -53,6 +62,51 @@ class PhotoListViewController: UIViewController {
         }
     }
     
+    @objc private func toggleProducersList() {
+        guard !producers.isEmpty else { return }
+        let hidden = producerView.alpha == 1
+        setProducersListHidden(hidden)
+    }
+    
+    @objc private func hideProducersList(_ tap: UITapGestureRecognizer) {
+        guard tap.location(in: producerView).y > producerTableView.bounds.height else { return }
+        setProducersListHidden(true)
+    }
+    
+    private func setProducersListHidden(_ isHidden: Bool) {
+        producerView.isHidden = false
+        producerView.layoutIfNeeded()
+        UIView.animate(withDuration: 0.25, delay: 0, options: isHidden ? .curveEaseIn : .curveEaseOut) {
+            self.producerView.alpha = isHidden ? 0 : 1
+            self.producerTableView.snp.updateConstraints { make in
+                if isHidden {
+                    make.height.equalTo(0)
+                } else {
+                    let maxHeight = self.view.bounds.height * 0.6
+                    let height = self.producerTableView.rowHeight * CGFloat(self.producers.count)
+                    make.height.equalTo(min(maxHeight, height))
+                }
+            }
+            self.producerView.layoutIfNeeded()
+        } completion: { finished in
+            if isHidden {
+                self.producerView.isHidden = true
+            }
+        }
+    }
+    
+    private func loadProducers() {
+        Network.request(Api.GetProducers()) { result in
+            switch result {
+            case let .success(producers):
+                self.producers = producers
+                self.producerTableView.reloadData()
+            case let .failure(error):
+                print(error)
+            }
+        }
+    }
+    
     @objc private func refresh() {
         loadData(offset: 0)
     }
@@ -60,7 +114,13 @@ class PhotoListViewController: UIViewController {
     private func loadData(offset: Int) {
         guard !isLoading else { return }
         isLoading = true
-        currentTask = Network.request(Api.GetPhotoList(offset: offset), queue: queue) { result in
+        let uid: String
+        if let index = selectedProducerIndex {
+            uid = producers[index].uid
+        } else {
+            uid = ""
+        }
+        currentTask = Network.request(Api.GetPhotoList(uid: uid, offset: offset), queue: queue) { result in
             switch result {
             case let .success(photos):
                 self.handlePhotos(photos)
@@ -175,8 +235,57 @@ extension PhotoListViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
+extension PhotoListViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return producers.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.ch.dequeueReusableCell(ProducerCell.self, for: indexPath)
+        cell.name = producers[indexPath.row].name
+        cell.isChecked = selectedProducerIndex == indexPath.row
+        return cell
+    }
+}
+
+extension PhotoListViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        toggleProducersList()
+        guard selectedProducerIndex != indexPath.row else { return }
+        if let index = selectedProducerIndex {
+            let indexPath = IndexPath(row: index, section: 0)
+            if let cell = tableView.cellForRow(at: indexPath) as? ProducerCell {
+                cell.isChecked = false
+            }
+        }
+        if let cell = tableView.cellForRow(at: indexPath) as? ProducerCell {
+            cell.isChecked = true
+        }
+        selectedProducerIndex = indexPath.row
+        contents = []
+        collectionView.reloadData()
+        refresh()
+        titleButton.setTitle(producers[indexPath.row].name, for: .normal)
+    }
+}
+
 extension PhotoListViewController {
     private func setupViews() {
+        navigationController?.navigationBar.scrollEdgeAppearance = navigationController?.navigationBar.standardAppearance
+        navigationItem.titleView = titleButton
+        titleButton.setTitle("就你辣！", for: .normal)
+        titleButton.setTitleColor(.label, for: .normal)
+        titleButton.setTitleColor(.secondaryLabel, for: .highlighted)
+        titleButton.titleLabel?.font = UIFont.systemFont(ofSize: 15)
+        let config = UIImage.SymbolConfiguration(pointSize: 14)
+        let icon = UIImage(systemName: "chevron.down", withConfiguration: config)
+        titleButton.setImage(icon, for: .normal)
+        titleButton.semanticContentAttribute = .forceRightToLeft
+        titleButton.tintColor = .label
+        titleButton.addTarget(self, action: #selector(toggleProducersList), for: .touchUpInside)
+        titleButton.frame = CGRect(x: 0, y: 0, width: view.bounds.width / 2, height: 36)
+        
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         
         collectionView.refreshControl = refreshControl
@@ -189,10 +298,41 @@ extension PhotoListViewController {
         layout.minimumInteritemSpacing = interItemSpacing
         layout.sectionInset = UIEdgeInsets(top: 16, left: padding, bottom: 16, right: padding)
         
+        producerView.isHidden = true
+        producerView.alpha = 0
+        
+        let producerMask = UIView()
+        producerMask.backgroundColor = UIColor(white: 0, alpha: 0.5)
+        producerMask.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(hideProducersList)))
+        
+        producerTableView.ch.register(ProducerCell.self)
+        producerTableView.dataSource = self
+        producerTableView.delegate = self
+        producerTableView.rowHeight = 52
+        producerTableView.separatorInset = .zero
+        producerTableView.backgroundColor = .systemGray6
+        
         view.addSubview(collectionView)
+        view.addSubview(producerView)
+        producerView.addSubview(producerMask)
+        producerView.addSubview(producerTableView)
         
         collectionView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
+        }
+        
+        producerView.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide)
+            make.left.right.bottom.equalToSuperview()
+        }
+        
+        producerMask.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        
+        producerTableView.snp.makeConstraints { make in
+            make.top.left.right.equalToSuperview()
+            make.height.equalTo(0)
         }
     }
 }
