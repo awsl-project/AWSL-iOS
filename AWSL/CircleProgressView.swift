@@ -11,10 +11,11 @@ class CircleProgressView: UIView {
     
     var progress: Float = 0 {
         didSet {
-            shapeLayer.strokeEnd = CGFloat(progress)
+            shapeLayer.strokeEnd = max(0.08, CGFloat(progress))
         }
     }
     
+    private let bgLayer: CAShapeLayer = CAShapeLayer()
     private let shapeLayer: CAShapeLayer = CAShapeLayer()
     
     override init(frame: CGRect) {
@@ -27,21 +28,27 @@ class CircleProgressView: UIView {
     }
     
     private func setupViews() {
+        bgLayer.fillColor = UIColor(white: 0, alpha: 0.75).cgColor
+        
         shapeLayer.strokeColor = UIColor.white.cgColor
         shapeLayer.lineWidth = 4
         shapeLayer.lineCap = .round
         shapeLayer.fillColor = UIColor.clear.cgColor
-        shapeLayer.strokeEnd = 0
+        shapeLayer.strokeEnd = 0.02
         
+        layer.addSublayer(bgLayer)
         layer.addSublayer(shapeLayer)
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        let path = UIBezierPath(arcCenter: CGPoint(x: bounds.width / 2, y: bounds.height / 2),
-                                radius: min(bounds.width, bounds.height) / 2 - 2,
-                                startAngle: -CGFloat.pi / 2,
-                                endAngle: CGFloat.pi * 1.5,
+        let center = CGPoint(x: bounds.width / 2, y: bounds.height / 2)
+        let size = min(bounds.width, bounds.height)
+        bgLayer.path = UIBezierPath(arcCenter: center, radius: size / 2, startAngle: 0, endAngle: .pi * 2, clockwise: true).cgPath
+        let path = UIBezierPath(arcCenter: center,
+                                radius: size / 2 - 4,
+                                startAngle: -.pi / 2,
+                                endAngle: .pi * 1.5,
                                 clockwise: true)
         shapeLayer.path = path.cgPath
     }
