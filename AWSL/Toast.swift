@@ -78,7 +78,7 @@ private class ToastView: UIView {
     
     private func performAppearAnimation(dismissBlock: @escaping () -> Void) {
         layoutIfNeeded()
-        UIView.animate(withDuration: 0.35, delay: 0, options: .curveEaseOut) {
+        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut) {
             self.alpha = 1
             self.container.snp.updateConstraints { make in
                 switch self.position {
@@ -100,7 +100,7 @@ private class ToastView: UIView {
     
     private func performDisappearAnimation(dismissBlock: @escaping () -> Void) {
         layoutIfNeeded()
-        UIView.animate(withDuration: 0.35, delay: 0, options: .curveEaseIn) {
+        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseIn) {
             self.alpha = 0
             self.container.snp.updateConstraints { make in
                 switch self.position {
