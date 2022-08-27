@@ -39,7 +39,7 @@ class PhotoListViewController: UIViewController {
     private var isLoading: Bool = false
     private var currentTask: DataRequest?
     private var contents: [Photo] = []
-    private var cellSizeMap: [String: CGSize] = [:]
+    private var cellSizeMap: [Int: CGSize] = [:]
     
     private var producers: [Producer] = []
     private var selectedProducerIndex: Int?
@@ -154,8 +154,10 @@ class PhotoListViewController: UIViewController {
     
     private func handlePhotos(_ photos: [Photo]) {
         var list = photos
+        var index = contents.count
         if contents.count % 2 == 1 {
             list.insert(contents[contents.count - 1], at: 0)
+            index -= 1
         }
         let totalWidth = min(UIScreen.main.bounds.width, UIScreen.main.bounds.height) - padding * 2 - interItemSpacing
         while !list.isEmpty {
@@ -168,13 +170,15 @@ class PhotoListViewController: UIViewController {
                 let leftWidth = round(CGFloat(left.width) * leftScale)
                 let rightWidth = totalWidth - leftWidth
                 let height = round(CGFloat(left.height) * leftScale)
-                cellSizeMap[leftInfo.id] = CGSize(width: leftWidth, height: height)
-                cellSizeMap[rightInfo.id] = CGSize(width: rightWidth, height: height)
+                cellSizeMap[index] = CGSize(width: leftWidth, height: height)
+                cellSizeMap[index + 1] = CGSize(width: rightWidth, height: height)
+                index += 2
             } else {
                 let largeInfo = leftInfo.info.large
                 let width = totalWidth / 2
                 let height = width / CGFloat(largeInfo.width) * CGFloat(largeInfo.height)
-                cellSizeMap[leftInfo.id] = CGSize(width: width, height: height)
+                cellSizeMap[index] = CGSize(width: width, height: height)
+                index += 1
             }
         }
     }
@@ -225,8 +229,7 @@ extension PhotoListViewController: UICollectionViewDelegateFlowLayout {
         if indexPath.item == contents.count {
             return CGSize(width: min(view.bounds.width, view.bounds.height) - padding * 2, height: 80)
         }
-        let info = contents[indexPath.item]
-        return cellSizeMap[info.id] ?? .zero
+        return cellSizeMap[indexPath.item] ?? .zero
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
