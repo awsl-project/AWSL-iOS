@@ -22,6 +22,7 @@ class PhotoListViewController: UIViewController {
     private let producerTableView: UITableView = UITableView()
     
     init() {
+        maximumItemPerRow = UIDevice.current.userInterfaceIdiom == .phone ? 2 : 3
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         padding = UIDevice.current.userInterfaceIdiom == .phone ? 16 : 64
         super.init(nibName: nil, bundle: nil)
@@ -31,7 +32,7 @@ class PhotoListViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private let maximumItemPerRow: Int = 2
+    private var maximumItemPerRow: Int
     private let lineSpacing: CGFloat = 3
     private let interItemSpacing: CGFloat = 3
     private let padding: CGFloat
@@ -79,13 +80,15 @@ class PhotoListViewController: UIViewController {
         producerView.layoutIfNeeded()
         UIView.animate(withDuration: 0.25, delay: 0, options: isHidden ? .curveEaseIn : .curveEaseOut) {
             self.producerView.alpha = isHidden ? 0 : 1
-            self.producerTableView.snp.updateConstraints { make in
+            self.producerTableView.snp.remakeConstraints { make in
+                make.left.right.equalToSuperview()
+                let maxHeight = self.view.bounds.height * 0.6
+                let height = self.producerTableView.rowHeight * CGFloat(self.producers.count)
+                make.height.equalTo(min(maxHeight, height))
                 if isHidden {
-                    make.height.equalTo(0)
+                    make.bottom.equalTo(self.producerView.snp.top)
                 } else {
-                    let maxHeight = self.view.bounds.height * 0.6
-                    let height = self.producerTableView.rowHeight * CGFloat(self.producers.count)
-                    make.height.equalTo(min(maxHeight, height))
+                    make.top.equalToSuperview()
                 }
             }
             self.producerView.layoutIfNeeded()
@@ -159,25 +162,30 @@ class PhotoListViewController: UIViewController {
             list.insert(contents[contents.count - 1], at: 0)
             index -= 1
         }
-        let totalWidth = min(UIScreen.main.bounds.width, UIScreen.main.bounds.height) - padding * 2 - interItemSpacing
+        let totalWidth = min(UIScreen.main.bounds.width, UIScreen.main.bounds.height) - padding * 2
+        let calculator = CellSizeCalculator(totalWidth: totalWidth, interval: interItemSpacing)
         while !list.isEmpty {
-            let leftInfo = list.removeFirst()
-            if !list.isEmpty {
-                let rightInfo = list.removeFirst()
-                let left = leftInfo.info.large
-                let right = rightInfo.info.large
-                let leftScale = totalWidth / (CGFloat(left.width) + CGFloat(right.width * left.height) / CGFloat(right.height))
-                let leftWidth = round(CGFloat(left.width) * leftScale)
-                let rightWidth = totalWidth - leftWidth
-                let height = round(CGFloat(left.height) * leftScale)
-                cellSizeMap[index] = CGSize(width: leftWidth, height: height)
-                cellSizeMap[index + 1] = CGSize(width: rightWidth, height: height)
+            if maximumItemPerRow == 3 && list.count >= 3 {
+                let leftInfo = list[0].info.large
+                let middleInfo = list[1].info.large
+                let rightInfo = list[2].info.large
+                list.removeFirst(3)
+                let result = calculator.calculateCellSize(leftInfo: leftInfo, middleInfo: middleInfo, rightInfo: rightInfo)
+                cellSizeMap[index] = result.0
+                cellSizeMap[index + 1] = result.1
+                cellSizeMap[index + 2] = result.2
+                index += 3
+            } else if list.count >= 2 {
+                let leftInfo = list[0].info.large
+                let rightInfo = list[1].info.large
+                list.removeFirst(2)
+                let result = calculator.calculateCellSize(leftInfo: leftInfo, rightInfo: rightInfo)
+                cellSizeMap[index] = result.0
+                cellSizeMap[index + 1] = result.1
                 index += 2
             } else {
-                let largeInfo = leftInfo.info.large
-                let width = totalWidth / 2
-                let height = width / CGFloat(largeInfo.width) * CGFloat(largeInfo.height)
-                cellSizeMap[index] = CGSize(width: width, height: height)
+                let info = list.removeFirst().info.large
+                cellSizeMap[index] = calculator.calculateCellSize(singleImage: info)
                 index += 1
             }
         }
@@ -349,33 +357,43 @@ extension PhotoListViewController {
 //            guard let self = self else { return }
 //
 //        }
-        var autoMode: UIAction?
-        var darkMode: UIAction?
-        var lightMode: UIAction?
-        autoMode = UIAction(title: "跟随系统",
-                            image: UIImage(systemName: "switch.2"),
-                            state: nav.themeMode == .automatic ? .on : .off) { [weak self] action in
-            guard let self = self else { return }
-            nav.themeMode = .automatic
-            self.moreItem.menu = self.buildMoreMenu()
+        
+        var menuElements: [UIMenuElement] = []
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            let twoPerRow = UIAction(title: "宽松视图",
+                                     image: UIImage(systemName: "rectangle.grid.2x2.fill"),
+                                     state: maximumItemPerRow == 2 ? .on : .off) { [weak self] action in
+                self?.maximumItemPerRow = 2
+            }
+            let threePerRow = UIAction(title: "紧凑视图",
+                                       image: UIImage(systemName: "rectangle.grid.3x2.fill"),
+                                       state: maximumItemPerRow == 3 ? .on : .off) { [weak self] action in
+                self?.maximumItemPerRow = 3
+            }
+            menuElements.append(UIMenu(options: .displayInline, children: [twoPerRow, threePerRow]))
         }
-        darkMode = UIAction(title: "深色模式",
-                            image: UIImage(systemName: "moon.stars"),
-                            state: nav.themeMode == .dark ? .on : .off) { [weak self] action in
-            guard let self = self else { return }
-            nav.themeMode = .dark
-            self.moreItem.menu = self.buildMoreMenu()
+        let autoMode = UIAction(title: "跟随系统",
+                                image: UIImage(systemName: "switch.2"),
+                                state: nav.themeMode == .automatic ? .on : .off) { [weak self] action in
+            self?.setThemeMode(.automatic)
         }
-        lightMode = UIAction(title: "浅色模式",
-                             image: UIImage(systemName: "sun.max"),
-                             state: nav.themeMode == .light ? .on : .off) { [weak self] action in
-            guard let self = self else { return }
-            nav.themeMode = .light
-            self.moreItem.menu = self.buildMoreMenu()
+        let darkMode = UIAction(title: "深色模式",
+                                image: UIImage(systemName: "moon.stars"),
+                                state: nav.themeMode == .dark ? .on : .off) { [weak self] action in
+            self?.setThemeMode(.dark)
         }
-        return UIMenu(children: [
-//            addProducer,
-            UIMenu(options: .displayInline, children: [autoMode!, darkMode!, lightMode!])
-        ])
+        let lightMode = UIAction(title: "浅色模式",
+                                 image: UIImage(systemName: "sun.max"),
+                                 state: nav.themeMode == .light ? .on : .off) { [weak self] action in
+            self?.setThemeMode(.light)
+        }
+        menuElements.append(UIMenu(options: .displayInline, children: [autoMode, darkMode, lightMode]))
+        return UIMenu(children: menuElements)
+    }
+    
+    private func setThemeMode(_ themeMode: NavigationController.ThemeMode) {
+        guard let nav = navigationController as? NavigationController else { return }
+        nav.themeMode = themeMode
+        moreItem.menu = buildMoreMenu()
     }
 }

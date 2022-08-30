@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		15EBB1313D762FD19ED2E4EE /* Pods_AWSL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 306D608070E05395D6452100 /* Pods_AWSL.framework */; };
+		426F6A5A28BCE5E500C9865A /* CellSizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426F6A5928BCE5E500C9865A /* CellSizeCalculator.swift */; };
 		42DAD95428B8853900C5FCA3 /* PhotoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DAD95328B8853900C5FCA3 /* PhotoListViewController.swift */; };
 		42DAD95628B8960D00C5FCA3 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DAD95528B8960D00C5FCA3 /* Network.swift */; };
 		42DAD95828B89A4400C5FCA3 /* GetPhotoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DAD95728B89A4400C5FCA3 /* GetPhotoList.swift */; };
@@ -30,6 +31,7 @@
 
 /* Begin PBXFileReference section */
 		306D608070E05395D6452100 /* Pods_AWSL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AWSL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		426F6A5928BCE5E500C9865A /* CellSizeCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellSizeCalculator.swift; sourceTree = "<group>"; };
 		42DAD95328B8853900C5FCA3 /* PhotoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoListViewController.swift; sourceTree = "<group>"; };
 		42DAD95528B8960D00C5FCA3 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		42DAD95728B89A4400C5FCA3 /* GetPhotoList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPhotoList.swift; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				42DAD95528B8960D00C5FCA3 /* Network.swift */,
+				426F6A5928BCE5E500C9865A /* CellSizeCalculator.swift */,
 				42DAD95928B89CBD00C5FCA3 /* Api */,
 			);
 			path = Model;
@@ -285,6 +288,7 @@
 				42FDB9E528B869B400979471 /* AppDelegate.swift in Sources */,
 				42DAD95F28B8BE2A00C5FCA3 /* LoadingCell.swift in Sources */,
 				42DAD95D28B8A25A00C5FCA3 /* ViewReusable.swift in Sources */,
+				426F6A5A28BCE5E500C9865A /* CellSizeCalculator.swift in Sources */,
 				A64DBB8228BA144900F83D01 /* ProducerCell.swift in Sources */,
 				42DAD95628B8960D00C5FCA3 /* Network.swift in Sources */,
 				42DAD96728B8D07700C5FCA3 /* CircleProgressView.swift in Sources */,
@@ -442,6 +446,7 @@
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "请允许 AWSL 访问您的相册以将图片保存到您的相册";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -472,6 +477,7 @@
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "请允许 AWSL 访问您的相册以将图片保存到您的相册";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
