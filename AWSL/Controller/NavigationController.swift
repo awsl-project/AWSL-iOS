@@ -9,7 +9,7 @@ import UIKit
 
 class NavigationController: UINavigationController {
     
-    enum ThemeMode {
+    enum ThemeMode: String, DefaultsCustomType {
         case automatic
         case dark
         case light
@@ -24,12 +24,28 @@ class NavigationController: UINavigationController {
                 return .light
             }
         }
+        
+        func getStorableValue() -> DefaultsSupportedType {
+            return rawValue
+        }
+        
+        init?(storableValue: Any?) {
+            guard let text = storableValue as? String else { return nil }
+            self.init(rawValue: text)
+        }
     }
     
-    var themeMode: ThemeMode = .automatic {
+    @DefaultsProperty(key: "themeMode", defaultValue: .automatic)
+    var themeMode: ThemeMode {
         didSet {
             overrideUserInterfaceStyle = themeMode.userInterfaceStyle
             setNeedsStatusBarAppearanceUpdate()
         }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        overrideUserInterfaceStyle = themeMode.userInterfaceStyle
+        setNeedsStatusBarAppearanceUpdate()
     }
 }
