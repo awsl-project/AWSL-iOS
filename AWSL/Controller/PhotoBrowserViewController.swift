@@ -93,6 +93,8 @@ class PhotoBrowserViewController: UIViewController {
             UIApplication.shared.open(self.photo.weiboUrl)
         }))
         sheet.addAction(UIAlertAction(title: "取消", style: .cancel, handler: nil))
+        sheet.popoverPresentationController?.sourceRect = moreButton.bounds
+        sheet.popoverPresentationController?.sourceView = moreButton
         present(sheet, animated: true)
     }
     
