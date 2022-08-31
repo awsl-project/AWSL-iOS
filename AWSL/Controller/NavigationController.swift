@@ -14,7 +14,7 @@ class NavigationController: UINavigationController {
         case dark
         case light
         
-        fileprivate var userInterfaceStyle: UIUserInterfaceStyle {
+        var userInterfaceStyle: UIUserInterfaceStyle {
             switch self {
             case .automatic:
                 return .unspecified

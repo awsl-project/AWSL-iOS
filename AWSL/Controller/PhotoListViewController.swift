@@ -111,6 +111,45 @@ class PhotoListViewController: UIViewController {
         }
     }
     
+    private func showAddProducerAlert() {
+        let alert = UIAlertController(title: "瑟瑟生产机", message: nil, preferredStyle: .alert)
+        alert.addTextField { textField in
+            textField.keyboardType = .numberPad
+            textField.placeholder = "请输入Weibo UID"
+        }
+        alert.addTextField { textField in
+            textField.placeholder = "请输入关键词"
+        }
+        alert.addAction(UIAlertAction(title: "添加", style: .default, handler: { action in
+            let weiboUid = alert.textFields?[0].text ?? ""
+            let keyword = alert.textFields?[1].text ?? ""
+            self.addProducer(weiboUid: weiboUid, keyword: keyword)
+        }))
+        alert.addAction(UIAlertAction(title: "取消", style: .cancel))
+        alert.overrideUserInterfaceStyle = (navigationController as? NavigationController)?.themeMode.userInterfaceStyle ?? .unspecified
+        present(alert, animated: true)
+    }
+    
+    private func addProducer(weiboUid: String, keyword: String) {
+        guard !weiboUid.isEmpty else {
+            Toast.show("请输入Weibo UID")
+            return
+        }
+        guard !keyword.isEmpty else {
+            Toast.show("请输入关键词")
+            return
+        }
+        Network.request(Api.AddProducer(uid: weiboUid, keyword: keyword)) { result in
+            switch result {
+            case .success:
+                Toast.show("添加成功")
+                self.loadProducers()
+            case .failure:
+                Toast.show("添加失败")
+            }
+        }
+    }
+    
     @objc private func refresh() {
         loadData(offset: 0)
     }
@@ -353,12 +392,11 @@ extension PhotoListViewController {
     
     private func buildMoreMenu() -> UIMenu? {
         guard let nav = navigationController as? NavigationController else { return nil }
-//        let addProducer = UIAction(title: "瑟瑟生产机", image: UIImage(systemName: "plus.circle")) { [weak self] action in
-//            guard let self = self else { return }
-//
-//        }
+        let addProducer = UIAction(title: "瑟瑟生产机", image: UIImage(systemName: "plus.circle")) { [weak self] action in
+            self?.showAddProducerAlert()
+        }
         
-        var menuElements: [UIMenuElement] = []
+        var menuElements: [UIMenuElement] = [addProducer]
         if UIDevice.current.userInterfaceIdiom == .pad {
             let twoPerRow = UIAction(title: "宽松视图",
                                      image: UIImage(systemName: "rectangle.grid.2x2.fill"),
