@@ -11,6 +11,8 @@
 		426F6A5A28BCE5E500C9865A /* CellSizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426F6A5928BCE5E500C9865A /* CellSizeCalculator.swift */; };
 		426F6AA128BF38F400C9865A /* DefaultsProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426F6AA028BF38F400C9865A /* DefaultsProperty.swift */; };
 		426F6AA528C0B64000C9865A /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426F6AA428C0B64000C9865A /* ThemeManager.swift */; };
+		426F6AA728C0BEBE00C9865A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426F6AA628C0BEBE00C9865A /* SettingsViewController.swift */; };
+		426F6AA928C0BECB00C9865A /* PhotoSourceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426F6AA828C0BECB00C9865A /* PhotoSourceViewController.swift */; };
 		42DAD95428B8853900C5FCA3 /* PhotoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DAD95328B8853900C5FCA3 /* PhotoListViewController.swift */; };
 		42DAD95628B8960D00C5FCA3 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DAD95528B8960D00C5FCA3 /* Network.swift */; };
 		42DAD95828B89A4400C5FCA3 /* GetPhotoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DAD95728B89A4400C5FCA3 /* GetPhotoList.swift */; };
@@ -35,6 +37,8 @@
 		426F6A5928BCE5E500C9865A /* CellSizeCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellSizeCalculator.swift; sourceTree = "<group>"; };
 		426F6AA028BF38F400C9865A /* DefaultsProperty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsProperty.swift; sourceTree = "<group>"; };
 		426F6AA428C0B64000C9865A /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
+		426F6AA628C0BEBE00C9865A /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		426F6AA828C0BECB00C9865A /* PhotoSourceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSourceViewController.swift; sourceTree = "<group>"; };
 		42DAD95328B8853900C5FCA3 /* PhotoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoListViewController.swift; sourceTree = "<group>"; };
 		42DAD95528B8960D00C5FCA3 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		42DAD95728B89A4400C5FCA3 /* GetPhotoList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPhotoList.swift; sourceTree = "<group>"; };
@@ -128,6 +132,8 @@
 			children = (
 				42DAD95328B8853900C5FCA3 /* PhotoListViewController.swift */,
 				42DAD96428B8CCB000C5FCA3 /* PhotoBrowserViewController.swift */,
+				426F6AA828C0BECB00C9865A /* PhotoSourceViewController.swift */,
+				426F6AA628C0BEBE00C9865A /* SettingsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -292,12 +298,14 @@
 				42DAD95F28B8BE2A00C5FCA3 /* LoadingCell.swift in Sources */,
 				42DAD95D28B8A25A00C5FCA3 /* ViewReusable.swift in Sources */,
 				426F6A5A28BCE5E500C9865A /* CellSizeCalculator.swift in Sources */,
+				426F6AA728C0BEBE00C9865A /* SettingsViewController.swift in Sources */,
 				A64DBB8228BA144900F83D01 /* ProducerCell.swift in Sources */,
 				42DAD95628B8960D00C5FCA3 /* Network.swift in Sources */,
 				42DAD96728B8D07700C5FCA3 /* CircleProgressView.swift in Sources */,
 				A6F4F57328B909B700AC03CF /* PresentationAnimator.swift in Sources */,
 				42DAD95828B89A4400C5FCA3 /* GetPhotoList.swift in Sources */,
 				42DAD96128B8C9B500C5FCA3 /* GetProducers.swift in Sources */,
+				426F6AA928C0BECB00C9865A /* PhotoSourceViewController.swift in Sources */,
 				426F6AA128BF38F400C9865A /* DefaultsProperty.swift in Sources */,
 				42DAD96528B8CCB000C5FCA3 /* PhotoBrowserViewController.swift in Sources */,
 				42DAD95B28B89EEC00C5FCA3 /* PhotoCell.swift in Sources */,

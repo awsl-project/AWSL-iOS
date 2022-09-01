@@ -26,6 +26,8 @@ class PhotoListViewController: UIViewController {
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         padding = UIDevice.current.userInterfaceIdiom == .phone ? 16 : 64
         super.init(nibName: nil, bundle: nil)
+        tabBarItem.image = UIImage(systemName: "photo.on.rectangle")
+        tabBarItem.selectedImage = UIImage(systemName: "photo.on.rectangle.fill")
     }
     
     required init?(coder: NSCoder) {
