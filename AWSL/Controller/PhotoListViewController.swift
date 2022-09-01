@@ -126,7 +126,7 @@ class PhotoListViewController: UIViewController {
             self.addProducer(weiboUid: weiboUid, keyword: keyword)
         }))
         alert.addAction(UIAlertAction(title: "取消", style: .cancel))
-        alert.overrideUserInterfaceStyle = (navigationController as? NavigationController)?.themeMode.userInterfaceStyle ?? .unspecified
+        alert.overrideUserInterfaceStyle = ThemeManager.shared.themeMode.userInterfaceStyle
         present(alert, animated: true)
     }
     
@@ -391,7 +391,7 @@ extension PhotoListViewController {
     }
     
     private func buildMoreMenu() -> UIMenu? {
-        guard let nav = navigationController as? NavigationController else { return nil }
+        let themeMode = ThemeManager.shared.themeMode
         let addProducer = UIAction(title: "瑟瑟生产机", image: UIImage(systemName: "plus.circle")) { [weak self] action in
             self?.showAddProducerAlert()
         }
@@ -412,26 +412,25 @@ extension PhotoListViewController {
         }
         let autoMode = UIAction(title: "跟随系统",
                                 image: UIImage(systemName: "switch.2"),
-                                state: nav.themeMode == .automatic ? .on : .off) { [weak self] action in
+                                state: themeMode == .automatic ? .on : .off) { [weak self] action in
             self?.setThemeMode(.automatic)
         }
         let darkMode = UIAction(title: "深色模式",
                                 image: UIImage(systemName: "moon.stars"),
-                                state: nav.themeMode == .dark ? .on : .off) { [weak self] action in
+                                state: themeMode == .dark ? .on : .off) { [weak self] action in
             self?.setThemeMode(.dark)
         }
         let lightMode = UIAction(title: "浅色模式",
                                  image: UIImage(systemName: "sun.max"),
-                                 state: nav.themeMode == .light ? .on : .off) { [weak self] action in
+                                 state: themeMode == .light ? .on : .off) { [weak self] action in
             self?.setThemeMode(.light)
         }
         menuElements.append(UIMenu(options: .displayInline, children: [autoMode, darkMode, lightMode]))
         return UIMenu(children: menuElements)
     }
     
-    private func setThemeMode(_ themeMode: NavigationController.ThemeMode) {
-        guard let nav = navigationController as? NavigationController else { return }
-        nav.themeMode = themeMode
+    private func setThemeMode(_ themeMode: ThemeMode) {
+        ThemeManager.shared.themeMode = themeMode
         moreItem.menu = buildMoreMenu()
     }
 }

@@ -10,6 +10,7 @@
 		15EBB1313D762FD19ED2E4EE /* Pods_AWSL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 306D608070E05395D6452100 /* Pods_AWSL.framework */; };
 		426F6A5A28BCE5E500C9865A /* CellSizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426F6A5928BCE5E500C9865A /* CellSizeCalculator.swift */; };
 		426F6AA128BF38F400C9865A /* DefaultsProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426F6AA028BF38F400C9865A /* DefaultsProperty.swift */; };
+		426F6AA528C0B64000C9865A /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426F6AA428C0B64000C9865A /* ThemeManager.swift */; };
 		42DAD95428B8853900C5FCA3 /* PhotoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DAD95328B8853900C5FCA3 /* PhotoListViewController.swift */; };
 		42DAD95628B8960D00C5FCA3 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DAD95528B8960D00C5FCA3 /* Network.swift */; };
 		42DAD95828B89A4400C5FCA3 /* GetPhotoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DAD95728B89A4400C5FCA3 /* GetPhotoList.swift */; };
@@ -25,7 +26,6 @@
 		42FDB9EE28B869B500979471 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42FDB9ED28B869B500979471 /* Assets.xcassets */; };
 		42FDB9F128B869B500979471 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42FDB9EF28B869B500979471 /* LaunchScreen.storyboard */; };
 		A64DBB8228BA144900F83D01 /* ProducerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64DBB8128BA144900F83D01 /* ProducerCell.swift */; };
-		A64DBB8428BA20C300F83D01 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64DBB8328BA20C300F83D01 /* NavigationController.swift */; };
 		A6F4F57128B8FE3000AC03CF /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F4F57028B8FE3000AC03CF /* Toast.swift */; };
 		A6F4F57328B909B700AC03CF /* PresentationAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F4F57228B909B700AC03CF /* PresentationAnimator.swift */; };
 /* End PBXBuildFile section */
@@ -34,6 +34,7 @@
 		306D608070E05395D6452100 /* Pods_AWSL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AWSL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		426F6A5928BCE5E500C9865A /* CellSizeCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellSizeCalculator.swift; sourceTree = "<group>"; };
 		426F6AA028BF38F400C9865A /* DefaultsProperty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsProperty.swift; sourceTree = "<group>"; };
+		426F6AA428C0B64000C9865A /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
 		42DAD95328B8853900C5FCA3 /* PhotoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoListViewController.swift; sourceTree = "<group>"; };
 		42DAD95528B8960D00C5FCA3 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		42DAD95728B89A4400C5FCA3 /* GetPhotoList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPhotoList.swift; sourceTree = "<group>"; };
@@ -52,7 +53,6 @@
 		42FDB9F228B869B500979471 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6329CAC9989CF49DF01C9A2C /* Pods-AWSL.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AWSL.debug.xcconfig"; path = "Target Support Files/Pods-AWSL/Pods-AWSL.debug.xcconfig"; sourceTree = "<group>"; };
 		A64DBB8128BA144900F83D01 /* ProducerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProducerCell.swift; sourceTree = "<group>"; };
-		A64DBB8328BA20C300F83D01 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		A6F4F57028B8FE3000AC03CF /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		A6F4F57228B909B700AC03CF /* PresentationAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationAnimator.swift; sourceTree = "<group>"; };
 		EECD763E72D0C4B5201A2D38 /* Pods-AWSL.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AWSL.release.xcconfig"; path = "Target Support Files/Pods-AWSL/Pods-AWSL.release.xcconfig"; sourceTree = "<group>"; };
@@ -126,7 +126,6 @@
 		A64DBB8528BA37BD00F83D01 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				A64DBB8328BA20C300F83D01 /* NavigationController.swift */,
 				42DAD95328B8853900C5FCA3 /* PhotoListViewController.swift */,
 				42DAD96428B8CCB000C5FCA3 /* PhotoBrowserViewController.swift */,
 			);
@@ -138,6 +137,7 @@
 			children = (
 				42DAD95528B8960D00C5FCA3 /* Network.swift */,
 				426F6A5928BCE5E500C9865A /* CellSizeCalculator.swift */,
+				426F6AA428C0B64000C9865A /* ThemeManager.swift */,
 				42DAD95928B89CBD00C5FCA3 /* Api */,
 			);
 			path = Model;
@@ -297,11 +297,11 @@
 				42DAD96728B8D07700C5FCA3 /* CircleProgressView.swift in Sources */,
 				A6F4F57328B909B700AC03CF /* PresentationAnimator.swift in Sources */,
 				42DAD95828B89A4400C5FCA3 /* GetPhotoList.swift in Sources */,
-				A64DBB8428BA20C300F83D01 /* NavigationController.swift in Sources */,
 				42DAD96128B8C9B500C5FCA3 /* GetProducers.swift in Sources */,
 				426F6AA128BF38F400C9865A /* DefaultsProperty.swift in Sources */,
 				42DAD96528B8CCB000C5FCA3 /* PhotoBrowserViewController.swift in Sources */,
 				42DAD95B28B89EEC00C5FCA3 /* PhotoCell.swift in Sources */,
+				426F6AA528C0B64000C9865A /* ThemeManager.swift in Sources */,
 				42FDB9E728B869B400979471 /* SceneDelegate.swift in Sources */,
 				42DAD96328B8CA4800C5FCA3 /* AddProducer.swift in Sources */,
 				A6F4F57128B8FE3000AC03CF /* Toast.swift in Sources */,
@@ -443,7 +443,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 77M64ZZJGP;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AWSL/Info.plist;
@@ -474,7 +474,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 77M64ZZJGP;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AWSL/Info.plist;

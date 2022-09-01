@@ -19,10 +19,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else { return }
         
         let window = UIWindow(windowScene: scene)
-        window.rootViewController = NavigationController(rootViewController: PhotoListViewController())
+        window.rootViewController = UINavigationController(rootViewController: PhotoListViewController())
         window.backgroundColor = .systemBackground
         window.makeKeyAndVisible()
         self.window = window
+        
+        ThemeManager.shared.onThemeModeChanged = { themeMode in
+            window.rootViewController?.overrideUserInterfaceStyle = themeMode.userInterfaceStyle
+            window.rootViewController?.setNeedsStatusBarAppearanceUpdate()
+        }
         
         Toast.setup(with: scene)
     }

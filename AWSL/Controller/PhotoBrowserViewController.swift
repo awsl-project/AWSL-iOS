@@ -40,6 +40,8 @@ class PhotoBrowserViewController: UIViewController {
         loadImage()
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle { .lightContent }
+    
     private func loadImage() {
         imageView.kf.setImage(with: photo.info.original.url,
                               placeholder: animationInfo?.image,
