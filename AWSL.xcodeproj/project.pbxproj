@@ -12,7 +12,7 @@
 		426F6AA128BF38F400C9865A /* DefaultsProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426F6AA028BF38F400C9865A /* DefaultsProperty.swift */; };
 		426F6AA528C0B64000C9865A /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426F6AA428C0B64000C9865A /* ThemeManager.swift */; };
 		426F6AA728C0BEBE00C9865A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426F6AA628C0BEBE00C9865A /* SettingsViewController.swift */; };
-		426F6AA928C0BECB00C9865A /* PhotoSourceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426F6AA828C0BECB00C9865A /* PhotoSourceViewController.swift */; };
+		426F6AA928C0BECB00C9865A /* ProducersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426F6AA828C0BECB00C9865A /* ProducersViewController.swift */; };
 		426F6AC428C1B34A00C9865A /* SelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426F6AC328C1B34A00C9865A /* SelectionCell.swift */; };
 		426F6AC628C1B40C00C9865A /* TitleValueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426F6AC528C1B40C00C9865A /* TitleValueCell.swift */; };
 		426F6AC828C1B57B00C9865A /* SettingSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426F6AC728C1B57B00C9865A /* SettingSectionHeaderView.swift */; };
@@ -41,7 +41,7 @@
 		426F6AA028BF38F400C9865A /* DefaultsProperty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsProperty.swift; sourceTree = "<group>"; };
 		426F6AA428C0B64000C9865A /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
 		426F6AA628C0BEBE00C9865A /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		426F6AA828C0BECB00C9865A /* PhotoSourceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSourceViewController.swift; sourceTree = "<group>"; };
+		426F6AA828C0BECB00C9865A /* ProducersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProducersViewController.swift; sourceTree = "<group>"; };
 		426F6AC328C1B34A00C9865A /* SelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionCell.swift; sourceTree = "<group>"; };
 		426F6AC528C1B40C00C9865A /* TitleValueCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleValueCell.swift; sourceTree = "<group>"; };
 		426F6AC728C1B57B00C9865A /* SettingSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingSectionHeaderView.swift; sourceTree = "<group>"; };
@@ -138,7 +138,7 @@
 			children = (
 				42DAD95328B8853900C5FCA3 /* PhotoListViewController.swift */,
 				42DAD96428B8CCB000C5FCA3 /* PhotoBrowserViewController.swift */,
-				426F6AA828C0BECB00C9865A /* PhotoSourceViewController.swift */,
+				426F6AA828C0BECB00C9865A /* ProducersViewController.swift */,
 				426F6AA628C0BEBE00C9865A /* SettingsViewController.swift */,
 			);
 			path = Controller;
@@ -317,7 +317,7 @@
 				A6F4F57328B909B700AC03CF /* PresentationAnimator.swift in Sources */,
 				42DAD95828B89A4400C5FCA3 /* GetPhotoList.swift in Sources */,
 				42DAD96128B8C9B500C5FCA3 /* GetProducers.swift in Sources */,
-				426F6AA928C0BECB00C9865A /* PhotoSourceViewController.swift in Sources */,
+				426F6AA928C0BECB00C9865A /* ProducersViewController.swift in Sources */,
 				426F6AA128BF38F400C9865A /* DefaultsProperty.swift in Sources */,
 				42DAD96528B8CCB000C5FCA3 /* PhotoBrowserViewController.swift in Sources */,
 				42DAD95B28B89EEC00C5FCA3 /* PhotoCell.swift in Sources */,

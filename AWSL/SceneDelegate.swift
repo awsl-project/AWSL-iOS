@@ -23,7 +23,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         tab.tabBar.tintColor = .systemPink
         tab.viewControllers = [
             UINavigationController(rootViewController: PhotoListViewController()),
-            UINavigationController(rootViewController: PhotoSourceViewController()),
+            UINavigationController(rootViewController: ProducersViewController()),
             UINavigationController(rootViewController: SettingsViewController())
         ]
         
