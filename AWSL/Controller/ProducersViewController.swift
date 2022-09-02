@@ -35,6 +35,8 @@ class ProducersViewController: UIViewController {
     private var producerPhotoLoading: [String: Bool] = [:]
     private var cellSizeMap: [String: CGSize] = [:]
     
+    private let queue: DispatchQueue = DispatchQueue(label: "com.FlyKite.AWSL.PVC")
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
@@ -62,7 +64,7 @@ class ProducersViewController: UIViewController {
         let isLoading = producerPhotoLoading[uid] ?? false
         guard !isLoading else { return }
         producerPhotoLoading[uid] = true
-        Network.request(Api.GetPhotoList(uid: uid, offset: 0, limit: 3)) { result in
+        Network.request(Api.GetPhotoList(uid: uid, offset: 0, limit: 3), queue: queue) { result in
             switch result {
             case let .success(photos):
                 self.handlePhotos(photos)
@@ -131,11 +133,11 @@ extension ProducersViewController: UICollectionViewDataSource {
         let producer = producers[indexPath.section]
         if indexPath.item == 0 {
             let cell = collectionView.ch.dequeueReusableCell(ProducerCell.self, for: indexPath)
-            cell.name = producer.name
-            cell.uid = producer.uid
+            cell.producer = producer
             cell.onViewAllClicked = { [weak self] cell in
                 guard let self = self else { return }
-                
+                let controller = ProducerPhotosViewController(producer: producer)
+                self.navigationController?.pushViewController(controller, animated: true)
             }
             return cell
         }
@@ -153,7 +155,17 @@ extension ProducersViewController: UICollectionViewDataSource {
 
 extension ProducersViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        collectionView.deselectItem(at: indexPath, animated: true)
+        guard indexPath.item > 0 else { return }
+        let producer = producers[indexPath.section]
+        guard let photos = producerPhotos[producer.uid] else { return }
+        let photo = photos[indexPath.item - 1]
+        var animationInfo: PhotoBrowserViewController.AnimationInfo?
+        if let cell = collectionView.cellForItem(at: indexPath) as? PhotoCell, let image = cell.image {
+            let fromRect = cell.convert(cell.bounds, to: view)
+            animationInfo = PhotoBrowserViewController.AnimationInfo(image: image, fromRect: fromRect)
+        }
+        let controller = PhotoBrowserViewController(photo, animationInfo: animationInfo)
+        present(controller, animated: true)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

@@ -11,6 +11,8 @@ import Alamofire
 
 class PhotoListViewController: UIViewController {
     
+    var uid: String { "" }
+    
     private let refreshControl: UIRefreshControl = UIRefreshControl()
     private let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
     private let collectionView: UICollectionView
@@ -67,7 +69,7 @@ class PhotoListViewController: UIViewController {
     private func loadData(offset: Int) {
         guard !isLoading else { return }
         isLoading = true
-        currentTask = Network.request(Api.GetPhotoList(offset: offset), queue: queue) { result in
+        currentTask = Network.request(Api.GetPhotoList(uid: uid, offset: offset), queue: queue) { result in
             switch result {
             case let .success(photos):
                 self.handlePhotos(photos)

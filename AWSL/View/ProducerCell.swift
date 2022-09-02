@@ -9,11 +9,10 @@ import UIKit
 
 class ProducerCell: UICollectionViewCell {
     
-    var uid: String?
-    
-    var name: String? {
-        get { nameLabel.text }
-        set { nameLabel.text = newValue }
+    var producer: Producer? {
+        didSet {
+            nameLabel.text = producer?.name
+        }
     }
     
     var onViewAllClicked: ((ProducerCell) -> Void)?
@@ -42,6 +41,7 @@ class ProducerCell: UICollectionViewCell {
         viewAllButton.setImage(UIImage(systemName: "chevron.right", withConfiguration: symbolConfig), for: .normal)
         viewAllButton.tintColor = .systemPink
         viewAllButton.semanticContentAttribute = .forceRightToLeft
+        viewAllButton.addTarget(self, action: #selector(viewAllButtonClicked), for: .touchUpInside)
         
         contentView.addSubview(nameLabel)
         contentView.addSubview(viewAllButton)
@@ -56,5 +56,9 @@ class ProducerCell: UICollectionViewCell {
             make.right.bottom.equalToSuperview()
             make.height.equalTo(36)
         }
+    }
+    
+    @objc private func viewAllButtonClicked() {
+        onViewAllClicked?(self)
     }
 }

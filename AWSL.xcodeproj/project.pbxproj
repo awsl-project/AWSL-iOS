@@ -16,6 +16,7 @@
 		426F6AC428C1B34A00C9865A /* SelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426F6AC328C1B34A00C9865A /* SelectionCell.swift */; };
 		426F6AC628C1B40C00C9865A /* TitleValueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426F6AC528C1B40C00C9865A /* TitleValueCell.swift */; };
 		426F6AC828C1B57B00C9865A /* SettingSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426F6AC728C1B57B00C9865A /* SettingSectionHeaderView.swift */; };
+		42D28A8D28C1E71000276C27 /* ProducerPhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D28A8C28C1E71000276C27 /* ProducerPhotosViewController.swift */; };
 		42DAD95428B8853900C5FCA3 /* PhotoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DAD95328B8853900C5FCA3 /* PhotoListViewController.swift */; };
 		42DAD95628B8960D00C5FCA3 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DAD95528B8960D00C5FCA3 /* Network.swift */; };
 		42DAD95828B89A4400C5FCA3 /* GetPhotoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DAD95728B89A4400C5FCA3 /* GetPhotoList.swift */; };
@@ -45,6 +46,7 @@
 		426F6AC328C1B34A00C9865A /* SelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionCell.swift; sourceTree = "<group>"; };
 		426F6AC528C1B40C00C9865A /* TitleValueCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleValueCell.swift; sourceTree = "<group>"; };
 		426F6AC728C1B57B00C9865A /* SettingSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingSectionHeaderView.swift; sourceTree = "<group>"; };
+		42D28A8C28C1E71000276C27 /* ProducerPhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProducerPhotosViewController.swift; sourceTree = "<group>"; };
 		42DAD95328B8853900C5FCA3 /* PhotoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoListViewController.swift; sourceTree = "<group>"; };
 		42DAD95528B8960D00C5FCA3 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		42DAD95728B89A4400C5FCA3 /* GetPhotoList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPhotoList.swift; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 				42DAD95328B8853900C5FCA3 /* PhotoListViewController.swift */,
 				42DAD96428B8CCB000C5FCA3 /* PhotoBrowserViewController.swift */,
 				426F6AA828C0BECB00C9865A /* ProducersViewController.swift */,
+				42D28A8C28C1E71000276C27 /* ProducerPhotosViewController.swift */,
 				426F6AA628C0BEBE00C9865A /* SettingsViewController.swift */,
 			);
 			path = Controller;
@@ -303,6 +306,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				42DAD95428B8853900C5FCA3 /* PhotoListViewController.swift in Sources */,
+				42D28A8D28C1E71000276C27 /* ProducerPhotosViewController.swift in Sources */,
 				42FDB9E528B869B400979471 /* AppDelegate.swift in Sources */,
 				426F6AC828C1B57B00C9865A /* SettingSectionHeaderView.swift in Sources */,
 				426F6AC428C1B34A00C9865A /* SelectionCell.swift in Sources */,
