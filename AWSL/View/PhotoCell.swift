@@ -38,6 +38,9 @@ class PhotoCell: UICollectionViewCell {
     private func setupViews() {
         contentView.backgroundColor = .systemGray6
         
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
+        
         loadingView.isHidden = true
         
         contentView.addSubview(imageView)

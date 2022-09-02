@@ -7,24 +7,22 @@
 
 import UIKit
 
-class ProducerCell: UITableViewCell {
+class ProducerCell: UICollectionViewCell {
+    
+    var uid: String?
     
     var name: String? {
         get { nameLabel.text }
         set { nameLabel.text = newValue }
     }
     
-    var isChecked = false {
-        didSet {
-            checkView.isHidden = !isChecked
-        }
-    }
+    var onViewAllClicked: ((ProducerCell) -> Void)?
     
     private let nameLabel: UILabel = UILabel()
-    private let checkView: UIImageView = UIImageView()
+    private let viewAllButton: UIButton = UIButton()
     
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         setupViews()
     }
     
@@ -33,25 +31,30 @@ class ProducerCell: UITableViewCell {
     }
     
     private func setupViews() {
-        backgroundColor = .systemGray6
-        
-        nameLabel.font = UIFont.systemFont(ofSize: 15)
+        nameLabel.font = UIFont.systemFont(ofSize: 28, weight: .medium)
         nameLabel.textColor = .label
+        nameLabel.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         
-        checkView.isHidden = true
-        checkView.image = UIImage(systemName: "checkmark")
-        checkView.tintColor = .systemGreen
+        viewAllButton.setTitle("查看全部", for: .normal)
+        viewAllButton.setTitleColor(.systemPink, for: .normal)
+        viewAllButton.titleLabel?.font = UIFont.systemFont(ofSize: 13)
+        let symbolConfig = UIImage.SymbolConfiguration(pointSize: 13)
+        viewAllButton.setImage(UIImage(systemName: "chevron.right", withConfiguration: symbolConfig), for: .normal)
+        viewAllButton.tintColor = .systemPink
+        viewAllButton.semanticContentAttribute = .forceRightToLeft
         
         contentView.addSubview(nameLabel)
-        contentView.addSubview(checkView)
+        contentView.addSubview(viewAllButton)
         
         nameLabel.snp.makeConstraints { make in
-            make.center.equalToSuperview()
+            make.left.equalToSuperview()
+            make.bottom.equalToSuperview().offset(-5)
+            make.right.lessThanOrEqualTo(viewAllButton.snp.left)
         }
         
-        checkView.snp.makeConstraints { make in
-            make.centerY.equalToSuperview()
-            make.left.equalTo(nameLabel.snp.right).offset(8)
+        viewAllButton.snp.makeConstraints { make in
+            make.right.bottom.equalToSuperview()
+            make.height.equalTo(36)
         }
     }
 }

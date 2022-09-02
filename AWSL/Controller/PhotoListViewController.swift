@@ -11,9 +11,6 @@ import Alamofire
 
 class PhotoListViewController: UIViewController {
     
-    private let titleButton: UIButton = UIButton()
-    private let moreItem: UIBarButtonItem = UIBarButtonItem(title: nil, image: UIImage(systemName: "ellipsis.circle"), primaryAction: nil, menu: nil)
-    
     private let refreshControl: UIRefreshControl = UIRefreshControl()
     private let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
     private let collectionView: UICollectionView
@@ -93,6 +90,9 @@ class PhotoListViewController: UIViewController {
                 }
             case let .failure(error):
                 print(error)
+                DispatchQueue.main.async {
+                    Toast.show("飞到外太空去了，一会再试试吧~")
+                }
             }
             DispatchQueue.main.async {
                 self.isLoading = false
