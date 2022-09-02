@@ -19,6 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else { return }
         
         let tab = UITabBarController()
+        tab.overrideUserInterfaceStyle = ThemeManager.shared.themeMode.userInterfaceStyle
         tab.tabBar.tintColor = .systemPink
         tab.viewControllers = [
             UINavigationController(rootViewController: PhotoListViewController()),
