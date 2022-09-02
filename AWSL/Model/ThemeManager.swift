@@ -13,6 +13,11 @@ enum ThemeMode: String {
     case light
 }
 
+enum LayoutMode: String {
+    case normal
+    case moreImage
+}
+
 class ThemeManager {
     
     static let shared: ThemeManager = ThemeManager()
@@ -23,6 +28,14 @@ class ThemeManager {
     var themeMode: ThemeMode {
         didSet {
             onThemeModeChanged?(themeMode)
+        }
+    }
+    
+    var onLayoutModeChanged: ((LayoutMode) -> Void)?
+    @DefaultsProperty(key: "layoutMode", defaultValue: .moreImage)
+    var layoutMode: LayoutMode {
+        didSet {
+            onLayoutModeChanged?(layoutMode)
         }
     }
     
@@ -40,6 +53,17 @@ extension ThemeMode: DefaultsCustomType {
         }
     }
     
+    func getStorableValue() -> DefaultsSupportedType {
+        return rawValue
+    }
+    
+    init?(storableValue: Any?) {
+        guard let text = storableValue as? String else { return nil }
+        self.init(rawValue: text)
+    }
+}
+
+extension LayoutMode: DefaultsCustomType {
     func getStorableValue() -> DefaultsSupportedType {
         return rawValue
     }

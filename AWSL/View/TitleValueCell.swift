@@ -1,0 +1,56 @@
+//
+//  TitleValueCell.swift
+//  AWSL
+//
+//  Created by FlyKite on 2022/9/2.
+//
+
+import UIKit
+
+class TitleValueCell: UITableViewCell {
+    
+    var title: String? {
+        get { titleLabel.text }
+        set { titleLabel.text = newValue }
+    }
+    
+    var value: String? {
+        get { valueLabel.text }
+        set { valueLabel.text = newValue }
+    }
+    
+    private let titleLabel: UILabel = UILabel()
+    private let valueLabel: UILabel = UILabel()
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setupViews()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func setupViews() {
+        backgroundColor = .systemGray6
+        
+        titleLabel.font = UIFont.systemFont(ofSize: 16)
+        titleLabel.textColor = .label
+        
+        valueLabel.font = UIFont.systemFont(ofSize: 16)
+        valueLabel.textColor = .secondaryLabel
+        
+        contentView.addSubview(titleLabel)
+        contentView.addSubview(valueLabel)
+        
+        titleLabel.snp.makeConstraints { make in
+            make.left.equalToSuperview().offset(16)
+            make.centerY.equalToSuperview()
+        }
+        
+        valueLabel.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.right.equalToSuperview().offset(-16)
+        }
+    }
+}

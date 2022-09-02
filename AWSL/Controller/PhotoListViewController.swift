@@ -345,7 +345,7 @@ extension PhotoListViewController {
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         
         collectionView.refreshControl = refreshControl
-        collectionView.backgroundColor = .systemGray6
+        collectionView.backgroundColor = .systemBackground
         collectionView.ch.register(PhotoCell.self)
         collectionView.ch.register(LoadingCell.self)
         collectionView.dataSource = self

@@ -13,6 +13,9 @@
 		426F6AA528C0B64000C9865A /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426F6AA428C0B64000C9865A /* ThemeManager.swift */; };
 		426F6AA728C0BEBE00C9865A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426F6AA628C0BEBE00C9865A /* SettingsViewController.swift */; };
 		426F6AA928C0BECB00C9865A /* PhotoSourceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426F6AA828C0BECB00C9865A /* PhotoSourceViewController.swift */; };
+		426F6AC428C1B34A00C9865A /* SelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426F6AC328C1B34A00C9865A /* SelectionCell.swift */; };
+		426F6AC628C1B40C00C9865A /* TitleValueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426F6AC528C1B40C00C9865A /* TitleValueCell.swift */; };
+		426F6AC828C1B57B00C9865A /* SettingSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426F6AC728C1B57B00C9865A /* SettingSectionHeaderView.swift */; };
 		42DAD95428B8853900C5FCA3 /* PhotoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DAD95328B8853900C5FCA3 /* PhotoListViewController.swift */; };
 		42DAD95628B8960D00C5FCA3 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DAD95528B8960D00C5FCA3 /* Network.swift */; };
 		42DAD95828B89A4400C5FCA3 /* GetPhotoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DAD95728B89A4400C5FCA3 /* GetPhotoList.swift */; };
@@ -39,6 +42,9 @@
 		426F6AA428C0B64000C9865A /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
 		426F6AA628C0BEBE00C9865A /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		426F6AA828C0BECB00C9865A /* PhotoSourceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSourceViewController.swift; sourceTree = "<group>"; };
+		426F6AC328C1B34A00C9865A /* SelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionCell.swift; sourceTree = "<group>"; };
+		426F6AC528C1B40C00C9865A /* TitleValueCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleValueCell.swift; sourceTree = "<group>"; };
+		426F6AC728C1B57B00C9865A /* SettingSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingSectionHeaderView.swift; sourceTree = "<group>"; };
 		42DAD95328B8853900C5FCA3 /* PhotoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoListViewController.swift; sourceTree = "<group>"; };
 		42DAD95528B8960D00C5FCA3 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		42DAD95728B89A4400C5FCA3 /* GetPhotoList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPhotoList.swift; sourceTree = "<group>"; };
@@ -156,6 +162,9 @@
 				42DAD95E28B8BE2A00C5FCA3 /* LoadingCell.swift */,
 				A64DBB8128BA144900F83D01 /* ProducerCell.swift */,
 				42DAD96628B8D07700C5FCA3 /* CircleProgressView.swift */,
+				426F6AC728C1B57B00C9865A /* SettingSectionHeaderView.swift */,
+				426F6AC328C1B34A00C9865A /* SelectionCell.swift */,
+				426F6AC528C1B40C00C9865A /* TitleValueCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -295,7 +304,10 @@
 			files = (
 				42DAD95428B8853900C5FCA3 /* PhotoListViewController.swift in Sources */,
 				42FDB9E528B869B400979471 /* AppDelegate.swift in Sources */,
+				426F6AC828C1B57B00C9865A /* SettingSectionHeaderView.swift in Sources */,
+				426F6AC428C1B34A00C9865A /* SelectionCell.swift in Sources */,
 				42DAD95F28B8BE2A00C5FCA3 /* LoadingCell.swift in Sources */,
+				426F6AC628C1B40C00C9865A /* TitleValueCell.swift in Sources */,
 				42DAD95D28B8A25A00C5FCA3 /* ViewReusable.swift in Sources */,
 				426F6A5A28BCE5E500C9865A /* CellSizeCalculator.swift in Sources */,
 				426F6AA728C0BEBE00C9865A /* SettingsViewController.swift in Sources */,
@@ -451,7 +463,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 77M64ZZJGP;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AWSL/Info.plist;
@@ -466,7 +478,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.FlyKite.AWSL;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -482,7 +494,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 77M64ZZJGP;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AWSL/Info.plist;
@@ -497,7 +509,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.FlyKite.AWSL;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

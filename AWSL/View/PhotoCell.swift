@@ -36,7 +36,7 @@ class PhotoCell: UICollectionViewCell {
     }
     
     private func setupViews() {
-        contentView.backgroundColor = .systemGray5
+        contentView.backgroundColor = .systemGray6
         
         loadingView.isHidden = true
         
