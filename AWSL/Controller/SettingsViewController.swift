@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 private protocol Section {
     var title: String { get }
@@ -51,12 +52,44 @@ class SettingsViewController: UIViewController {
     
     private let tableView: UITableView = UITableView()
     
+    private var cacheSize: UInt = 0
     private var data: [Section] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateData()
         setupViews()
+    }
+    
+    private func updateImageCache() {
+        ImageCache.default.calculateDiskStorageSize { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case let .success(size):
+                self.cacheSize = size
+            case let .failure(error):
+                print(error)
+            }
+            self.updateData()
+            self.tableView.reloadData()
+        }
+    }
+    
+    private func clearImageCache() {
+        let alert = UIAlertController(title: "确定清除缓存？", message: nil, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "确定", style: .default, handler: { action in
+            DispatchQueue.global().async {
+                ImageCache.default.clearDiskCache { [weak self] in
+                    guard let self = self else { return }
+                    self.cacheSize = 0
+                    self.updateData()
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
+                }
+            }
+        }))
+        alert.addAction(UIAlertAction(title: "取消", style: .cancel, handler: nil))
+        present(alert, animated: true)
     }
     
     private func updateData() {
@@ -95,9 +128,19 @@ class SettingsViewController: UIViewController {
                 self.tableView.reloadSections([0], with: .none)
             }))
         }
+        let size = Double(Int(Double(self.cacheSize) / 1024 / 1024 * 100)) / 100
+        let cacheSize = "\(size)M"
         data.append(NormalSection(title: "关于", items: [
+            NormalSection.Item(title: "清除缓存", value: cacheSize, action: { [weak self] in
+                self?.clearImageCache()
+            }),
             NormalSection.Item(title: "版本", value: version, action: nil)
         ]))
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        updateImageCache()
     }
     
     private func selectThemeMode() {
