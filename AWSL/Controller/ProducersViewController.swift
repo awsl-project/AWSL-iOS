@@ -31,8 +31,6 @@ class ProducersViewController: UIViewController {
     private let padding: CGFloat
     
     private var producers: [Producer] = []
-    private var producerPhotos: [String: [Photo]] = [:]
-    private var producerPhotoLoading: [String: Bool] = [:]
     private var cellSizeMap: [String: CGSize] = [:]
     
     private let queue: DispatchQueue = DispatchQueue(label: "com.FlyKite.AWSL.PVC")
@@ -47,36 +45,23 @@ class ProducersViewController: UIViewController {
     }
     
     private func loadProducers() {
-        Network.request(Api.GetProducers()) { result in
-            self.refreshControl.endRefreshing()
+        Network.request(Api.GetProducers(), queue: queue) { result in
             switch result {
             case let .success(producers):
-                self.producers = producers
-                self.collectionView.reloadData()
-            case let .failure(error):
-                Toast.show("飞到外太空去了，一会再试试吧~")
-                print(error)
-            }
-        }
-    }
-    
-    private func loadProducerPhotos(uid: String) {
-        let isLoading = producerPhotoLoading[uid] ?? false
-        guard !isLoading else { return }
-        producerPhotoLoading[uid] = true
-        Network.request(Api.GetPhotoList(uid: uid, offset: 0, limit: 3), queue: queue) { result in
-            switch result {
-            case let .success(photos):
-                self.handlePhotos(photos)
+                for producer in producers {
+                    self.handlePhotos(producer.photos)
+                }
                 DispatchQueue.main.async {
-                    self.producerPhotos[uid] = photos
-                    self.collectionView.reloadSections([0])
+                    self.refreshControl.endRefreshing()
+                    self.producers = producers
+                    self.collectionView.reloadData()
                 }
             case let .failure(error):
                 print(error)
-            }
-            DispatchQueue.main.async {
-                self.producerPhotoLoading[uid] = false
+                DispatchQueue.main.async {
+                    self.refreshControl.endRefreshing()
+                    Toast.show("飞到外太空去了，一会再试试吧~")
+                }
             }
         }
     }
@@ -123,10 +108,7 @@ extension ProducersViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let producer = producers[section]
-        if let photos = producerPhotos[producer.uid] {
-            return photos.count + 1
-        }
-        return 2
+        return producer.photos.count + 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -141,12 +123,7 @@ extension ProducersViewController: UICollectionViewDataSource {
             }
             return cell
         }
-        guard let photos = producerPhotos[producer.uid] else {
-            let cell = collectionView.ch.dequeueReusableCell(LoadingCell.self, for: indexPath)
-            cell.startAnimating()
-            return cell
-        }
-        let photo = photos[indexPath.item - 1]
+        let photo = producer.photos[indexPath.item - 1]
         let cell = collectionView.ch.dequeueReusableCell(PhotoCell.self, for: indexPath)
         cell.imageUrl = photo.info.large.url
         return cell
@@ -157,8 +134,7 @@ extension ProducersViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard indexPath.item > 0 else { return }
         let producer = producers[indexPath.section]
-        guard let photos = producerPhotos[producer.uid] else { return }
-        let photo = photos[indexPath.item - 1]
+        let photo = producer.photos[indexPath.item - 1]
         var animationInfo: PhotoBrowserViewController.AnimationInfo?
         if let cell = collectionView.cellForItem(at: indexPath) as? PhotoCell, let image = cell.image {
             let fromRect = cell.convert(cell.bounds, to: view)
@@ -174,29 +150,21 @@ extension ProducersViewController: UICollectionViewDelegateFlowLayout {
             return CGSize(width: width, height: 72)
         }
         let producer = producers[indexPath.section]
-        guard let photos = producerPhotos[producer.uid] else {
-            return CGSize(width: width, height: 120)
-        }
-        let photo = photos[indexPath.item - 1]
+        let photo = producer.photos[indexPath.item - 1]
         return cellSizeMap[photo.id] ?? .zero
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        let producer = producers[indexPath.section]
-        guard producerPhotos[producer.uid] == nil else { return }
-        loadProducerPhotos(uid: producer.uid)
     }
 }
 
 extension ProducersViewController {
     private func setupViews() {
+        navigationItem.backButtonTitle = "返回"
+        navigationController?.navigationBar.tintColor = .systemPink
         navigationController?.setNavigationBarHidden(true, animated: false)
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         
         collectionView.refreshControl = refreshControl
         collectionView.backgroundColor = .systemBackground
         collectionView.ch.register(PhotoCell.self)
-        collectionView.ch.register(LoadingCell.self)
         collectionView.ch.register(ProducerCell.self)
         collectionView.dataSource = self
         collectionView.delegate = self
