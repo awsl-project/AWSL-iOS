@@ -35,8 +35,28 @@ class Network {
                 completion(.failure(error))
             }
         }
+        if InReviewManager.shared.needsWaitReviewStatus {
+            DispatchQueue.global().async {
+                InReviewManager.shared.group.notify(queue: .main) {
+                    task.resume()
+                }
+            }
+            return task
+        }
         task.resume()
         return task
+    }
+    
+    static func waitForReachable(action: @escaping () -> Void) {
+        if let manager = NetworkReachabilityManager(), !manager.isReachable {
+            manager.startListening(onUpdatePerforming: { status in
+                guard case .reachable = status else { return }
+                action()
+                manager.stopListening()
+            })
+        } else {
+            action()
+        }
     }
 }
 

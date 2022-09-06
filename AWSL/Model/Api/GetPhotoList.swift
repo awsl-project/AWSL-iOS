@@ -20,7 +20,9 @@ extension Api {
         }
         
         typealias ResponseType = [Photo]
-        var path: String { "v2/list" }
+        var path: String {
+            App.isInReview ? "list_in_review" : "v2/list"
+        }
         var params: [String : Any]? {
             [
                 "uid": uid,

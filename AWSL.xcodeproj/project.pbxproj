@@ -17,6 +17,8 @@
 		426F6AC628C1B40C00C9865A /* TitleValueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426F6AC528C1B40C00C9865A /* TitleValueCell.swift */; };
 		426F6AC828C1B57B00C9865A /* SettingSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426F6AC728C1B57B00C9865A /* SettingSectionHeaderView.swift */; };
 		42D28A8D28C1E71000276C27 /* ProducerPhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D28A8C28C1E71000276C27 /* ProducerPhotosViewController.swift */; };
+		42D28A9128C7218B00276C27 /* GetInReviewInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D28A9028C7218B00276C27 /* GetInReviewInfo.swift */; };
+		42D28A9928C731AF00276C27 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D28A9828C731AF00276C27 /* App.swift */; };
 		42DAD95428B8853900C5FCA3 /* PhotoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DAD95328B8853900C5FCA3 /* PhotoListViewController.swift */; };
 		42DAD95628B8960D00C5FCA3 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DAD95528B8960D00C5FCA3 /* Network.swift */; };
 		42DAD95828B89A4400C5FCA3 /* GetPhotoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DAD95728B89A4400C5FCA3 /* GetPhotoList.swift */; };
@@ -47,6 +49,8 @@
 		426F6AC528C1B40C00C9865A /* TitleValueCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleValueCell.swift; sourceTree = "<group>"; };
 		426F6AC728C1B57B00C9865A /* SettingSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingSectionHeaderView.swift; sourceTree = "<group>"; };
 		42D28A8C28C1E71000276C27 /* ProducerPhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProducerPhotosViewController.swift; sourceTree = "<group>"; };
+		42D28A9028C7218B00276C27 /* GetInReviewInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetInReviewInfo.swift; sourceTree = "<group>"; };
+		42D28A9828C731AF00276C27 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		42DAD95328B8853900C5FCA3 /* PhotoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoListViewController.swift; sourceTree = "<group>"; };
 		42DAD95528B8960D00C5FCA3 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		42DAD95728B89A4400C5FCA3 /* GetPhotoList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPhotoList.swift; sourceTree = "<group>"; };
@@ -94,6 +98,7 @@
 		42DAD95928B89CBD00C5FCA3 /* Api */ = {
 			isa = PBXGroup;
 			children = (
+				42D28A9028C7218B00276C27 /* GetInReviewInfo.swift */,
 				42DAD95728B89A4400C5FCA3 /* GetPhotoList.swift */,
 				42DAD96028B8C9B500C5FCA3 /* GetProducers.swift */,
 				42DAD96228B8CA4800C5FCA3 /* AddProducer.swift */,
@@ -153,6 +158,7 @@
 				42DAD95528B8960D00C5FCA3 /* Network.swift */,
 				426F6A5928BCE5E500C9865A /* CellSizeCalculator.swift */,
 				426F6AA428C0B64000C9865A /* ThemeManager.swift */,
+				42D28A9828C731AF00276C27 /* App.swift */,
 				42DAD95928B89CBD00C5FCA3 /* Api */,
 			);
 			path = Model;
@@ -314,6 +320,7 @@
 				426F6AC628C1B40C00C9865A /* TitleValueCell.swift in Sources */,
 				42DAD95D28B8A25A00C5FCA3 /* ViewReusable.swift in Sources */,
 				426F6A5A28BCE5E500C9865A /* CellSizeCalculator.swift in Sources */,
+				42D28A9928C731AF00276C27 /* App.swift in Sources */,
 				426F6AA728C0BEBE00C9865A /* SettingsViewController.swift in Sources */,
 				A64DBB8228BA144900F83D01 /* ProducerCell.swift in Sources */,
 				42DAD95628B8960D00C5FCA3 /* Network.swift in Sources */,
@@ -322,6 +329,7 @@
 				42DAD95828B89A4400C5FCA3 /* GetPhotoList.swift in Sources */,
 				42DAD96128B8C9B500C5FCA3 /* GetProducers.swift in Sources */,
 				426F6AA928C0BECB00C9865A /* ProducersViewController.swift in Sources */,
+				42D28A9128C7218B00276C27 /* GetInReviewInfo.swift in Sources */,
 				426F6AA128BF38F400C9865A /* DefaultsProperty.swift in Sources */,
 				42DAD96528B8CCB000C5FCA3 /* PhotoBrowserViewController.swift in Sources */,
 				42DAD95B28B89EEC00C5FCA3 /* PhotoCell.swift in Sources */,

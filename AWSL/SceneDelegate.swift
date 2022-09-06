@@ -33,6 +33,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window.makeKeyAndVisible()
         self.window = window
         
+        InReviewManager.shared.checkReviewStatus()
+        
         ThemeManager.shared.onThemeModeChanged = { themeMode in
             window.rootViewController?.overrideUserInterfaceStyle = themeMode.userInterfaceStyle
             window.rootViewController?.setNeedsStatusBarAppearanceUpdate()
