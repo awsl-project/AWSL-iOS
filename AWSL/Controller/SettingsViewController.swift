@@ -7,6 +7,7 @@
 
 import UIKit
 import Kingfisher
+import SafariServices
 
 private protocol Section {
     var title: String { get }
@@ -130,7 +131,26 @@ class SettingsViewController: UIViewController {
             NormalSection.Item(title: "清除缓存", value: cacheSize, action: { [weak self] in
                 self?.clearImageCache()
             }),
-            NormalSection.Item(title: "版本", value: App.version, action: nil)
+            NormalSection.Item(title: "版本", value: App.version, action: nil),
+        ]))
+        data.append(NormalSection(title: "联系我们", items: [
+            NormalSection.Item(title: "微博@良风生", value: "", action: {
+                UIApplication.shared.open(URL(string: "https://weibo.com/u/2123032741")!)
+            }),
+            NormalSection.Item(title: "微博@而我撑伞", value: "", action: {
+                UIApplication.shared.open(URL(string: "https://weibo.com/u/5731037657")!)
+            })
+        ]))
+        data.append(NormalSection(title: "开源许可", items: [
+            NormalSection.Item(title: "Alamofire", value: "", action: {
+                self.openUrlInWebview(URL(string: "https://raw.githubusercontent.com/Alamofire/Alamofire/master/LICENSE")!)
+            }),
+            NormalSection.Item(title: "Kingfisher", value: "", action: {
+                self.openUrlInWebview(URL(string: "https://raw.githubusercontent.com/onevcat/Kingfisher/master/LICENSE")!)
+            }),
+            NormalSection.Item(title: "SnapKit", value: "", action: {
+                self.openUrlInWebview(URL(string: "https://raw.githubusercontent.com/SnapKit/SnapKit/develop/LICENSE")!)
+            })
         ]))
     }
     
@@ -139,8 +159,10 @@ class SettingsViewController: UIViewController {
         updateImageCache()
     }
     
-    private func selectThemeMode() {
-        
+    private func openUrlInWebview(_ url: URL) {
+        let controller = SFSafariViewController(url: url)
+        controller.modalPresentationStyle = .automatic
+        present(controller, animated: true)
     }
 }
 
@@ -159,6 +181,11 @@ extension SettingsViewController: UITableViewDataSource {
             let cell = tableView.ch.dequeueReusableCell(TitleValueCell.self, for: indexPath)
             cell.title  = item.title
             cell.value = item.value
+            if item.value.isEmpty && item.action != nil {
+                cell.accessoryType = .disclosureIndicator
+            } else {
+                cell.accessoryType = .none
+            }
             return cell
         } else if let section = data[indexPath.section] as? SelectionSection {
             let item = section.items[indexPath.row]
