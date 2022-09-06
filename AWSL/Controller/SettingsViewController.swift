@@ -93,10 +93,6 @@ class SettingsViewController: UIViewController {
     }
     
     private func updateData() {
-        var version = (Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String) ?? ""
-        if let build = Bundle.main.infoDictionary?["CFBundleVersion"] {
-            version.append("(\(build))")
-        }
         data = []
         data.append(SelectionSection(title: "外观", items: [
             SelectionSection.Item(title: "跟随系统", isSelected: ThemeManager.shared.themeMode == .automatic),
@@ -134,7 +130,7 @@ class SettingsViewController: UIViewController {
             NormalSection.Item(title: "清除缓存", value: cacheSize, action: { [weak self] in
                 self?.clearImageCache()
             }),
-            NormalSection.Item(title: "版本", value: version, action: nil)
+            NormalSection.Item(title: "版本", value: App.version, action: nil)
         ]))
     }
     
