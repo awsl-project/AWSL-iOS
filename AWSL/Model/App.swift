@@ -12,8 +12,12 @@ class App {
         return "\(shortVersion)\(build.isEmpty ? "" : "(\(build))")"
     }()
     
+    #if DEBUG
+    static let isInReview: Bool = false
+    #else
     @DefaultsProperty(key: "isInReview", defaultValue: true)
     static fileprivate(set) var isInReview: Bool
+    #endif
     
     fileprivate static let shortVersion: String = {
         return Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? ""
@@ -33,6 +37,9 @@ class InReviewManager {
     let group: DispatchGroup = DispatchGroup()
     
     func checkReviewStatus() {
+        #if DEBUG
+        needsWaitReviewStatus = false
+        #else
         guard App.isInReview else {
             needsWaitReviewStatus = false
             return
@@ -51,5 +58,6 @@ class InReviewManager {
                 self.group.leave()
             }
         }
+        #endif
     }
 }

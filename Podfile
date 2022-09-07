@@ -9,4 +9,5 @@ target 'AWSL' do
   pod 'Alamofire'
   pod 'SnapKit'
   pod 'Kingfisher'
+  pod 'R.swift'
 end

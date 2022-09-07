@@ -111,9 +111,9 @@ class SettingsViewController: UIViewController {
     private func updateData() {
         data = []
         data.append(SelectionSection(title: "外观", items: [
-            SelectionSection.Item(icon: UIImage(named: "theme_automatic"), title: "跟随系统", isSelected: ThemeManager.shared.themeMode == .automatic),
-            SelectionSection.Item(icon: UIImage(named: "theme_dark"), title: "深色模式", isSelected: ThemeManager.shared.themeMode == .dark),
-            SelectionSection.Item(icon: UIImage(named: "theme_light"), title: "浅色模式", isSelected: ThemeManager.shared.themeMode == .light),
+            SelectionSection.Item(icon: R.image.theme_automatic(), title: "跟随系统", isSelected: ThemeManager.shared.themeMode == .automatic),
+            SelectionSection.Item(icon: R.image.theme_dark(), title: "深色模式", isSelected: ThemeManager.shared.themeMode == .dark),
+            SelectionSection.Item(icon: R.image.theme_light(), title: "浅色模式", isSelected: ThemeManager.shared.themeMode == .light),
         ], onItemSelect: { [weak self] selectedIndex in
             guard let self = self else { return }
             switch selectedIndex {
@@ -143,19 +143,19 @@ class SettingsViewController: UIViewController {
         let size = Double(Int(Double(self.cacheSize) / 1024 / 1024 * 100)) / 100
         let cacheSize = "\(size)M"
         data.append(NormalSection(title: "关于", items: [
-            NormalSection.Item(icon: UIImage(named: "clear"), title: "清除缓存", value: cacheSize, action: { [weak self] in
+            NormalSection.Item(icon: R.image.clear(), title: "清除缓存", value: cacheSize, action: { [weak self] in
                 self?.clearImageCache()
             }),
-            NormalSection.Item(icon: UIImage(named: "tag"), title: "版本", value: App.version),
-            NormalSection.Item(icon: UIImage(named: "license"), title: "开源许可", value: "", action: { [weak self] in
+            NormalSection.Item(icon: R.image.tag(), title: "版本", value: App.version),
+            NormalSection.Item(icon: R.image.license(), title: "开源许可", value: "", action: { [weak self] in
                 self?.navigationController?.pushViewController(LicenseViewController(), animated: true)
             }),
         ]))
         data.append(NormalSection(title: "联系我们", items: [
-            NormalSection.Item(icon: UIImage(named: "weibo"), title: "@良风生", value: "", action: {
+            NormalSection.Item(icon: R.image.weibo(), title: "@良风生", value: "", action: {
                 UIApplication.shared.open(URL(string: "https://weibo.com/u/2123032741")!)
             }),
-            NormalSection.Item(icon: UIImage(named: "weibo"), title: "@而我撑伞", value: "", action: {
+            NormalSection.Item(icon: R.image.weibo(), title: "@而我撑伞", value: "", action: {
                 UIApplication.shared.open(URL(string: "https://weibo.com/u/5731037657")!)
             })
         ]))

@@ -20,6 +20,7 @@
 		42D28A9128C7218B00276C27 /* GetInReviewInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D28A9028C7218B00276C27 /* GetInReviewInfo.swift */; };
 		42D28A9928C731AF00276C27 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D28A9828C731AF00276C27 /* App.swift */; };
 		42D28AB028C8787400276C27 /* LicenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D28AAF28C8787400276C27 /* LicenseViewController.swift */; };
+		42D28AB328C87BD600276C27 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D28AB228C87BD600276C27 /* R.generated.swift */; };
 		42DAD95428B8853900C5FCA3 /* PhotoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DAD95328B8853900C5FCA3 /* PhotoListViewController.swift */; };
 		42DAD95628B8960D00C5FCA3 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DAD95528B8960D00C5FCA3 /* Network.swift */; };
 		42DAD95828B89A4400C5FCA3 /* GetPhotoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DAD95728B89A4400C5FCA3 /* GetPhotoList.swift */; };
@@ -53,6 +54,7 @@
 		42D28A9028C7218B00276C27 /* GetInReviewInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetInReviewInfo.swift; sourceTree = "<group>"; };
 		42D28A9828C731AF00276C27 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		42D28AAF28C8787400276C27 /* LicenseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseViewController.swift; sourceTree = "<group>"; };
+		42D28AB228C87BD600276C27 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		42DAD95328B8853900C5FCA3 /* PhotoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoListViewController.swift; sourceTree = "<group>"; };
 		42DAD95528B8960D00C5FCA3 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		42DAD95728B89A4400C5FCA3 /* GetPhotoList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPhotoList.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 				A64DBB8628BA37C300F83D01 /* Model */,
 				A64DBB8728BA37C800F83D01 /* View */,
 				A64DBB8828BA37FC00F83D01 /* Util */,
+				42D28AB228C87BD600276C27 /* R.generated.swift */,
 				42FDB9ED28B869B500979471 /* Assets.xcassets */,
 				42FDB9EF28B869B500979471 /* LaunchScreen.storyboard */,
 				42FDB9F228B869B500979471 /* Info.plist */,
@@ -208,6 +211,7 @@
 			buildConfigurationList = 42FDB9F528B869B500979471 /* Build configuration list for PBXNativeTarget "AWSL" */;
 			buildPhases = (
 				B226C0553ACEDD38E1D42967 /* [CP] Check Pods Manifest.lock */,
+				42D28AB128C87B9E00276C27 /* R.swift */,
 				42FDB9DD28B869B400979471 /* Sources */,
 				42FDB9DE28B869B400979471 /* Frameworks */,
 				42FDB9DF28B869B400979471 /* Resources */,
@@ -268,6 +272,26 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		42D28AB128C87B9E00276C27 /* R.swift */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = R.swift;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				$SRCROOT/AWSL/R.generated.swift,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/AWSL/R.generated.swift\"\n";
+		};
 		B226C0553ACEDD38E1D42967 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -329,6 +353,7 @@
 				42DAD95628B8960D00C5FCA3 /* Network.swift in Sources */,
 				42DAD96728B8D07700C5FCA3 /* CircleProgressView.swift in Sources */,
 				A6F4F57328B909B700AC03CF /* PresentationAnimator.swift in Sources */,
+				42D28AB328C87BD600276C27 /* R.generated.swift in Sources */,
 				42DAD95828B89A4400C5FCA3 /* GetPhotoList.swift in Sources */,
 				42DAD96128B8C9B500C5FCA3 /* GetProducers.swift in Sources */,
 				426F6AA928C0BECB00C9865A /* ProducersViewController.swift in Sources */,

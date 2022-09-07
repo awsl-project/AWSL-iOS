@@ -25,6 +25,7 @@ class LicenseViewController: UIViewController {
         (name: "Alamofire", licenseUrl: "https://raw.githubusercontent.com/Alamofire/Alamofire/master/LICENSE"),
         (name: "Kingfisher", licenseUrl: "https://raw.githubusercontent.com/onevcat/Kingfisher/master/LICENSE"),
         (name: "SnapKit", licenseUrl: "https://raw.githubusercontent.com/SnapKit/SnapKit/develop/LICENSE"),
+        (name: "R.swift", licenseUrl: "https://raw.githubusercontent.com/mac-cain13/R.swift/master/License")
     ]
     private typealias Library = (name: String, licenseUrl: String)
     
