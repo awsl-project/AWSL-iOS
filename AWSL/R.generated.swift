@@ -229,6 +229,497 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
+  /// This `R.string` struct is generated, and contains static references to 2 localization tables.
+  struct string {
+    /// This `R.string.launchScreen` struct is generated, and contains static references to 0 localization keys.
+    struct launchScreen {
+      fileprivate init() {}
+    }
+
+    /// This `R.string.localizable` struct is generated, and contains static references to 25 localization keys.
+    struct localizable {
+      /// zh-Hans translation: 保存到相册
+      ///
+      /// Locales: zh-Hans
+      static let savePhoto = Rswift.StringResource(key: "SavePhoto", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
+      /// zh-Hans translation: 保存失败
+      ///
+      /// Locales: zh-Hans
+      static let saveFailed = Rswift.StringResource(key: "SaveFailed", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
+      /// zh-Hans translation: 保存成功
+      ///
+      /// Locales: zh-Hans
+      static let saveSucceeded = Rswift.StringResource(key: "SaveSucceeded", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
+      /// zh-Hans translation: 关于
+      ///
+      /// Locales: zh-Hans
+      static let about = Rswift.StringResource(key: "About", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
+      /// zh-Hans translation: 取消
+      ///
+      /// Locales: zh-Hans
+      static let cancel = Rswift.StringResource(key: "Cancel", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
+      /// zh-Hans translation: 外观
+      ///
+      /// Locales: zh-Hans
+      static let appearance = Rswift.StringResource(key: "Appearance", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
+      /// zh-Hans translation: 宽松视图
+      ///
+      /// Locales: zh-Hans
+      static let normalView = Rswift.StringResource(key: "NormalView", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
+      /// zh-Hans translation: 就你辣！
+      ///
+      /// Locales: zh-Hans
+      static let photoList = Rswift.StringResource(key: "PhotoList", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
+      /// zh-Hans translation: 开源许可
+      ///
+      /// Locales: zh-Hans
+      static let openSourceLicense = Rswift.StringResource(key: "OpenSourceLicense", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
+      /// zh-Hans translation: 未知错误
+      ///
+      /// Locales: zh-Hans
+      static let unknownError = Rswift.StringResource(key: "UnknownError", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
+      /// zh-Hans translation: 查看原微博
+      ///
+      /// Locales: zh-Hans
+      static let showWeibo = Rswift.StringResource(key: "ShowWeibo", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
+      /// zh-Hans translation: 浅色模式
+      ///
+      /// Locales: zh-Hans
+      static let themeLight = Rswift.StringResource(key: "ThemeLight", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
+      /// zh-Hans translation: 深色模式
+      ///
+      /// Locales: zh-Hans
+      static let themeDark = Rswift.StringResource(key: "ThemeDark", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
+      /// zh-Hans translation: 清除缓存
+      ///
+      /// Locales: zh-Hans
+      static let clearCache = Rswift.StringResource(key: "ClearCache", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
+      /// zh-Hans translation: 版本
+      ///
+      /// Locales: zh-Hans
+      static let version = Rswift.StringResource(key: "Version", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
+      /// zh-Hans translation: 确定
+      ///
+      /// Locales: zh-Hans
+      static let confirm = Rswift.StringResource(key: "Confirm", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
+      /// zh-Hans translation: 确定清除缓存？
+      ///
+      /// Locales: zh-Hans
+      static let clearCahceTitle = Rswift.StringResource(key: "ClearCahceTitle", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
+      /// zh-Hans translation: 紧凑视图
+      ///
+      /// Locales: zh-Hans
+      static let moreImage = Rswift.StringResource(key: "MoreImage", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
+      /// zh-Hans translation: 联系我们
+      ///
+      /// Locales: zh-Hans
+      static let contactUs = Rswift.StringResource(key: "ContactUs", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
+      /// zh-Hans translation: 视图
+      ///
+      /// Locales: zh-Hans
+      static let viewStyle = Rswift.StringResource(key: "ViewStyle", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
+      /// zh-Hans translation: 设置
+      ///
+      /// Locales: zh-Hans
+      static let settings = Rswift.StringResource(key: "Settings", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
+      /// zh-Hans translation: 请允许 AWSL 访问您的相册
+      ///
+      /// Locales: zh-Hans
+      static let needPhotoPermission = Rswift.StringResource(key: "NeedPhotoPermission", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
+      /// zh-Hans translation: 跟随系统
+      ///
+      /// Locales: zh-Hans
+      static let themeAutomatic = Rswift.StringResource(key: "ThemeAutomatic", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
+      /// zh-Hans translation: 返回
+      ///
+      /// Locales: zh-Hans
+      static let goBack = Rswift.StringResource(key: "GoBack", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
+      /// zh-Hans translation: 飞到外太空去了，一会再试试吧~
+      ///
+      /// Locales: zh-Hans
+      static let networkError = Rswift.StringResource(key: "NetworkError", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans"], comment: nil)
+
+      /// zh-Hans translation: 保存到相册
+      ///
+      /// Locales: zh-Hans
+      static func savePhoto(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("SavePhoto", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "SavePhoto"
+        }
+
+        return NSLocalizedString("SavePhoto", bundle: bundle, comment: "")
+      }
+
+      /// zh-Hans translation: 保存失败
+      ///
+      /// Locales: zh-Hans
+      static func saveFailed(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("SaveFailed", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "SaveFailed"
+        }
+
+        return NSLocalizedString("SaveFailed", bundle: bundle, comment: "")
+      }
+
+      /// zh-Hans translation: 保存成功
+      ///
+      /// Locales: zh-Hans
+      static func saveSucceeded(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("SaveSucceeded", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "SaveSucceeded"
+        }
+
+        return NSLocalizedString("SaveSucceeded", bundle: bundle, comment: "")
+      }
+
+      /// zh-Hans translation: 关于
+      ///
+      /// Locales: zh-Hans
+      static func about(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("About", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "About"
+        }
+
+        return NSLocalizedString("About", bundle: bundle, comment: "")
+      }
+
+      /// zh-Hans translation: 取消
+      ///
+      /// Locales: zh-Hans
+      static func cancel(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Cancel", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Cancel"
+        }
+
+        return NSLocalizedString("Cancel", bundle: bundle, comment: "")
+      }
+
+      /// zh-Hans translation: 外观
+      ///
+      /// Locales: zh-Hans
+      static func appearance(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Appearance", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Appearance"
+        }
+
+        return NSLocalizedString("Appearance", bundle: bundle, comment: "")
+      }
+
+      /// zh-Hans translation: 宽松视图
+      ///
+      /// Locales: zh-Hans
+      static func normalView(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("NormalView", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "NormalView"
+        }
+
+        return NSLocalizedString("NormalView", bundle: bundle, comment: "")
+      }
+
+      /// zh-Hans translation: 就你辣！
+      ///
+      /// Locales: zh-Hans
+      static func photoList(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("PhotoList", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "PhotoList"
+        }
+
+        return NSLocalizedString("PhotoList", bundle: bundle, comment: "")
+      }
+
+      /// zh-Hans translation: 开源许可
+      ///
+      /// Locales: zh-Hans
+      static func openSourceLicense(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("OpenSourceLicense", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "OpenSourceLicense"
+        }
+
+        return NSLocalizedString("OpenSourceLicense", bundle: bundle, comment: "")
+      }
+
+      /// zh-Hans translation: 未知错误
+      ///
+      /// Locales: zh-Hans
+      static func unknownError(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("UnknownError", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "UnknownError"
+        }
+
+        return NSLocalizedString("UnknownError", bundle: bundle, comment: "")
+      }
+
+      /// zh-Hans translation: 查看原微博
+      ///
+      /// Locales: zh-Hans
+      static func showWeibo(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("ShowWeibo", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "ShowWeibo"
+        }
+
+        return NSLocalizedString("ShowWeibo", bundle: bundle, comment: "")
+      }
+
+      /// zh-Hans translation: 浅色模式
+      ///
+      /// Locales: zh-Hans
+      static func themeLight(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("ThemeLight", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "ThemeLight"
+        }
+
+        return NSLocalizedString("ThemeLight", bundle: bundle, comment: "")
+      }
+
+      /// zh-Hans translation: 深色模式
+      ///
+      /// Locales: zh-Hans
+      static func themeDark(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("ThemeDark", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "ThemeDark"
+        }
+
+        return NSLocalizedString("ThemeDark", bundle: bundle, comment: "")
+      }
+
+      /// zh-Hans translation: 清除缓存
+      ///
+      /// Locales: zh-Hans
+      static func clearCache(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("ClearCache", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "ClearCache"
+        }
+
+        return NSLocalizedString("ClearCache", bundle: bundle, comment: "")
+      }
+
+      /// zh-Hans translation: 版本
+      ///
+      /// Locales: zh-Hans
+      static func version(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Version", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Version"
+        }
+
+        return NSLocalizedString("Version", bundle: bundle, comment: "")
+      }
+
+      /// zh-Hans translation: 确定
+      ///
+      /// Locales: zh-Hans
+      static func confirm(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Confirm", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Confirm"
+        }
+
+        return NSLocalizedString("Confirm", bundle: bundle, comment: "")
+      }
+
+      /// zh-Hans translation: 确定清除缓存？
+      ///
+      /// Locales: zh-Hans
+      static func clearCahceTitle(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("ClearCahceTitle", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "ClearCahceTitle"
+        }
+
+        return NSLocalizedString("ClearCahceTitle", bundle: bundle, comment: "")
+      }
+
+      /// zh-Hans translation: 紧凑视图
+      ///
+      /// Locales: zh-Hans
+      static func moreImage(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("MoreImage", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "MoreImage"
+        }
+
+        return NSLocalizedString("MoreImage", bundle: bundle, comment: "")
+      }
+
+      /// zh-Hans translation: 联系我们
+      ///
+      /// Locales: zh-Hans
+      static func contactUs(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("ContactUs", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "ContactUs"
+        }
+
+        return NSLocalizedString("ContactUs", bundle: bundle, comment: "")
+      }
+
+      /// zh-Hans translation: 视图
+      ///
+      /// Locales: zh-Hans
+      static func viewStyle(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("ViewStyle", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "ViewStyle"
+        }
+
+        return NSLocalizedString("ViewStyle", bundle: bundle, comment: "")
+      }
+
+      /// zh-Hans translation: 设置
+      ///
+      /// Locales: zh-Hans
+      static func settings(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Settings", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Settings"
+        }
+
+        return NSLocalizedString("Settings", bundle: bundle, comment: "")
+      }
+
+      /// zh-Hans translation: 请允许 AWSL 访问您的相册
+      ///
+      /// Locales: zh-Hans
+      static func needPhotoPermission(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("NeedPhotoPermission", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "NeedPhotoPermission"
+        }
+
+        return NSLocalizedString("NeedPhotoPermission", bundle: bundle, comment: "")
+      }
+
+      /// zh-Hans translation: 跟随系统
+      ///
+      /// Locales: zh-Hans
+      static func themeAutomatic(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("ThemeAutomatic", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "ThemeAutomatic"
+        }
+
+        return NSLocalizedString("ThemeAutomatic", bundle: bundle, comment: "")
+      }
+
+      /// zh-Hans translation: 返回
+      ///
+      /// Locales: zh-Hans
+      static func goBack(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("GoBack", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "GoBack"
+        }
+
+        return NSLocalizedString("GoBack", bundle: bundle, comment: "")
+      }
+
+      /// zh-Hans translation: 飞到外太空去了，一会再试试吧~
+      ///
+      /// Locales: zh-Hans
+      static func networkError(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("NetworkError", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "NetworkError"
+        }
+
+        return NSLocalizedString("NetworkError", bundle: bundle, comment: "")
+      }
+
+      fileprivate init() {}
+    }
+
+    fileprivate init() {}
+  }
+
   fileprivate struct intern: Rswift.Validatable {
     fileprivate static func validate() throws {
       try _R.validate()

@@ -88,13 +88,13 @@ class PhotoBrowserViewController: UIViewController {
     
     @objc private func showMoreMenu() {
         let sheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        sheet.addAction(UIAlertAction(title: "保存到相册", style: .default, handler: { action in
+        sheet.addAction(UIAlertAction(title: R.string.localizable.savePhoto(), style: .default, handler: { action in
             self.savePhoto()
         }))
-        sheet.addAction(UIAlertAction(title: "查看原微博", style: .default, handler: { action in
+        sheet.addAction(UIAlertAction(title: R.string.localizable.showWeibo(), style: .default, handler: { action in
             UIApplication.shared.open(self.photo.weiboUrl)
         }))
-        sheet.addAction(UIAlertAction(title: "取消", style: .cancel, handler: nil))
+        sheet.addAction(UIAlertAction(title: R.string.localizable.cancel(), style: .cancel, handler: nil))
         sheet.popoverPresentationController?.sourceRect = moreButton.bounds
         sheet.popoverPresentationController?.sourceView = moreButton
         present(sheet, animated: true)
@@ -104,14 +104,14 @@ class PhotoBrowserViewController: UIViewController {
         checkAuthorizationStatus { isLimited in
             do {
                 try self.savePhotoToAlbum()
-                Toast.show("保存成功")
+                Toast.show(R.string.localizable.saveSucceeded())
             } catch {
                 print(error)
-                Toast.show("保存失败")
+                Toast.show(R.string.localizable.saveFailed())
             }
         } denied: { msg in
             let alert = UIAlertController(title: nil, message: msg, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "确定", style: .default))
+            alert.addAction(UIAlertAction(title: R.string.localizable.confirm(), style: .default))
             self.present(alert, animated: true)
         }
     }
@@ -127,16 +127,14 @@ class PhotoBrowserViewController: UIViewController {
                         checkStatus(status)
                     }
                 }
-            case .restricted:
-                denied("请允许 AWSL 访问您的相册")
-            case .denied:
-                denied("请允许 AWSL 访问您的相册")
+            case .restricted, .denied:
+                denied(R.string.localizable.needPhotoPermission())
             case .authorized:
                 authorized(false)
             case .limited:
                 authorized(true)
             @unknown default:
-                denied("未知错误")
+                denied(R.string.localizable.unknownError())
             }
         }
     }

@@ -38,7 +38,7 @@ class SettingsViewController: UIViewController {
             var value: String
             var action: (() -> Void)?
             
-            init(icon: UIImage? = nil, title: String, value: String, action: (() -> Void)? = nil) {
+            init(icon: UIImage? = nil, title: String, value: String = "", action: (() -> Void)? = nil) {
                 self.icon = icon
                 self.title = title
                 self.value = value
@@ -91,8 +91,8 @@ class SettingsViewController: UIViewController {
     }
     
     private func clearImageCache() {
-        let alert = UIAlertController(title: "确定清除缓存？", message: nil, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "确定", style: .default, handler: { action in
+        let alert = UIAlertController(title: R.string.localizable.clearCahceTitle(), message: nil, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: R.string.localizable.confirm(), style: .default, handler: { action in
             DispatchQueue.global().async {
                 ImageCache.default.clearDiskCache { [weak self] in
                     guard let self = self else { return }
@@ -104,16 +104,22 @@ class SettingsViewController: UIViewController {
                 }
             }
         }))
-        alert.addAction(UIAlertAction(title: "取消", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: R.string.localizable.cancel(), style: .cancel, handler: nil))
         present(alert, animated: true)
     }
     
     private func updateData() {
         data = []
-        data.append(SelectionSection(title: "外观", items: [
-            SelectionSection.Item(icon: R.image.theme_automatic(), title: "跟随系统", isSelected: ThemeManager.shared.themeMode == .automatic),
-            SelectionSection.Item(icon: R.image.theme_dark(), title: "深色模式", isSelected: ThemeManager.shared.themeMode == .dark),
-            SelectionSection.Item(icon: R.image.theme_light(), title: "浅色模式", isSelected: ThemeManager.shared.themeMode == .light),
+        data.append(SelectionSection(title: R.string.localizable.appearance(), items: [
+            SelectionSection.Item(icon: R.image.theme_automatic(),
+                                  title: R.string.localizable.themeAutomatic(),
+                                  isSelected: ThemeManager.shared.themeMode == .automatic),
+            SelectionSection.Item(icon: R.image.theme_dark(),
+                                  title: R.string.localizable.themeDark(),
+                                  isSelected: ThemeManager.shared.themeMode == .dark),
+            SelectionSection.Item(icon: R.image.theme_light(),
+                                  title: R.string.localizable.themeLight(),
+                                  isSelected: ThemeManager.shared.themeMode == .light),
         ], onItemSelect: { [weak self] selectedIndex in
             guard let self = self else { return }
             switch selectedIndex {
@@ -126,9 +132,11 @@ class SettingsViewController: UIViewController {
             self.tableView.reloadSections([0], with: .none)
         }))
         if UIDevice.current.userInterfaceIdiom == .pad {
-            data.append(SelectionSection(title: "布局", items: [
-                SelectionSection.Item(title: "紧凑视图", isSelected: ThemeManager.shared.layoutMode == .moreImage),
-                SelectionSection.Item(title: "宽松视图", isSelected: ThemeManager.shared.layoutMode == .normal),
+            data.append(SelectionSection(title: R.string.localizable.viewStyle(), items: [
+                SelectionSection.Item(title: R.string.localizable.normalView(),
+                                      isSelected: ThemeManager.shared.layoutMode == .moreImage),
+                SelectionSection.Item(title: R.string.localizable.moreImage(),
+                                      isSelected: ThemeManager.shared.layoutMode == .normal),
             ], onItemSelect: { [weak self] selectedIndex in
                 guard let self = self else { return }
                 switch selectedIndex {
@@ -142,20 +150,26 @@ class SettingsViewController: UIViewController {
         }
         let size = Double(Int(Double(self.cacheSize) / 1024 / 1024 * 100)) / 100
         let cacheSize = "\(size)M"
-        data.append(NormalSection(title: "关于", items: [
-            NormalSection.Item(icon: R.image.clear(), title: "清除缓存", value: cacheSize, action: { [weak self] in
+        data.append(NormalSection(title: R.string.localizable.about(), items: [
+            NormalSection.Item(icon: R.image.clear(),
+                               title: R.string.localizable.clearCache(),
+                               value: cacheSize, action: { [weak self] in
                 self?.clearImageCache()
             }),
-            NormalSection.Item(icon: R.image.tag(), title: "版本", value: App.version),
-            NormalSection.Item(icon: R.image.license(), title: "开源许可", value: "", action: { [weak self] in
+            NormalSection.Item(icon: R.image.tag(),
+                               title: R.string.localizable.version(),
+                               value: App.version),
+            NormalSection.Item(icon: R.image.license(),
+                               title: R.string.localizable.openSourceLicense(),
+                               action: { [weak self] in
                 self?.navigationController?.pushViewController(LicenseViewController(), animated: true)
             }),
         ]))
-        data.append(NormalSection(title: "联系我们", items: [
-            NormalSection.Item(icon: R.image.weibo(), title: "@良风生", value: "", action: {
+        data.append(NormalSection(title: R.string.localizable.contactUs(), items: [
+            NormalSection.Item(icon: R.image.weibo(), title: "@良风生", action: {
                 UIApplication.shared.open(URL(string: "https://weibo.com/u/2123032741")!)
             }),
-            NormalSection.Item(icon: R.image.weibo(), title: "@而我撑伞", value: "", action: {
+            NormalSection.Item(icon: R.image.weibo(), title: "@而我撑伞", action: {
                 UIApplication.shared.open(URL(string: "https://weibo.com/u/5731037657")!)
             })
         ]))
@@ -225,7 +239,7 @@ extension SettingsViewController: UITableViewDelegate {
 
 extension SettingsViewController {
     private func setupViews() {
-        navigationItem.title = "设置"
+        navigationItem.title = R.string.localizable.settings()
         view.backgroundColor = .systemBackground
         navigationController?.navigationBar.tintColor = .systemPink
         

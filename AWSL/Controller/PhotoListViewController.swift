@@ -84,7 +84,7 @@ class PhotoListViewController: UIViewController {
             case let .failure(error):
                 print(error)
                 DispatchQueue.main.async {
-                    Toast.show("飞到外太空去了，一会再试试吧~")
+                    Toast.show(R.string.localizable.networkError())
                 }
             }
             DispatchQueue.main.async {
@@ -189,7 +189,7 @@ extension PhotoListViewController: UICollectionViewDelegateFlowLayout {
 extension PhotoListViewController {
     private func setupViews() {
         navigationController?.navigationBar.scrollEdgeAppearance = navigationController?.navigationBar.standardAppearance
-        navigationItem.title = "就你辣！"
+        navigationItem.title = R.string.localizable.photoList()
         
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         

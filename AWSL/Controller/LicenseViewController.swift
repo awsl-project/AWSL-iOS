@@ -65,7 +65,7 @@ extension LicenseViewController: UITableViewDelegate {
 
 extension LicenseViewController {
     private func setupViews() {
-        title = "开源许可"
+        title = R.string.localizable.openSourceLicense()
         view.backgroundColor = .systemBackground
         
         tableView.ch.register(TitleValueCell.self)

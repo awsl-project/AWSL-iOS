@@ -1,0 +1,35 @@
+/* 
+  Localizable.strings
+  AWSL
+
+  Created by FlyKite on 2022/9/7.
+  
+*/
+
+"PhotoList"     = "就你辣！";
+"NetworkError"  = "飞到外太空去了，一会再试试吧~";
+
+"SavePhoto"     = "保存到相册";
+"ShowWeibo"     = "查看原微博";
+"Confirm"       = "确定";
+"Cancel"        = "取消";
+"SaveSucceeded" = "保存成功";
+"SaveFailed"    = "保存失败";
+"UnknownError"  = "未知错误";
+"NeedPhotoPermission"   = "请允许 AWSL 访问您的相册";
+
+"Settings"  = "设置";
+"GoBack"    = "返回";
+"Appearance"        = "外观";
+"ThemeAutomatic"    = "跟随系统";
+"ThemeDark"         = "深色模式";
+"ThemeLight"        = "浅色模式";
+"ViewStyle"         = "视图";
+"MoreImage"         = "紧凑视图";
+"NormalView"        = "宽松视图";
+"About"             = "关于";
+"ClearCache"        = "清除缓存";
+"ClearCahceTitle"   = "确定清除缓存？";
+"Version"           = "版本";
+"OpenSourceLicense" = "开源许可";
+"ContactUs"         = "联系我们";

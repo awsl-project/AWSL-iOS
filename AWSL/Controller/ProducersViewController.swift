@@ -60,7 +60,7 @@ class ProducersViewController: UIViewController {
                 print(error)
                 DispatchQueue.main.async {
                     self.refreshControl.endRefreshing()
-                    Toast.show("飞到外太空去了，一会再试试吧~")
+                    Toast.show(R.string.localizable.networkError())
                 }
             }
         }
@@ -157,7 +157,7 @@ extension ProducersViewController: UICollectionViewDelegateFlowLayout {
 
 extension ProducersViewController {
     private func setupViews() {
-        navigationItem.backButtonTitle = "返回"
+        navigationItem.backButtonTitle = R.string.localizable.goBack()
         navigationController?.navigationBar.tintColor = .systemPink
         navigationController?.setNavigationBarHidden(true, animated: false)
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
