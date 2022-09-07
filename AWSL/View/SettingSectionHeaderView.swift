@@ -26,8 +26,6 @@ class SettingSectionHeaderView: UITableViewHeaderFooterView {
     }
     
     private func setupViews() {
-        backgroundColor = .systemGray6
-        
         titleLabel.font = UIFont.systemFont(ofSize: 14, weight: .medium)
         titleLabel.textColor = .secondaryLabel
         

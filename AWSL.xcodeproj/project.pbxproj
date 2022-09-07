@@ -19,6 +19,7 @@
 		42D28A8D28C1E71000276C27 /* ProducerPhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D28A8C28C1E71000276C27 /* ProducerPhotosViewController.swift */; };
 		42D28A9128C7218B00276C27 /* GetInReviewInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D28A9028C7218B00276C27 /* GetInReviewInfo.swift */; };
 		42D28A9928C731AF00276C27 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D28A9828C731AF00276C27 /* App.swift */; };
+		42D28AB028C8787400276C27 /* LicenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D28AAF28C8787400276C27 /* LicenseViewController.swift */; };
 		42DAD95428B8853900C5FCA3 /* PhotoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DAD95328B8853900C5FCA3 /* PhotoListViewController.swift */; };
 		42DAD95628B8960D00C5FCA3 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DAD95528B8960D00C5FCA3 /* Network.swift */; };
 		42DAD95828B89A4400C5FCA3 /* GetPhotoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DAD95728B89A4400C5FCA3 /* GetPhotoList.swift */; };
@@ -51,6 +52,7 @@
 		42D28A8C28C1E71000276C27 /* ProducerPhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProducerPhotosViewController.swift; sourceTree = "<group>"; };
 		42D28A9028C7218B00276C27 /* GetInReviewInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetInReviewInfo.swift; sourceTree = "<group>"; };
 		42D28A9828C731AF00276C27 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
+		42D28AAF28C8787400276C27 /* LicenseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseViewController.swift; sourceTree = "<group>"; };
 		42DAD95328B8853900C5FCA3 /* PhotoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoListViewController.swift; sourceTree = "<group>"; };
 		42DAD95528B8960D00C5FCA3 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		42DAD95728B89A4400C5FCA3 /* GetPhotoList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPhotoList.swift; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 				426F6AA828C0BECB00C9865A /* ProducersViewController.swift */,
 				42D28A8C28C1E71000276C27 /* ProducerPhotosViewController.swift */,
 				426F6AA628C0BEBE00C9865A /* SettingsViewController.swift */,
+				42D28AAF28C8787400276C27 /* LicenseViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -333,6 +336,7 @@
 				426F6AA128BF38F400C9865A /* DefaultsProperty.swift in Sources */,
 				42DAD96528B8CCB000C5FCA3 /* PhotoBrowserViewController.swift in Sources */,
 				42DAD95B28B89EEC00C5FCA3 /* PhotoCell.swift in Sources */,
+				42D28AB028C8787400276C27 /* LicenseViewController.swift in Sources */,
 				426F6AA528C0B64000C9865A /* ThemeManager.swift in Sources */,
 				42FDB9E728B869B400979471 /* SceneDelegate.swift in Sources */,
 				42DAD96328B8CA4800C5FCA3 /* AddProducer.swift in Sources */,

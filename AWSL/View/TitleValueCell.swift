@@ -9,6 +9,14 @@ import UIKit
 
 class TitleValueCell: UITableViewCell {
     
+    var icon: UIImage? {
+        get { iconView.image }
+        set {
+            iconView.image = newValue
+            iconView.isHidden = newValue == nil
+        }
+    }
+    
     var title: String? {
         get { titleLabel.text }
         set { titleLabel.text = newValue }
@@ -19,6 +27,7 @@ class TitleValueCell: UITableViewCell {
         set { valueLabel.text = newValue }
     }
     
+    private let iconView: UIImageView = UIImageView()
     private let titleLabel: UILabel = UILabel()
     private let valueLabel: UILabel = UILabel()
     
@@ -34,16 +43,26 @@ class TitleValueCell: UITableViewCell {
     private func setupViews() {
         backgroundColor = .systemGray6
         
+        let stack = UIStackView()
+        stack.axis = .horizontal
+        stack.alignment = .center
+        stack.spacing = 8
+        
+        iconView.isHidden = true
+        iconView.tintColor = .systemPink
+        
         titleLabel.font = UIFont.systemFont(ofSize: 16)
         titleLabel.textColor = .label
         
         valueLabel.font = UIFont.systemFont(ofSize: 16)
         valueLabel.textColor = .secondaryLabel
         
-        contentView.addSubview(titleLabel)
+        contentView.addSubview(stack)
+        stack.addArrangedSubview(iconView)
+        stack.addArrangedSubview(titleLabel)
         contentView.addSubview(valueLabel)
         
-        titleLabel.snp.makeConstraints { make in
+        stack.snp.makeConstraints { make in
             make.left.equalToSuperview().offset(16)
             make.centerY.equalToSuperview()
         }

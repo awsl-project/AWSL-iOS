@@ -9,6 +9,14 @@ import UIKit
 
 class SelectionCell: UITableViewCell {
     
+    var icon: UIImage? {
+        get { iconView.image }
+        set {
+            iconView.image = newValue
+            iconView.isHidden = newValue == nil
+        }
+    }
+    
     var title: String? {
         get { titleLabel.text }
         set { titleLabel.text = newValue }
@@ -20,6 +28,7 @@ class SelectionCell: UITableViewCell {
         }
     }
     
+    private let iconView: UIImageView = UIImageView()
     private let titleLabel: UILabel = UILabel()
     private let checkView: UIImageView = UIImageView()
     
@@ -35,16 +44,26 @@ class SelectionCell: UITableViewCell {
     private func setupViews() {
         backgroundColor = .systemGray6
         
+        let stack = UIStackView()
+        stack.axis = .horizontal
+        stack.alignment = .center
+        stack.spacing = 8
+        
+        iconView.isHidden = true
+        iconView.tintColor = .systemPink
+        
         titleLabel.font = UIFont.systemFont(ofSize: 16)
         titleLabel.textColor = .label
         
         checkView.image = UIImage(systemName: "checkmark.circle.fill")
         checkView.tintColor = .systemPink
         
-        contentView.addSubview(titleLabel)
+        contentView.addSubview(stack)
+        stack.addArrangedSubview(iconView)
+        stack.addArrangedSubview(titleLabel)
         contentView.addSubview(checkView)
         
-        titleLabel.snp.makeConstraints { make in
+        stack.snp.makeConstraints { make in
             make.left.equalToSuperview().offset(16)
             make.centerY.equalToSuperview()
         }

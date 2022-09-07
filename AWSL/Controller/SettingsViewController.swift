@@ -33,9 +33,17 @@ class SettingsViewController: UIViewController {
         var itemCount: Int { items.count }
         
         struct Item {
+            let icon: UIImage?
             let title: String
             var value: String
             var action: (() -> Void)?
+            
+            init(icon: UIImage? = nil, title: String, value: String, action: (() -> Void)? = nil) {
+                self.icon = icon
+                self.title = title
+                self.value = value
+                self.action = action
+            }
         }
     }
     
@@ -46,8 +54,15 @@ class SettingsViewController: UIViewController {
         let onItemSelect: (Int) -> Void
         
         struct Item {
+            let icon: UIImage?
             let title: String
             var isSelected: Bool
+            
+            init(icon: UIImage? = nil, title: String, isSelected: Bool) {
+                self.icon = icon
+                self.title = title
+                self.isSelected = isSelected
+            }
         }
     }
     
@@ -96,9 +111,9 @@ class SettingsViewController: UIViewController {
     private func updateData() {
         data = []
         data.append(SelectionSection(title: "外观", items: [
-            SelectionSection.Item(title: "跟随系统", isSelected: ThemeManager.shared.themeMode == .automatic),
-            SelectionSection.Item(title: "深色模式", isSelected: ThemeManager.shared.themeMode == .dark),
-            SelectionSection.Item(title: "浅色模式", isSelected: ThemeManager.shared.themeMode == .light),
+            SelectionSection.Item(icon: UIImage(named: "theme_automatic"), title: "跟随系统", isSelected: ThemeManager.shared.themeMode == .automatic),
+            SelectionSection.Item(icon: UIImage(named: "theme_dark"), title: "深色模式", isSelected: ThemeManager.shared.themeMode == .dark),
+            SelectionSection.Item(icon: UIImage(named: "theme_light"), title: "浅色模式", isSelected: ThemeManager.shared.themeMode == .light),
         ], onItemSelect: { [weak self] selectedIndex in
             guard let self = self else { return }
             switch selectedIndex {
@@ -128,28 +143,20 @@ class SettingsViewController: UIViewController {
         let size = Double(Int(Double(self.cacheSize) / 1024 / 1024 * 100)) / 100
         let cacheSize = "\(size)M"
         data.append(NormalSection(title: "关于", items: [
-            NormalSection.Item(title: "清除缓存", value: cacheSize, action: { [weak self] in
+            NormalSection.Item(icon: UIImage(named: "clear"), title: "清除缓存", value: cacheSize, action: { [weak self] in
                 self?.clearImageCache()
             }),
-            NormalSection.Item(title: "版本", value: App.version, action: nil),
+            NormalSection.Item(icon: UIImage(named: "tag"), title: "版本", value: App.version),
+            NormalSection.Item(icon: UIImage(named: "license"), title: "开源许可", value: "", action: { [weak self] in
+                self?.navigationController?.pushViewController(LicenseViewController(), animated: true)
+            }),
         ]))
         data.append(NormalSection(title: "联系我们", items: [
-            NormalSection.Item(title: "微博@良风生", value: "", action: {
+            NormalSection.Item(icon: UIImage(named: "weibo"), title: "@良风生", value: "", action: {
                 UIApplication.shared.open(URL(string: "https://weibo.com/u/2123032741")!)
             }),
-            NormalSection.Item(title: "微博@而我撑伞", value: "", action: {
+            NormalSection.Item(icon: UIImage(named: "weibo"), title: "@而我撑伞", value: "", action: {
                 UIApplication.shared.open(URL(string: "https://weibo.com/u/5731037657")!)
-            })
-        ]))
-        data.append(NormalSection(title: "开源许可", items: [
-            NormalSection.Item(title: "Alamofire", value: "", action: {
-                self.openUrlInWebview(URL(string: "https://raw.githubusercontent.com/Alamofire/Alamofire/master/LICENSE")!)
-            }),
-            NormalSection.Item(title: "Kingfisher", value: "", action: {
-                self.openUrlInWebview(URL(string: "https://raw.githubusercontent.com/onevcat/Kingfisher/master/LICENSE")!)
-            }),
-            NormalSection.Item(title: "SnapKit", value: "", action: {
-                self.openUrlInWebview(URL(string: "https://raw.githubusercontent.com/SnapKit/SnapKit/develop/LICENSE")!)
             })
         ]))
     }
@@ -157,12 +164,6 @@ class SettingsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         updateImageCache()
-    }
-    
-    private func openUrlInWebview(_ url: URL) {
-        let controller = SFSafariViewController(url: url)
-        controller.modalPresentationStyle = .automatic
-        present(controller, animated: true)
     }
 }
 
@@ -179,6 +180,7 @@ extension SettingsViewController: UITableViewDataSource {
         if let section = data[indexPath.section] as? NormalSection {
             let item = section.items[indexPath.row]
             let cell = tableView.ch.dequeueReusableCell(TitleValueCell.self, for: indexPath)
+            cell.icon = item.icon
             cell.title  = item.title
             cell.value = item.value
             if item.value.isEmpty && item.action != nil {
@@ -190,6 +192,7 @@ extension SettingsViewController: UITableViewDataSource {
         } else if let section = data[indexPath.section] as? SelectionSection {
             let item = section.items[indexPath.row]
             let cell = tableView.ch.dequeueReusableCell(SelectionCell.self, for: indexPath)
+            cell.icon = item.icon
             cell.title = item.title
             cell.isChecked = item.isSelected
             return cell
@@ -224,6 +227,7 @@ extension SettingsViewController {
     private func setupViews() {
         navigationItem.title = "设置"
         view.backgroundColor = .systemBackground
+        navigationController?.navigationBar.tintColor = .systemPink
         
         tableView.ch.register(SelectionCell.self)
         tableView.ch.register(TitleValueCell.self)
