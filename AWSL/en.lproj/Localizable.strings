@@ -1,0 +1,35 @@
+/* 
+  Localizable.strings
+  AWSL
+
+  Created by FlyKite on 2022/9/7.
+  
+*/
+
+"PhotoList"     = "Photos";
+"NetworkError"  = "Request failed, please try later.";
+
+"SavePhoto"     = "Save photo";
+"ShowWeibo"     = "View original weibo";
+"Confirm"       = "Confirm";
+"Cancel"        = "Cancel";
+"SaveSucceeded" = "Save succeeded";
+"SaveFailed"    = "Save failed";
+"UnknownError"  = "Unknown error";
+"NeedPhotoPermission"   = "Please allow AWSL to visit your photo library.";
+
+"Settings"  = "Settings";
+"GoBack"    = "Back";
+"Appearance"        = "Appearance";
+"ThemeAutomatic"    = "Automatic";
+"ThemeDark"         = "Dark mode";
+"ThemeLight"        = "Light mode";
+"ViewStyle"         = "View";
+"MoreImage"         = "Compact";
+"NormalView"        = "Loose";
+"About"             = "About";
+"ClearCache"        = "Clear disk cache";
+"ClearCahceTitle"   = "Do you want to clear disk cache?";
+"Version"           = "Version";
+"OpenSourceLicense" = "License";
+"ContactUs"         = "Contact us";

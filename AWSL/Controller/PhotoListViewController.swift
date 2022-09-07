@@ -51,6 +51,9 @@ class PhotoListViewController: UIViewController {
         setupViews()
         refreshControl.beginRefreshing()
         refresh()
+        ThemeManager.shared.onLayoutModeChanged = { [weak self] layoutMode in
+            self?.maximumItemPerRow = layoutMode == .moreImage ? 3 : 2
+        }
     }
     
     @objc private func refresh() {

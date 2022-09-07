@@ -68,6 +68,10 @@ class SelectionCell: UITableViewCell {
             make.centerY.equalToSuperview()
         }
         
+        iconView.snp.makeConstraints { make in
+            make.width.height.equalTo(20)
+        }
+        
         checkView.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.right.equalToSuperview().offset(-16)

@@ -58,6 +58,7 @@
 		42D28AB228C87BD600276C27 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		42D28AB628C87EC400276C27 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		42D28AB828C87ED000276C27 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		42D28ABF28C8BB1A00276C27 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		42DAD95328B8853900C5FCA3 /* PhotoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoListViewController.swift; sourceTree = "<group>"; };
 		42DAD95528B8960D00C5FCA3 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		42DAD95728B89A4400C5FCA3 /* GetPhotoList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPhotoList.swift; sourceTree = "<group>"; };
@@ -382,6 +383,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				42D28AB828C87ED000276C27 /* zh-Hans */,
+				42D28ABF28C8BB1A00276C27 /* en */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

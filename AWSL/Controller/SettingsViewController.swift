@@ -133,19 +133,21 @@ class SettingsViewController: UIViewController {
         }))
         if UIDevice.current.userInterfaceIdiom == .pad {
             data.append(SelectionSection(title: R.string.localizable.viewStyle(), items: [
-                SelectionSection.Item(title: R.string.localizable.normalView(),
-                                      isSelected: ThemeManager.shared.layoutMode == .moreImage),
-                SelectionSection.Item(title: R.string.localizable.moreImage(),
+                SelectionSection.Item(icon: UIImage(systemName: "rectangle.grid.2x2.fill"),
+                                      title: R.string.localizable.normalView(),
                                       isSelected: ThemeManager.shared.layoutMode == .normal),
+                SelectionSection.Item(icon: UIImage(systemName: "rectangle.grid.3x2.fill"),
+                                      title: R.string.localizable.moreImage(),
+                                      isSelected: ThemeManager.shared.layoutMode == .moreImage),
             ], onItemSelect: { [weak self] selectedIndex in
                 guard let self = self else { return }
                 switch selectedIndex {
-                case 0: ThemeManager.shared.layoutMode = .moreImage
-                case 1: ThemeManager.shared.layoutMode = .normal
+                case 0: ThemeManager.shared.layoutMode = .normal
+                case 1: ThemeManager.shared.layoutMode = .moreImage
                 default: return
                 }
                 self.updateData()
-                self.tableView.reloadSections([0], with: .none)
+                self.tableView.reloadSections([1], with: .none)
             }))
         }
         let size = Double(Int(Double(self.cacheSize) / 1024 / 1024 * 100)) / 100

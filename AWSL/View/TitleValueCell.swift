@@ -50,6 +50,7 @@ class TitleValueCell: UITableViewCell {
         
         iconView.isHidden = true
         iconView.tintColor = .systemPink
+        iconView.contentMode = .scaleAspectFit
         
         titleLabel.font = UIFont.systemFont(ofSize: 16)
         titleLabel.textColor = .label
@@ -65,6 +66,10 @@ class TitleValueCell: UITableViewCell {
         stack.snp.makeConstraints { make in
             make.left.equalToSuperview().offset(16)
             make.centerY.equalToSuperview()
+        }
+        
+        iconView.snp.makeConstraints { make in
+            make.width.height.equalTo(20)
         }
         
         valueLabel.snp.makeConstraints { make in
