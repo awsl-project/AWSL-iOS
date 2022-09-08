@@ -22,8 +22,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         tab.overrideUserInterfaceStyle = ThemeManager.shared.themeMode.userInterfaceStyle
         tab.tabBar.tintColor = .systemPink
         tab.viewControllers = [
-            UINavigationController(rootViewController: PhotoListViewController()),
+            UINavigationController(rootViewController: HomeViewController()),
             UINavigationController(rootViewController: ProducersViewController()),
+            UINavigationController(rootViewController: LikedPhotosViewController()),
             UINavigationController(rootViewController: SettingsViewController())
         ]
         

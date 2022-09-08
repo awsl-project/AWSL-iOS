@@ -15,7 +15,7 @@ enum ThemeMode: String {
 
 enum LayoutMode: String {
     case normal
-    case moreImage
+    case compact
 }
 
 class ThemeManager {
@@ -31,13 +31,8 @@ class ThemeManager {
         }
     }
     
-    var onLayoutModeChanged: ((LayoutMode) -> Void)?
-    @DefaultsProperty(key: "layoutMode", defaultValue: .moreImage)
-    var layoutMode: LayoutMode {
-        didSet {
-            onLayoutModeChanged?(layoutMode)
-        }
-    }
+    @DefaultsProperty(key: "layoutMode", defaultValue: UIDevice.current.userInterfaceIdiom == .pad ? .compact : .normal)
+    var layoutMode: LayoutMode
     
 }
 
@@ -71,5 +66,12 @@ extension LayoutMode: DefaultsCustomType {
     init?(storableValue: Any?) {
         guard let text = storableValue as? String else { return nil }
         self.init(rawValue: text)
+    }
+    
+    var maximumItemPerRow: Int {
+        switch self {
+        case .normal: return 2
+        case .compact: return 3
+        }
     }
 }

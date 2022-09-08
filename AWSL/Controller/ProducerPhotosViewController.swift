@@ -11,11 +11,13 @@ import Alamofire
 class ProducerPhotosViewController: PhotoListViewController {
     
     let producer: Producer
-    override var uid: String { producer.uid }
+    
+    private let manager: PhotoListManager
     
     init(producer: Producer) {
         self.producer = producer
-        super.init()
+        self.manager = PhotoListManager(weiboUid: producer.uid)
+        super.init(dataSource: manager)
         hidesBottomBarWhenPushed = true
     }
     
@@ -24,6 +26,7 @@ class ProducerPhotosViewController: PhotoListViewController {
     }
     
     override func viewDidLoad() {
+        manager.totalContentWidth = min(UIScreen.main.bounds.width, UIScreen.main.bounds.height) - padding * 2
         super.viewDidLoad()
         setupViews()
     }

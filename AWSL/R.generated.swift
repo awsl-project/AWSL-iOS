@@ -236,7 +236,7 @@ struct R: Rswift.Validatable {
       fileprivate init() {}
     }
 
-    /// This `R.string.localizable` struct is generated, and contains static references to 25 localization keys.
+    /// This `R.string.localizable` struct is generated, and contains static references to 26 localization keys.
     struct localizable {
       /// en translation: About
       ///
@@ -258,6 +258,10 @@ struct R: Rswift.Validatable {
       ///
       /// Locales: zh-Hans, en
       static let cancel = Rswift.StringResource(key: "Cancel", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans", "en"], comment: nil)
+      /// en translation: Changing view mode will take effect after restart
+      ///
+      /// Locales: zh-Hans, en
+      static let changeViewModeTip = Rswift.StringResource(key: "ChangeViewModeTip", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans", "en"], comment: nil)
       /// en translation: Clear disk cache
       ///
       /// Locales: zh-Hans, en
@@ -265,7 +269,7 @@ struct R: Rswift.Validatable {
       /// en translation: Compact
       ///
       /// Locales: zh-Hans, en
-      static let moreImage = Rswift.StringResource(key: "MoreImage", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans", "en"], comment: nil)
+      static let compactView = Rswift.StringResource(key: "CompactView", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans", "en"], comment: nil)
       /// en translation: Confirm
       ///
       /// Locales: zh-Hans, en
@@ -330,10 +334,10 @@ struct R: Rswift.Validatable {
       ///
       /// Locales: zh-Hans, en
       static let version = Rswift.StringResource(key: "Version", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans", "en"], comment: nil)
-      /// en translation: View
+      /// en translation: View mode
       ///
       /// Locales: zh-Hans, en
-      static let viewStyle = Rswift.StringResource(key: "ViewStyle", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans", "en"], comment: nil)
+      static let viewMode = Rswift.StringResource(key: "ViewMode", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans", "en"], comment: nil)
       /// en translation: View original weibo
       ///
       /// Locales: zh-Hans, en
@@ -414,6 +418,21 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("Cancel", bundle: bundle, comment: "")
       }
 
+      /// en translation: Changing view mode will take effect after restart
+      ///
+      /// Locales: zh-Hans, en
+      static func changeViewModeTip(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("ChangeViewModeTip", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "ChangeViewModeTip"
+        }
+
+        return NSLocalizedString("ChangeViewModeTip", bundle: bundle, comment: "")
+      }
+
       /// en translation: Clear disk cache
       ///
       /// Locales: zh-Hans, en
@@ -432,16 +451,16 @@ struct R: Rswift.Validatable {
       /// en translation: Compact
       ///
       /// Locales: zh-Hans, en
-      static func moreImage(preferredLanguages: [String]? = nil) -> String {
+      static func compactView(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("MoreImage", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("CompactView", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "MoreImage"
+          return "CompactView"
         }
 
-        return NSLocalizedString("MoreImage", bundle: bundle, comment: "")
+        return NSLocalizedString("CompactView", bundle: bundle, comment: "")
       }
 
       /// en translation: Confirm
@@ -684,19 +703,19 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("Version", bundle: bundle, comment: "")
       }
 
-      /// en translation: View
+      /// en translation: View mode
       ///
       /// Locales: zh-Hans, en
-      static func viewStyle(preferredLanguages: [String]? = nil) -> String {
+      static func viewMode(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("ViewStyle", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("ViewMode", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "ViewStyle"
+          return "ViewMode"
         }
 
-        return NSLocalizedString("ViewStyle", bundle: bundle, comment: "")
+        return NSLocalizedString("ViewMode", bundle: bundle, comment: "")
       }
 
       /// en translation: View original weibo

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21E230" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="LikedPhoto" representedClassName="LikedPhoto" syncable="YES" codeGenerationType="class">
+        <attribute name="cloudRecordName" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="String"/>
+        <attribute name="weiboUrl" optional="YES" attributeType="String"/>
+        <relationship name="largeInfo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PhotoInfo"/>
+        <relationship name="originalInfo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PhotoInfo"/>
+    </entity>
+    <entity name="PhotoInfo" representedClassName="PhotoInfo" syncable="YES" codeGenerationType="class">
+        <attribute name="height" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="url" optional="YES" attributeType="String"/>
+        <attribute name="width" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
+    <elements>
+        <element name="LikedPhoto" positionX="-63" positionY="-18" width="128" height="104"/>
+        <element name="PhotoInfo" positionX="-54" positionY="18" width="128" height="74"/>
+    </elements>
+</model>

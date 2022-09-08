@@ -33,7 +33,7 @@ extension Api {
     }
 }
 
-struct Photo: Codable {
+struct Photo: Codable, Hashable {
     let id: String
     let weiboUrl: URL
     
@@ -45,12 +45,12 @@ struct Photo: Codable {
         case info = "pic_info"
     }
     
-    struct InfoContainer: Codable {
+    struct InfoContainer: Codable, Hashable {
         let large: Info
         let original: Info
     }
     
-    struct Info: Codable {
+    struct Info: Codable, Hashable {
         let url: URL
         let width: Int
         let height: Int

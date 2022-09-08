@@ -24,9 +24,10 @@
 "ThemeAutomatic"    = "Automatic";
 "ThemeDark"         = "Dark mode";
 "ThemeLight"        = "Light mode";
-"ViewStyle"         = "View";
-"MoreImage"         = "Compact";
+"ViewMode"          = "View mode";
+"CompactView"       = "Compact";
 "NormalView"        = "Loose";
+"ChangeViewModeTip" = "Changing view mode will take effect after restart";
 "About"             = "About";
 "ClearCache"        = "Clear disk cache";
 "ClearCahceTitle"   = "Do you want to clear disk cache?";

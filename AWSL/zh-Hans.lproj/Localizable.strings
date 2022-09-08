@@ -24,9 +24,10 @@
 "ThemeAutomatic"    = "跟随系统";
 "ThemeDark"         = "深色模式";
 "ThemeLight"        = "浅色模式";
-"ViewStyle"         = "视图";
-"MoreImage"         = "紧凑视图";
+"ViewMode"          = "视图";
+"CompactView"       = "紧凑视图";
 "NormalView"        = "宽松视图";
+"ChangeViewModeTip" = "更改视图模式将在重新启动后生效";
 "About"             = "关于";
 "ClearCache"        = "清除缓存";
 "ClearCahceTitle"   = "确定清除缓存？";
