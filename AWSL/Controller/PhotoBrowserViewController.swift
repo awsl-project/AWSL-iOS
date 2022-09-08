@@ -28,8 +28,11 @@ class PhotoBrowserViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    private var likedPhoto: LikedPhoto?
+    
     private let scrollView: UIScrollView = UIScrollView()
     private let imageView: UIImageView = UIImageView()
+    private let likeButton: UIButton = UIButton()
     private let moreButton: UIButton = UIButton()
     private let progressContainer: UIView = UIView()
     private let progressView: CircleProgressView = CircleProgressView()
@@ -38,6 +41,7 @@ class PhotoBrowserViewController: UIViewController {
         super.viewDidLoad()
         setupViews()
         loadImage()
+        loadLikedPhoto()
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle { .lightContent }
@@ -74,6 +78,18 @@ class PhotoBrowserViewController: UIViewController {
 
     }
     
+    private func loadLikedPhoto() {
+        LikedPhotosManager.shared.fetchLikedPhoto(photo) { result in
+            switch result {
+            case let .success(likedPhoto):
+                self.likedPhoto = likedPhoto
+                self.setLikeButtonHighlighted(likedPhoto != nil)
+            case let .failure(error):
+                print(error)
+            }
+        }
+    }
+    
     @objc private func onSingleTap() {
         dismiss(animated: true)
     }
@@ -83,6 +99,35 @@ class PhotoBrowserViewController: UIViewController {
             scrollView.setZoomScale(1, animated: true)
         } else {
             scrollView.setZoomScale(scrollView.maximumZoomScale, animated: true)
+        }
+    }
+    
+    private func setLikeButtonHighlighted(_ isHighlighted: Bool) {
+        let imageName = isHighlighted ? "heart.fill" : "heart"
+        let config = UIImage.SymbolConfiguration(pointSize: 22)
+        likeButton.setImage(UIImage(systemName: imageName, withConfiguration: config), for: .normal)
+        likeButton.tintColor = isHighlighted ? .systemPink : .white
+    }
+    
+    @objc private func likeButtonClicked() {
+        if likedPhoto != nil {
+            LikedPhotosManager.shared.removeLikedPhoto(photo) { error in
+                if let error = error {
+                    print(error)
+                    Toast.show(R.string.localizable.networkError())
+                    return
+                }
+                self.setLikeButtonHighlighted(false)
+            }
+        } else {
+            LikedPhotosManager.shared.insertLikedPhoto(photo) { error in
+                if let error = error {
+                    print(error)
+                    Toast.show(R.string.localizable.networkError())
+                    return
+                }
+                self.setLikeButtonHighlighted(true)
+            }
         }
     }
     
@@ -216,12 +261,14 @@ extension PhotoBrowserViewController: CustomPresentableViewController {
         switch type {
         case .presenting:
             view.backgroundColor = .clear
+            likeButton.alpha = 0
             moreButton.alpha = 0
             if let info = animationInfo {
                 imageView.frame = info.fromRect
             }
         case .dismissing:
             view.backgroundColor = .black
+            likeButton.alpha = 1
             moreButton.alpha = 1
             let frame = imageView.convert(imageView.bounds, to: view)
             imageView.removeFromSuperview()
@@ -239,6 +286,7 @@ extension PhotoBrowserViewController: CustomPresentableViewController {
             case .presenting:
                 self.view.backgroundColor = .black
                 self.moreButton.alpha = 1
+                self.likeButton.alpha = 1
                 if let info = self.animationInfo {
                     self.updateImageViewFrame(image: info.image)
                 } else {
@@ -247,6 +295,7 @@ extension PhotoBrowserViewController: CustomPresentableViewController {
             case .dismissing:
                 self.view.backgroundColor = .clear
                 self.moreButton.alpha = 0
+                self.likeButton.alpha = 0
                 if let info = self.animationInfo {
                     self.imageView.frame = info.fromRect
                 }
@@ -306,8 +355,14 @@ extension PhotoBrowserViewController {
         scrollView.addGestureRecognizer(doubleTap)
         
         let config = UIImage.SymbolConfiguration(pointSize: 22)
-        let image = UIImage(systemName: "ellipsis.circle.fill", withConfiguration: config)
-        moreButton.setImage(image, for: .normal)
+        likeButton.setImage(UIImage(systemName: "heart", withConfiguration: config), for: .normal)
+        likeButton.tintColor = .white
+        likeButton.backgroundColor = UIColor(white: 0, alpha: 0.5)
+        likeButton.layer.cornerRadius = 6
+        likeButton.clipsToBounds = true
+        likeButton.addTarget(self, action: #selector(likeButtonClicked), for: .touchUpInside)
+        
+        moreButton.setImage(UIImage(systemName: "ellipsis.circle.fill", withConfiguration: config), for: .normal)
         moreButton.tintColor = .white
         moreButton.backgroundColor = UIColor(white: 0, alpha: 0.5)
         moreButton.layer.cornerRadius = 6
@@ -319,6 +374,7 @@ extension PhotoBrowserViewController {
         
         view.addSubview(scrollView)
         scrollView.addSubview(imageView)
+        view.addSubview(likeButton)
         view.addSubview(moreButton)
         view.addSubview(progressContainer)
         progressContainer.addSubview(progressMask)
@@ -326,6 +382,13 @@ extension PhotoBrowserViewController {
         
         scrollView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
+        }
+        
+        likeButton.snp.makeConstraints { make in
+            make.left.equalToSuperview().offset(16)
+            make.bottom.equalTo(view.safeAreaLayoutGuide).offset(-16)
+            make.width.equalTo(48)
+            make.height.equalTo(36)
         }
         
         moreButton.snp.makeConstraints { make in

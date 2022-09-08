@@ -9,8 +9,12 @@ import UIKit
 
 class LikedPhotosViewController: PhotoListViewController {
     
+    private let manager: LikedPhotosManager = LikedPhotosManager.shared
+    
     init() {
-        super.init(dataSource: PhotoListManager())
+        super.init(dataSource: manager)
+        tabBarItem.image = UIImage(systemName: "heart")
+        tabBarItem.selectedImage = UIImage(systemName: "heart.fill")
     }
     
     required init?(coder: NSCoder) {
@@ -18,6 +22,7 @@ class LikedPhotosViewController: PhotoListViewController {
     }
     
     override func viewDidLoad() {
+        manager.totalContentWidth = min(UIScreen.main.bounds.width, UIScreen.main.bounds.height) - padding * 2
         super.viewDidLoad()
         setupViews()
     }

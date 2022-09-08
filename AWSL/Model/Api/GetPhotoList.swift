@@ -39,6 +39,12 @@ struct Photo: Codable, Hashable {
     
     let info: InfoContainer
     
+    init(id: String, weiboUrl: URL, info: InfoContainer) {
+        self.id = id
+        self.weiboUrl = weiboUrl
+        self.info = info
+    }
+    
     enum CodingKeys: String, CodingKey {
         case id = "pic_id"
         case weiboUrl = "wb_url"
@@ -48,11 +54,20 @@ struct Photo: Codable, Hashable {
     struct InfoContainer: Codable, Hashable {
         let large: Info
         let original: Info
+        init(large: Info, original: Info) {
+            self.large = large
+            self.original = original
+        }
     }
     
     struct Info: Codable, Hashable {
         let url: URL
         let width: Int
         let height: Int
+        init(url: URL, width: Int, height: Int) {
+            self.url = url
+            self.width = width
+            self.height = height
+        }
     }
 }

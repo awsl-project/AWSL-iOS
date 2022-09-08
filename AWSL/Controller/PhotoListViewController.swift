@@ -84,7 +84,8 @@ class PhotoListViewController: UIViewController {
 
 extension PhotoListViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dataSource.photos.count + (dataSource.hasNextPage() ? 1 : 0)
+        let showLoadingCell = dataSource.hasNextPage() && !dataSource.photos.isEmpty
+        return dataSource.photos.count + (showLoadingCell ? 1 : 0)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
