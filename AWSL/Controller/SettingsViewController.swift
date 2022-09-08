@@ -131,26 +131,24 @@ class SettingsViewController: UIViewController {
             self.updateData()
             self.tableView.reloadSections([0], with: .none)
         }))
-        if UIDevice.current.userInterfaceIdiom == .pad {
-            data.append(SelectionSection(title: R.string.localizable.viewMode(), items: [
-                SelectionSection.Item(icon: UIImage(systemName: "rectangle.grid.2x2.fill"),
-                                      title: R.string.localizable.normalView(),
-                                      isSelected: ThemeManager.shared.layoutMode == .normal),
-                SelectionSection.Item(icon: UIImage(systemName: "rectangle.grid.3x2.fill"),
-                                      title: R.string.localizable.compactView(),
-                                      isSelected: ThemeManager.shared.layoutMode == .compact),
-            ], onItemSelect: { [weak self] selectedIndex in
-                guard let self = self else { return }
-                switch selectedIndex {
-                case 0: ThemeManager.shared.layoutMode = .normal
-                case 1: ThemeManager.shared.layoutMode = .compact
-                default: return
-                }
-                Toast.show(R.string.localizable.changeViewModeTip())
-                self.updateData()
-                self.tableView.reloadSections([1], with: .none)
-            }))
-        }
+        data.append(SelectionSection(title: R.string.localizable.viewMode(), items: [
+            SelectionSection.Item(icon: UIImage(systemName: "rectangle.grid.2x2.fill"),
+                                  title: R.string.localizable.normalView(),
+                                  isSelected: ThemeManager.shared.layoutMode == .normal),
+            SelectionSection.Item(icon: UIImage(systemName: "rectangle.grid.3x2.fill"),
+                                  title: R.string.localizable.compactView(),
+                                  isSelected: ThemeManager.shared.layoutMode == .compact),
+        ], onItemSelect: { [weak self] selectedIndex in
+            guard let self = self else { return }
+            switch selectedIndex {
+            case 0: ThemeManager.shared.layoutMode = .normal
+            case 1: ThemeManager.shared.layoutMode = .compact
+            default: return
+            }
+            Toast.show(R.string.localizable.changeViewModeTip())
+            self.updateData()
+            self.tableView.reloadSections([1], with: .none)
+        }))
         let size = Double(Int(Double(self.cacheSize) / 1024 / 1024 * 100)) / 100
         let cacheSize = "\(size)M"
         data.append(NormalSection(title: R.string.localizable.about(), items: [

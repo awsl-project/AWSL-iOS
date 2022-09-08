@@ -31,7 +31,7 @@ class ThemeManager {
         }
     }
     
-    @DefaultsProperty(key: "layoutMode", defaultValue: UIDevice.current.userInterfaceIdiom == .pad ? .compact : .normal)
+    @DefaultsProperty(key: "layoutMode", defaultValue: .defaultValue)
     var layoutMode: LayoutMode
     
 }
@@ -66,6 +66,10 @@ extension LayoutMode: DefaultsCustomType {
     init?(storableValue: Any?) {
         guard let text = storableValue as? String else { return nil }
         self.init(rawValue: text)
+    }
+    
+    static var defaultValue: LayoutMode {
+        return UIDevice.current.userInterfaceIdiom == .pad ? .compact : .normal
     }
     
     var maximumItemPerRow: Int {
