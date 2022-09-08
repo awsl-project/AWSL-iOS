@@ -18,9 +18,13 @@ class LikedPhotosManager: PhotoListDataSource {
     
     var totalContentWidth: CGFloat = 0
     
+    var reloadDataCallback: (() -> Void)?
+    
+    private let itemsPerPage: Int
     private(set) var photos: [Photo] = []
     private var likedPhotos: [LikedPhoto] = []
     private var likedPhotoMap: [String: LikedPhoto] = [:]
+    private var totalLikedPhotosCount: Int = 0
     
     private var isLoading: Bool = false
     private var itemSizeMap: [Photo: CGSize] = [:]
@@ -30,17 +34,26 @@ class LikedPhotosManager: PhotoListDataSource {
     private init() {
         context = LikedPhotosManager.getContext()
         maximumItemPerRow = ThemeManager.shared.layoutMode.maximumItemPerRow
+        itemsPerPage = ThemeManager.shared.layoutMode.itemsPerPage
     }
     
     func hasNextPage() -> Bool {
-        return false
+        return likedPhotos.count < totalLikedPhotosCount
     }
     
-    func itemSize(for photo: Photo) -> CGSize {
-        if let size = itemSizeMap[photo] {
+    func itemSize(at indexPath: IndexPath) -> CGSize {
+        if let size = itemSizeMap[photos[indexPath.item]] {
             return size
         }
-        return itemSizeMap[photo] ?? .zero
+        let indexInRow = indexPath.item % maximumItemPerRow
+        var list: [Photo] = []
+        for i in 0 ..< maximumItemPerRow {
+            let index = indexPath.item - indexInRow + i
+            guard index < photos.count else { break }
+            list.append(photos[index])
+        }
+        handlePhotos(list)
+        return itemSizeMap[photos[indexPath.item]] ?? .zero
     }
     
     func refresh(completion: @escaping LoadingCompletion) {
@@ -79,6 +92,7 @@ class LikedPhotosManager: PhotoListDataSource {
                     let likedPhoto = LikedPhoto(context: context)
                     likedPhoto.id = photo.id
                     likedPhoto.weiboUrl = photo.weiboUrl.path
+                    likedPhoto.creationDate = Date()
                     
                     let largeInfo = PhotoInfo(context: context)
                     largeInfo.url = photo.info.large.url.absoluteString
@@ -94,11 +108,17 @@ class LikedPhotosManager: PhotoListDataSource {
                     
                     context.insert(likedPhoto)
                     try context.save()
+                    
+                    self.likedPhotos.insert(likedPhoto, at: 0)
+                    self.photos.insert(photo, at: 0)
+                    self.likedPhotoMap[photo.id] = likedPhoto
                 } catch {
                     err = error
                 }
             }
             DispatchQueue.main.async {
+                self.reloadDataCallback?()
+                self.itemSizeMap = [:]
                 completion?(err)
             }
         }
@@ -113,11 +133,18 @@ class LikedPhotosManager: PhotoListDataSource {
                 do {
                     context.delete(likedPhoto)
                     try context.save()
+                    self.likedPhotoMap[photo.id] = nil
+                    if let index = self.photos.firstIndex(of: photo) {
+                        self.photos.remove(at: index)
+                        self.likedPhotos.remove(at: index)
+                    }
                 } catch {
                     err = error
                 }
             }
             DispatchQueue.main.async {
+                self.reloadDataCallback?()
+                self.itemSizeMap = [:]
                 completion?(err)
             }
         }
@@ -130,11 +157,17 @@ class LikedPhotosManager: PhotoListDataSource {
             var loadingResult: Result<[IndexPath], Error>
             do {
                 let request = LikedPhoto.fetchRequest()
-                request.fetchLimit = 20
+                request.sortDescriptors = [
+                    NSSortDescriptor(key: "creationDate", ascending: false)
+                ]
+                request.fetchLimit = self.itemsPerPage
                 request.fetchOffset = offset
+                self.totalLikedPhotosCount = try self.context.count(for: LikedPhoto.fetchRequest())
                 let likedPhotos = try self.context.fetch(request)
-                let photos = self.likedPhotos.map { $0.toPhoto() }
-                self.handlePhotos(photos)
+                let photos = likedPhotos.map { $0.toPhoto() }
+                for likedPhoto in likedPhotos {
+                    self.likedPhotoMap[likedPhoto.id ?? ""] = likedPhoto
+                }
                 if offset == 0 {
                     self.likedPhotos = likedPhotos
                     self.photos = photos
@@ -160,33 +193,10 @@ class LikedPhotosManager: PhotoListDataSource {
     }
     
     private func handlePhotos(_ photos: [Photo]) {
-        var list = photos
-        if photos.count % 2 == 1 {
-            list.insert(photos[photos.count - 1], at: 0)
-        }
         let calculator = CellSizeCalculator(totalWidth: totalContentWidth, interval: 3)
-        while !list.isEmpty {
-            if maximumItemPerRow == 3 && list.count >= 3 {
-                let leftInfo = list[0].info.large
-                let middleInfo = list[1].info.large
-                let rightInfo = list[2].info.large
-                let result = calculator.calculateCellSize(leftInfo: leftInfo, middleInfo: middleInfo, rightInfo: rightInfo)
-                itemSizeMap[list[0]] = result.0
-                itemSizeMap[list[1]] = result.1
-                itemSizeMap[list[2]] = result.2
-                list.removeFirst(3)
-            } else if list.count >= 2 {
-                let leftInfo = list[0].info.large
-                let rightInfo = list[1].info.large
-                let result = calculator.calculateCellSize(leftInfo: leftInfo, rightInfo: rightInfo)
-                itemSizeMap[list[0]] = result.0
-                itemSizeMap[list[1]] = result.1
-                list.removeFirst(2)
-            } else {
-                let info = list[0].info.large
-                itemSizeMap[list[0]] = calculator.calculateCellSize(singleImage: info)
-                list.removeFirst()
-            }
+        let sizes = calculator.calculateCellSize(photos: photos)
+        for (index, size) in sizes.enumerated() {
+            itemSizeMap[photos[index]] = size
         }
     }
     

@@ -74,4 +74,11 @@ extension LayoutMode: DefaultsCustomType {
         case .compact: return 3
         }
     }
+    
+    var itemsPerPage: Int {
+        switch self {
+        case .normal: return 20
+        case .compact: return 24
+        }
+    }
 }

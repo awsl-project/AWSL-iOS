@@ -17,6 +17,7 @@ class PhotoListManager: PhotoListDataSource {
     
     private(set) var photos: [Photo] = []
     
+    private let itemsPerPage: Int
     private var isLoading: Bool = false
     private var itemSizeMap: [Photo: CGSize] = [:]
     private let queue: DispatchQueue = DispatchQueue(label: "com.FlyKite.AWSL.PLM")
@@ -24,14 +25,15 @@ class PhotoListManager: PhotoListDataSource {
     init(weiboUid: String = "") {
         self.weiboUid = weiboUid
         self.maximumItemPerRow = ThemeManager.shared.layoutMode.maximumItemPerRow
+        self.itemsPerPage = ThemeManager.shared.layoutMode.itemsPerPage
     }
     
     func hasNextPage() -> Bool {
         return true
     }
     
-    func itemSize(for photo: Photo) -> CGSize {
-        return itemSizeMap[photo] ?? .zero
+    func itemSize(at indexPath: IndexPath) -> CGSize {
+        return itemSizeMap[photos[indexPath.item]] ?? .zero
     }
     
     func refresh(completion: @escaping LoadingCompletion) {
@@ -45,23 +47,30 @@ class PhotoListManager: PhotoListDataSource {
     private func loadData(offset: Int, completion: @escaping LoadingCompletion) {
         guard !isLoading else { return }
         isLoading = true
-        Network.request(Api.GetPhotoList(uid: weiboUid, offset: offset), queue: queue) { result in
+        Network.request(Api.GetPhotoList(uid: weiboUid, offset: offset, limit: itemsPerPage), queue: queue) { result in
             var loadingResult: Result<[IndexPath], Error>
             switch result {
             case let .success(photos):
-                self.handlePhotos(photos)
+                var photos = photos
                 if offset == 0 {
                     self.photos = photos
                     loadingResult = .success([])
                 } else {
-                    let beginIndex = self.photos.count
+                    let count = self.photos.count
                     self.photos.append(contentsOf: photos)
+                    let insertCount = count % self.maximumItemPerRow
+                    if insertCount > 0 {
+                        for index in 0 ..< insertCount {
+                            photos.insert(self.photos[count - index - 1], at: 0)
+                        }
+                    }
                     var indexPaths: [IndexPath] = []
-                    for index in 0 ..< photos.count {
-                        indexPaths.append(IndexPath(item: beginIndex + index, section: 0))
+                    for index in 0 ..< photos.count - insertCount {
+                        indexPaths.append(IndexPath(item: count + index, section: 0))
                     }
                     loadingResult = .success(indexPaths)
                 }
+                self.handlePhotos(photos)
             case let .failure(error):
                 print(error)
                 loadingResult = .failure(error)
@@ -75,32 +84,14 @@ class PhotoListManager: PhotoListDataSource {
     
     private func handlePhotos(_ photos: [Photo]) {
         var list = photos
-        if photos.count % 2 == 1 {
-            list.insert(photos[photos.count - 1], at: 0)
-        }
         let calculator = CellSizeCalculator(totalWidth: totalContentWidth, interval: 3)
         while !list.isEmpty {
-            if maximumItemPerRow == 3 && list.count >= 3 {
-                let leftInfo = list[0].info.large
-                let middleInfo = list[1].info.large
-                let rightInfo = list[2].info.large
-                let result = calculator.calculateCellSize(leftInfo: leftInfo, middleInfo: middleInfo, rightInfo: rightInfo)
-                itemSizeMap[list[0]] = result.0
-                itemSizeMap[list[1]] = result.1
-                itemSizeMap[list[2]] = result.2
-                list.removeFirst(3)
-            } else if list.count >= 2 {
-                let leftInfo = list[0].info.large
-                let rightInfo = list[1].info.large
-                let result = calculator.calculateCellSize(leftInfo: leftInfo, rightInfo: rightInfo)
-                itemSizeMap[list[0]] = result.0
-                itemSizeMap[list[1]] = result.1
-                list.removeFirst(2)
-            } else {
-                let info = list[0].info.large
-                itemSizeMap[list[0]] = calculator.calculateCellSize(singleImage: info)
-                list.removeFirst()
+            let count = min(list.count, maximumItemPerRow)
+            let sizes = calculator.calculateCellSize(photos: [Photo](list[0..<count]))
+            for (index, size) in sizes.enumerated() {
+                itemSizeMap[list[index]] = size
             }
+            list.removeFirst(count)
         }
     }
 }

@@ -25,6 +25,10 @@ class LikedPhotosViewController: PhotoListViewController {
         manager.totalContentWidth = min(UIScreen.main.bounds.width, UIScreen.main.bounds.height) - padding * 2
         super.viewDidLoad()
         setupViews()
+        
+        manager.reloadDataCallback = { [weak self] in
+            self?.collectionView.reloadData()
+        }
     }
 }
 

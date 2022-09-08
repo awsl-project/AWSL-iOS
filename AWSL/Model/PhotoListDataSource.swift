@@ -11,7 +11,7 @@ protocol PhotoListDataSource {
     var photos: [Photo] { get }
     var maximumItemPerRow: Int { get }
     func hasNextPage() -> Bool
-    func itemSize(for photo: Photo) -> CGSize
+    func itemSize(at indexPath: IndexPath) -> CGSize
     
     typealias LoadingCompletion = (Result<[IndexPath], Error>) -> Void
     func refresh(completion: @escaping LoadingCompletion)

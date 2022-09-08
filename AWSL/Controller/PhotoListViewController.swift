@@ -64,7 +64,7 @@ class PhotoListViewController: UIViewController {
                 if reloadCount > 0 {
                     var reloadIndexPaths: [IndexPath] = []
                     for index in 0 ..< reloadCount {
-                        reloadIndexPaths.append(IndexPath(item: previousCount + index, section: 0))
+                        reloadIndexPaths.append(IndexPath(item: previousCount - index - 1, section: 0))
                     }
                     self.collectionView.reloadItems(at: reloadIndexPaths)
                 }
@@ -123,8 +123,7 @@ extension PhotoListViewController: UICollectionViewDelegateFlowLayout {
         if indexPath.item == dataSource.photos.count {
             return CGSize(width: min(view.bounds.width, view.bounds.height) - padding * 2, height: 80)
         }
-        let photo = dataSource.photos[indexPath.item]
-        return dataSource.itemSize(for: photo)
+        return dataSource.itemSize(at: indexPath)
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {

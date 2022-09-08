@@ -28,6 +28,7 @@ class PhotoBrowserViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    private var isLiked: Bool = false
     private var likedPhoto: LikedPhoto?
     
     private let scrollView: UIScrollView = UIScrollView()
@@ -82,8 +83,9 @@ class PhotoBrowserViewController: UIViewController {
         LikedPhotosManager.shared.fetchLikedPhoto(photo) { result in
             switch result {
             case let .success(likedPhoto):
+                self.isLiked = likedPhoto == nil
                 self.likedPhoto = likedPhoto
-                self.setLikeButtonHighlighted(likedPhoto != nil)
+                self.likeButtonClicked()
             case let .failure(error):
                 print(error)
             }
@@ -92,6 +94,11 @@ class PhotoBrowserViewController: UIViewController {
     
     @objc private func onSingleTap() {
         dismiss(animated: true)
+        if isLiked && likedPhoto == nil {
+            LikedPhotosManager.shared.insertLikedPhoto(photo)
+        } else if !isLiked && likedPhoto != nil {
+            LikedPhotosManager.shared.removeLikedPhoto(photo)
+        }
     }
     
     @objc private func onDoubleTap() {
@@ -102,33 +109,12 @@ class PhotoBrowserViewController: UIViewController {
         }
     }
     
-    private func setLikeButtonHighlighted(_ isHighlighted: Bool) {
-        let imageName = isHighlighted ? "heart.fill" : "heart"
+    @objc private func likeButtonClicked() {
+        isLiked.toggle()
+        let imageName = isLiked ? "heart.fill" : "heart"
         let config = UIImage.SymbolConfiguration(pointSize: 22)
         likeButton.setImage(UIImage(systemName: imageName, withConfiguration: config), for: .normal)
-        likeButton.tintColor = isHighlighted ? .systemPink : .white
-    }
-    
-    @objc private func likeButtonClicked() {
-        if likedPhoto != nil {
-            LikedPhotosManager.shared.removeLikedPhoto(photo) { error in
-                if let error = error {
-                    print(error)
-                    Toast.show(R.string.localizable.networkError())
-                    return
-                }
-                self.setLikeButtonHighlighted(false)
-            }
-        } else {
-            LikedPhotosManager.shared.insertLikedPhoto(photo) { error in
-                if let error = error {
-                    print(error)
-                    Toast.show(R.string.localizable.networkError())
-                    return
-                }
-                self.setLikeButtonHighlighted(true)
-            }
-        }
+        likeButton.tintColor = isLiked ? .systemPink : .white
     }
     
     @objc private func showMoreMenu() {
