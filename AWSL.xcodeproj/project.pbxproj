@@ -126,6 +126,166 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		427F1AA328CB429C006998DE /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				427F1AB228CB4317006998DE /* Controller */,
+				427F1AB128CB4312006998DE /* Model */,
+				427F1AB028CB430D006998DE /* View */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		427F1AA428CB42A1006998DE /* LikedPhotos */ = {
+			isa = PBXGroup;
+			children = (
+				427F1AAF28CB4309006998DE /* Controller */,
+				427F1AAE28CB4305006998DE /* Model */,
+				427F1AAD28CB4301006998DE /* View */,
+			);
+			path = LikedPhotos;
+			sourceTree = "<group>";
+		};
+		427F1AA528CB42A4006998DE /* Producers */ = {
+			isa = PBXGroup;
+			children = (
+				427F1AAC28CB42FC006998DE /* Controller */,
+				427F1AAB28CB42F8006998DE /* Model */,
+				427F1AAA28CB42F3006998DE /* View */,
+			);
+			path = Producers;
+			sourceTree = "<group>";
+		};
+		427F1AA628CB42A6006998DE /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				427F1AA928CB42DA006998DE /* Controller */,
+				427F1AA828CB42C7006998DE /* Model */,
+				427F1AA728CB42C1006998DE /* View */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		427F1AA728CB42C1006998DE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				42DAD95A28B89EEC00C5FCA3 /* PhotoCell.swift */,
+				42DAD95E28B8BE2A00C5FCA3 /* LoadingCell.swift */,
+				42DAD96628B8D07700C5FCA3 /* CircleProgressView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		427F1AA828CB42C7006998DE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				42D28ACE28C99CBA00276C27 /* PhotoListDataSource.swift */,
+				42D28AD028C99CD000276C27 /* PhotoListManager.swift */,
+				426F6A5928BCE5E500C9865A /* CellSizeCalculator.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		427F1AA928CB42DA006998DE /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				42DAD95328B8853900C5FCA3 /* PhotoListViewController.swift */,
+				42D28ACC28C999D000276C27 /* HomeViewController.swift */,
+				42DAD96428B8CCB000C5FCA3 /* PhotoBrowserViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		427F1AAA28CB42F3006998DE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A64DBB8128BA144900F83D01 /* ProducerCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		427F1AAB28CB42F8006998DE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		427F1AAC28CB42FC006998DE /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				426F6AA828C0BECB00C9865A /* ProducersViewController.swift */,
+				42D28A8C28C1E71000276C27 /* ProducerPhotosViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		427F1AAD28CB4301006998DE /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		427F1AAE28CB4305006998DE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				42D28AD228C9C70F00276C27 /* LikedPhotosManager.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		427F1AAF28CB4309006998DE /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				42D28ACA28C9996B00276C27 /* LikedPhotosViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		427F1AB028CB430D006998DE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				426F6AC728C1B57B00C9865A /* SettingSectionHeaderView.swift */,
+				426F6AC328C1B34A00C9865A /* SelectionCell.swift */,
+				426F6AC528C1B40C00C9865A /* TitleValueCell.swift */,
+				42D28AD928CA0B2D00276C27 /* DonateCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		427F1AB128CB4312006998DE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				42D28A9828C731AF00276C27 /* App.swift */,
+				426F6AA428C0B64000C9865A /* ThemeManager.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		427F1AB228CB4317006998DE /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				426F6AA628C0BEBE00C9865A /* SettingsViewController.swift */,
+				42D28AD728C9FC0800276C27 /* DonateViewController.swift */,
+				42D28AAF28C8787400276C27 /* LicenseViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		427F1AB328CB43A6006998DE /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				42D28AD428C9C87F00276C27 /* AWSL.xcdatamodeld */,
+				42D28AB228C87BD600276C27 /* R.generated.swift */,
+				42D28AB928C87ED000276C27 /* Localizable.strings */,
+				42FDB9ED28B869B500979471 /* Assets.xcassets */,
+				42FDB9EF28B869B500979471 /* LaunchScreen.storyboard */,
+				42FDB9F228B869B500979471 /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		42DAD95928B89CBD00C5FCA3 /* Api */ = {
 			isa = PBXGroup;
 			children = (
@@ -160,70 +320,22 @@
 			children = (
 				42FDB9E428B869B400979471 /* AppDelegate.swift */,
 				42FDB9E628B869B400979471 /* SceneDelegate.swift */,
-				A64DBB8528BA37BD00F83D01 /* Controller */,
-				A64DBB8628BA37C300F83D01 /* Model */,
-				A64DBB8728BA37C800F83D01 /* View */,
+				427F1AA628CB42A6006998DE /* Home */,
+				427F1AA528CB42A4006998DE /* Producers */,
+				427F1AA428CB42A1006998DE /* LikedPhotos */,
+				427F1AA328CB429C006998DE /* Settings */,
+				42DAD95928B89CBD00C5FCA3 /* Api */,
 				A64DBB8828BA37FC00F83D01 /* Util */,
-				42D28AB228C87BD600276C27 /* R.generated.swift */,
-				42D28AB928C87ED000276C27 /* Localizable.strings */,
-				42FDB9ED28B869B500979471 /* Assets.xcassets */,
-				42FDB9EF28B869B500979471 /* LaunchScreen.storyboard */,
-				42FDB9F228B869B500979471 /* Info.plist */,
+				427F1AB328CB43A6006998DE /* Resources */,
 			);
 			path = AWSL;
-			sourceTree = "<group>";
-		};
-		A64DBB8528BA37BD00F83D01 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				42DAD95328B8853900C5FCA3 /* PhotoListViewController.swift */,
-				42D28ACC28C999D000276C27 /* HomeViewController.swift */,
-				42DAD96428B8CCB000C5FCA3 /* PhotoBrowserViewController.swift */,
-				426F6AA828C0BECB00C9865A /* ProducersViewController.swift */,
-				42D28A8C28C1E71000276C27 /* ProducerPhotosViewController.swift */,
-				42D28ACA28C9996B00276C27 /* LikedPhotosViewController.swift */,
-				426F6AA628C0BEBE00C9865A /* SettingsViewController.swift */,
-				42D28AD728C9FC0800276C27 /* DonateViewController.swift */,
-				42D28AAF28C8787400276C27 /* LicenseViewController.swift */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		A64DBB8628BA37C300F83D01 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				42DAD95528B8960D00C5FCA3 /* Network.swift */,
-				42D28ACE28C99CBA00276C27 /* PhotoListDataSource.swift */,
-				42D28AD028C99CD000276C27 /* PhotoListManager.swift */,
-				42D28AD228C9C70F00276C27 /* LikedPhotosManager.swift */,
-				426F6A5928BCE5E500C9865A /* CellSizeCalculator.swift */,
-				426F6AA428C0B64000C9865A /* ThemeManager.swift */,
-				42D28A9828C731AF00276C27 /* App.swift */,
-				42D28AD428C9C87F00276C27 /* AWSL.xcdatamodeld */,
-				42DAD95928B89CBD00C5FCA3 /* Api */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		A64DBB8728BA37C800F83D01 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				42DAD95A28B89EEC00C5FCA3 /* PhotoCell.swift */,
-				42DAD95E28B8BE2A00C5FCA3 /* LoadingCell.swift */,
-				A64DBB8128BA144900F83D01 /* ProducerCell.swift */,
-				42DAD96628B8D07700C5FCA3 /* CircleProgressView.swift */,
-				426F6AC728C1B57B00C9865A /* SettingSectionHeaderView.swift */,
-				426F6AC328C1B34A00C9865A /* SelectionCell.swift */,
-				426F6AC528C1B40C00C9865A /* TitleValueCell.swift */,
-				42D28AD928CA0B2D00276C27 /* DonateCell.swift */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		A64DBB8828BA37FC00F83D01 /* Util */ = {
 			isa = PBXGroup;
 			children = (
 				A6F4F57028B8FE3000AC03CF /* Toast.swift */,
+				42DAD95528B8960D00C5FCA3 /* Network.swift */,
 				A6F4F57228B909B700AC03CF /* PresentationAnimator.swift */,
 				42DAD95C28B8A25A00C5FCA3 /* ViewReusable.swift */,
 				426F6AA028BF38F400C9865A /* DefaultsProperty.swift */,
