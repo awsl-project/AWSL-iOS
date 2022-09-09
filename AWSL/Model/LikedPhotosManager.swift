@@ -92,7 +92,6 @@ class LikedPhotosManager: PhotoListDataSource {
                     let likedPhoto = LikedPhoto(context: context)
                     likedPhoto.id = photo.id
                     likedPhoto.weiboUrl = photo.weiboUrl.path
-                    likedPhoto.creationDate = Date()
                     
                     let largeInfo = PhotoInfo(context: context)
                     largeInfo.url = photo.info.large.url.absoluteString

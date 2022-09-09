@@ -31,6 +31,8 @@
 		42D28AD628C9C87F00276C27 /* AWSL.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 42D28AD428C9C87F00276C27 /* AWSL.xcdatamodeld */; };
 		42D28AD828C9FC0800276C27 /* DonateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D28AD728C9FC0800276C27 /* DonateViewController.swift */; };
 		42D28ADA28CA0B2D00276C27 /* DonateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D28AD928CA0B2D00276C27 /* DonateCell.swift */; };
+		42D28ADC28CAF62200276C27 /* CloudKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D28ADB28CAF62200276C27 /* CloudKitManager.swift */; };
+		42D28ADE28CAFB7000276C27 /* ThreadSafe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D28ADD28CAFB7000276C27 /* ThreadSafe.swift */; };
 		42DAD95428B8853900C5FCA3 /* PhotoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DAD95328B8853900C5FCA3 /* PhotoListViewController.swift */; };
 		42DAD95628B8960D00C5FCA3 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DAD95528B8960D00C5FCA3 /* Network.swift */; };
 		42DAD95828B89A4400C5FCA3 /* GetPhotoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DAD95728B89A4400C5FCA3 /* GetPhotoList.swift */; };
@@ -77,6 +79,8 @@
 		42D28AD528C9C87F00276C27 /* AWSL.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AWSL.xcdatamodel; sourceTree = "<group>"; };
 		42D28AD728C9FC0800276C27 /* DonateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonateViewController.swift; sourceTree = "<group>"; };
 		42D28AD928CA0B2D00276C27 /* DonateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonateCell.swift; sourceTree = "<group>"; };
+		42D28ADB28CAF62200276C27 /* CloudKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitManager.swift; sourceTree = "<group>"; };
+		42D28ADD28CAFB7000276C27 /* ThreadSafe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadSafe.swift; sourceTree = "<group>"; };
 		42DAD95328B8853900C5FCA3 /* PhotoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoListViewController.swift; sourceTree = "<group>"; };
 		42DAD95528B8960D00C5FCA3 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		42DAD95728B89A4400C5FCA3 /* GetPhotoList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPhotoList.swift; sourceTree = "<group>"; };
@@ -223,6 +227,8 @@
 				A6F4F57228B909B700AC03CF /* PresentationAnimator.swift */,
 				42DAD95C28B8A25A00C5FCA3 /* ViewReusable.swift */,
 				426F6AA028BF38F400C9865A /* DefaultsProperty.swift */,
+				42D28ADB28CAF62200276C27 /* CloudKitManager.swift */,
+				42D28ADD28CAFB7000276C27 /* ThreadSafe.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -393,7 +399,9 @@
 				42D28AD128C99CD000276C27 /* PhotoListManager.swift in Sources */,
 				42D28AD328C9C70F00276C27 /* LikedPhotosManager.swift in Sources */,
 				42DAD96728B8D07700C5FCA3 /* CircleProgressView.swift in Sources */,
+				42D28ADC28CAF62200276C27 /* CloudKitManager.swift in Sources */,
 				A6F4F57328B909B700AC03CF /* PresentationAnimator.swift in Sources */,
+				42D28ADE28CAFB7000276C27 /* ThreadSafe.swift in Sources */,
 				42D28AB328C87BD600276C27 /* R.generated.swift in Sources */,
 				42DAD95828B89A4400C5FCA3 /* GetPhotoList.swift in Sources */,
 				42DAD96128B8C9B500C5FCA3 /* GetProducers.swift in Sources */,
@@ -560,7 +568,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = AWSL/AWSL.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_TEAM = 77M64ZZJGP;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AWSL/Info.plist;
@@ -592,7 +600,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = AWSL/AWSL.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_TEAM = 77M64ZZJGP;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AWSL/Info.plist;

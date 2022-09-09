@@ -37,7 +37,7 @@
 "ContactUs"         = "联系我们";
 
 "DonateMilk"        = "一瓶牛奶";
-"DonateCoffee"      = "一杯牛奶";
+"DonateCoffee"      = "一杯咖啡";
 "DonateMilkDesc"    = "给开发者捐赠一瓶牛奶";
 "DonateCoffeeDesc"  = "给开发者捐赠一杯咖啡";
 "DonateUnavailable" = "暂时无法支付";
