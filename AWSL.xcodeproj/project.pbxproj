@@ -367,6 +367,7 @@
 				42FDB9DE28B869B400979471 /* Frameworks */,
 				42FDB9DF28B869B400979471 /* Resources */,
 				E8FC5C4FBB83B27E59BB811D /* [CP] Embed Pods Frameworks */,
+				427F1AB528CB4EC1006998DE /* Increse build version */,
 			);
 			buildRules = (
 			);
@@ -425,6 +426,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		427F1AB528CB4EC1006998DE /* Increse build version */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Increse build version";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nagvtool next-version -all\n";
+		};
 		42D28AB128C87B9E00276C27 /* R.swift */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
