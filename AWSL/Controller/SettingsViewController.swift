@@ -152,14 +152,19 @@ class SettingsViewController: UIViewController {
         let size = Double(Int(Double(self.cacheSize) / 1024 / 1024 * 100)) / 100
         let cacheSize = "\(size)M"
         data.append(NormalSection(title: R.string.localizable.about(), items: [
+            NormalSection.Item(icon: R.image.tag(),
+                               title: R.string.localizable.version(),
+                               value: App.version),
             NormalSection.Item(icon: R.image.clear(),
                                title: R.string.localizable.clearCache(),
                                value: cacheSize, action: { [weak self] in
                 self?.clearImageCache()
             }),
-            NormalSection.Item(icon: R.image.tag(),
-                               title: R.string.localizable.version(),
-                               value: App.version),
+            NormalSection.Item(icon: R.image.donate(),
+                               title: R.string.localizable.donate(),
+                               action: { [weak self] in
+                self?.navigationController?.pushViewController(DonateViewController(), animated: true)
+            }),
             NormalSection.Item(icon: R.image.license(),
                                title: R.string.localizable.openSourceLicense(),
                                action: { [weak self] in

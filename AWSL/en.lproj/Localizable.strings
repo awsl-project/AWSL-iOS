@@ -32,5 +32,14 @@
 "ClearCache"        = "Clear disk cache";
 "ClearCahceTitle"   = "Do you want to clear disk cache?";
 "Version"           = "Version";
+"Donate"            = "Donate";
 "OpenSourceLicense" = "License";
 "ContactUs"         = "Contact us";
+
+"DonateMilk"        = "Milk";
+"DonateCoffee"      = "Coffee";
+"DonateMilkDesc"    = "Donate a bottle of milk to developer";
+"DonateCoffeeDesc"  = "Donate a cup of coffee to developer";
+"DonateUnavailable" = "Unavailable";
+"PurchaseFailed"    = "Purchase failed";
+"ThanksForDonate"   = "Thanks for your donation";

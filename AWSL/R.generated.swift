@@ -130,12 +130,18 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.image` struct is generated, and contains static references to 7 images.
+  /// This `R.image` struct is generated, and contains static references to 10 images.
   struct image {
     /// Image `clear`.
     static let clear = Rswift.ImageResource(bundle: R.hostingBundle, name: "clear")
+    /// Image `coffee`.
+    static let coffee = Rswift.ImageResource(bundle: R.hostingBundle, name: "coffee")
+    /// Image `donate`.
+    static let donate = Rswift.ImageResource(bundle: R.hostingBundle, name: "donate")
     /// Image `license`.
     static let license = Rswift.ImageResource(bundle: R.hostingBundle, name: "license")
+    /// Image `milk`.
+    static let milk = Rswift.ImageResource(bundle: R.hostingBundle, name: "milk")
     /// Image `tag`.
     static let tag = Rswift.ImageResource(bundle: R.hostingBundle, name: "tag")
     /// Image `theme_automatic`.
@@ -155,9 +161,30 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "coffee", bundle: ..., traitCollection: ...)`
+    static func coffee(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.coffee, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "donate", bundle: ..., traitCollection: ...)`
+    static func donate(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.donate, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
     /// `UIImage(named: "license", bundle: ..., traitCollection: ...)`
     static func license(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.license, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "milk", bundle: ..., traitCollection: ...)`
+    static func milk(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.milk, compatibleWith: traitCollection)
     }
     #endif
 
@@ -236,7 +263,7 @@ struct R: Rswift.Validatable {
       fileprivate init() {}
     }
 
-    /// This `R.string.localizable` struct is generated, and contains static references to 26 localization keys.
+    /// This `R.string.localizable` struct is generated, and contains static references to 34 localization keys.
     struct localizable {
       /// en translation: About
       ///
@@ -266,6 +293,10 @@ struct R: Rswift.Validatable {
       ///
       /// Locales: zh-Hans, en
       static let clearCache = Rswift.StringResource(key: "ClearCache", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans", "en"], comment: nil)
+      /// en translation: Coffee
+      ///
+      /// Locales: zh-Hans, en
+      static let donateCoffee = Rswift.StringResource(key: "DonateCoffee", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans", "en"], comment: nil)
       /// en translation: Compact
       ///
       /// Locales: zh-Hans, en
@@ -286,6 +317,18 @@ struct R: Rswift.Validatable {
       ///
       /// Locales: zh-Hans, en
       static let clearCahceTitle = Rswift.StringResource(key: "ClearCahceTitle", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans", "en"], comment: nil)
+      /// en translation: Donate
+      ///
+      /// Locales: zh-Hans, en
+      static let donate = Rswift.StringResource(key: "Donate", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans", "en"], comment: nil)
+      /// en translation: Donate a bottle of milk to developer
+      ///
+      /// Locales: zh-Hans, en
+      static let donateMilkDesc = Rswift.StringResource(key: "DonateMilkDesc", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans", "en"], comment: nil)
+      /// en translation: Donate a cup of coffee to developer
+      ///
+      /// Locales: zh-Hans, en
+      static let donateCoffeeDesc = Rswift.StringResource(key: "DonateCoffeeDesc", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans", "en"], comment: nil)
       /// en translation: License
       ///
       /// Locales: zh-Hans, en
@@ -298,6 +341,10 @@ struct R: Rswift.Validatable {
       ///
       /// Locales: zh-Hans, en
       static let normalView = Rswift.StringResource(key: "NormalView", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans", "en"], comment: nil)
+      /// en translation: Milk
+      ///
+      /// Locales: zh-Hans, en
+      static let donateMilk = Rswift.StringResource(key: "DonateMilk", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans", "en"], comment: nil)
       /// en translation: Photos
       ///
       /// Locales: zh-Hans, en
@@ -306,6 +353,10 @@ struct R: Rswift.Validatable {
       ///
       /// Locales: zh-Hans, en
       static let needPhotoPermission = Rswift.StringResource(key: "NeedPhotoPermission", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans", "en"], comment: nil)
+      /// en translation: Purchase failed
+      ///
+      /// Locales: zh-Hans, en
+      static let purchaseFailed = Rswift.StringResource(key: "PurchaseFailed", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans", "en"], comment: nil)
       /// en translation: Request failed, please try later.
       ///
       /// Locales: zh-Hans, en
@@ -326,6 +377,14 @@ struct R: Rswift.Validatable {
       ///
       /// Locales: zh-Hans, en
       static let settings = Rswift.StringResource(key: "Settings", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans", "en"], comment: nil)
+      /// en translation: Thanks for your donation
+      ///
+      /// Locales: zh-Hans, en
+      static let thanksForDonate = Rswift.StringResource(key: "ThanksForDonate", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans", "en"], comment: nil)
+      /// en translation: Unavailable
+      ///
+      /// Locales: zh-Hans, en
+      static let donateUnavailable = Rswift.StringResource(key: "DonateUnavailable", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans", "en"], comment: nil)
       /// en translation: Unknown error
       ///
       /// Locales: zh-Hans, en
@@ -448,6 +507,21 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("ClearCache", bundle: bundle, comment: "")
       }
 
+      /// en translation: Coffee
+      ///
+      /// Locales: zh-Hans, en
+      static func donateCoffee(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("DonateCoffee", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "DonateCoffee"
+        }
+
+        return NSLocalizedString("DonateCoffee", bundle: bundle, comment: "")
+      }
+
       /// en translation: Compact
       ///
       /// Locales: zh-Hans, en
@@ -523,6 +597,51 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("ClearCahceTitle", bundle: bundle, comment: "")
       }
 
+      /// en translation: Donate
+      ///
+      /// Locales: zh-Hans, en
+      static func donate(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Donate", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Donate"
+        }
+
+        return NSLocalizedString("Donate", bundle: bundle, comment: "")
+      }
+
+      /// en translation: Donate a bottle of milk to developer
+      ///
+      /// Locales: zh-Hans, en
+      static func donateMilkDesc(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("DonateMilkDesc", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "DonateMilkDesc"
+        }
+
+        return NSLocalizedString("DonateMilkDesc", bundle: bundle, comment: "")
+      }
+
+      /// en translation: Donate a cup of coffee to developer
+      ///
+      /// Locales: zh-Hans, en
+      static func donateCoffeeDesc(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("DonateCoffeeDesc", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "DonateCoffeeDesc"
+        }
+
+        return NSLocalizedString("DonateCoffeeDesc", bundle: bundle, comment: "")
+      }
+
       /// en translation: License
       ///
       /// Locales: zh-Hans, en
@@ -568,6 +687,21 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("NormalView", bundle: bundle, comment: "")
       }
 
+      /// en translation: Milk
+      ///
+      /// Locales: zh-Hans, en
+      static func donateMilk(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("DonateMilk", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "DonateMilk"
+        }
+
+        return NSLocalizedString("DonateMilk", bundle: bundle, comment: "")
+      }
+
       /// en translation: Photos
       ///
       /// Locales: zh-Hans, en
@@ -596,6 +730,21 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("NeedPhotoPermission", bundle: bundle, comment: "")
+      }
+
+      /// en translation: Purchase failed
+      ///
+      /// Locales: zh-Hans, en
+      static func purchaseFailed(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("PurchaseFailed", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "PurchaseFailed"
+        }
+
+        return NSLocalizedString("PurchaseFailed", bundle: bundle, comment: "")
       }
 
       /// en translation: Request failed, please try later.
@@ -671,6 +820,36 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("Settings", bundle: bundle, comment: "")
+      }
+
+      /// en translation: Thanks for your donation
+      ///
+      /// Locales: zh-Hans, en
+      static func thanksForDonate(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("ThanksForDonate", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "ThanksForDonate"
+        }
+
+        return NSLocalizedString("ThanksForDonate", bundle: bundle, comment: "")
+      }
+
+      /// en translation: Unavailable
+      ///
+      /// Locales: zh-Hans, en
+      static func donateUnavailable(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("DonateUnavailable", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "DonateUnavailable"
+        }
+
+        return NSLocalizedString("DonateUnavailable", bundle: bundle, comment: "")
       }
 
       /// en translation: Unknown error

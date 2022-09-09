@@ -10,6 +10,7 @@ import UIKit
 class ProducersViewController: UIViewController {
     
     init() {
+        maximumItemsPerRow = ThemeManager.shared.layoutMode.maximumItemPerRow
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         padding = UIDevice.current.userInterfaceIdiom == .phone ? 16 : 64
         super.init(nibName: nil, bundle: nil)
@@ -26,6 +27,7 @@ class ProducersViewController: UIViewController {
     private let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
     private let collectionView: UICollectionView
     
+    private let maximumItemsPerRow: Int
     private let lineSpacing: CGFloat = 3
     private let interItemSpacing: CGFloat = 3
     private let padding: CGFloat
@@ -69,23 +71,10 @@ class ProducersViewController: UIViewController {
     private func handlePhotos(_ photos: [Photo]) {
         let totalWidth = min(UIScreen.main.bounds.width, UIScreen.main.bounds.height) - padding * 2
         let calculator = CellSizeCalculator(totalWidth: totalWidth, interval: interItemSpacing)
-        if photos.count >= 3 {
-            let leftInfo = photos[0].info.large
-            let middleInfo = photos[1].info.large
-            let rightInfo = photos[2].info.large
-            let result = calculator.calculateCellSize(leftInfo: leftInfo, middleInfo: middleInfo, rightInfo: rightInfo)
-            cellSizeMap[photos[0].id] = result.0
-            cellSizeMap[photos[1].id] = result.1
-            cellSizeMap[photos[2].id] = result.2
-        } else if photos.count == 2 {
-            let leftInfo = photos[0].info.large
-            let rightInfo = photos[1].info.large
-            let result = calculator.calculateCellSize(leftInfo: leftInfo, rightInfo: rightInfo)
-            cellSizeMap[photos[0].id] = result.0
-            cellSizeMap[photos[1].id] = result.1
-        } else if photos.count == 1 {
-            let info = photos[0].info.large
-            cellSizeMap[photos[0].id] = calculator.calculateCellSize(singleImage: info)
+        let count = min(maximumItemsPerRow, photos.count)
+        let sizes = calculator.calculateCellSize(photos: [Photo](photos[0 ..< count]))
+        for (index, size) in sizes.enumerated() {
+            cellSizeMap[photos[index].id] = size
         }
     }
     

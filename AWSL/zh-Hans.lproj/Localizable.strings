@@ -32,5 +32,14 @@
 "ClearCache"        = "清除缓存";
 "ClearCahceTitle"   = "确定清除缓存？";
 "Version"           = "版本";
+"Donate"            = "捐赠";
 "OpenSourceLicense" = "开源许可";
 "ContactUs"         = "联系我们";
+
+"DonateMilk"        = "一瓶牛奶";
+"DonateCoffee"      = "一杯牛奶";
+"DonateMilkDesc"    = "给开发者捐赠一瓶牛奶";
+"DonateCoffeeDesc"  = "给开发者捐赠一杯咖啡";
+"DonateUnavailable" = "暂时无法支付";
+"PurchaseFailed"    = "支付失败";
+"ThanksForDonate"   = "感谢您的捐赠";

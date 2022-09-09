@@ -29,6 +29,8 @@
 		42D28AD128C99CD000276C27 /* PhotoListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D28AD028C99CD000276C27 /* PhotoListManager.swift */; };
 		42D28AD328C9C70F00276C27 /* LikedPhotosManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D28AD228C9C70F00276C27 /* LikedPhotosManager.swift */; };
 		42D28AD628C9C87F00276C27 /* AWSL.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 42D28AD428C9C87F00276C27 /* AWSL.xcdatamodeld */; };
+		42D28AD828C9FC0800276C27 /* DonateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D28AD728C9FC0800276C27 /* DonateViewController.swift */; };
+		42D28ADA28CA0B2D00276C27 /* DonateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D28AD928CA0B2D00276C27 /* DonateCell.swift */; };
 		42DAD95428B8853900C5FCA3 /* PhotoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DAD95328B8853900C5FCA3 /* PhotoListViewController.swift */; };
 		42DAD95628B8960D00C5FCA3 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DAD95528B8960D00C5FCA3 /* Network.swift */; };
 		42DAD95828B89A4400C5FCA3 /* GetPhotoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DAD95728B89A4400C5FCA3 /* GetPhotoList.swift */; };
@@ -73,6 +75,8 @@
 		42D28AD028C99CD000276C27 /* PhotoListManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoListManager.swift; sourceTree = "<group>"; };
 		42D28AD228C9C70F00276C27 /* LikedPhotosManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedPhotosManager.swift; sourceTree = "<group>"; };
 		42D28AD528C9C87F00276C27 /* AWSL.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AWSL.xcdatamodel; sourceTree = "<group>"; };
+		42D28AD728C9FC0800276C27 /* DonateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonateViewController.swift; sourceTree = "<group>"; };
+		42D28AD928CA0B2D00276C27 /* DonateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonateCell.swift; sourceTree = "<group>"; };
 		42DAD95328B8853900C5FCA3 /* PhotoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoListViewController.swift; sourceTree = "<group>"; };
 		42DAD95528B8960D00C5FCA3 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		42DAD95728B89A4400C5FCA3 /* GetPhotoList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPhotoList.swift; sourceTree = "<group>"; };
@@ -175,6 +179,7 @@
 				42D28A8C28C1E71000276C27 /* ProducerPhotosViewController.swift */,
 				42D28ACA28C9996B00276C27 /* LikedPhotosViewController.swift */,
 				426F6AA628C0BEBE00C9865A /* SettingsViewController.swift */,
+				42D28AD728C9FC0800276C27 /* DonateViewController.swift */,
 				42D28AAF28C8787400276C27 /* LicenseViewController.swift */,
 			);
 			path = Controller;
@@ -206,6 +211,7 @@
 				426F6AC728C1B57B00C9865A /* SettingSectionHeaderView.swift */,
 				426F6AC328C1B34A00C9865A /* SelectionCell.swift */,
 				426F6AC528C1B40C00C9865A /* TitleValueCell.swift */,
+				42D28AD928CA0B2D00276C27 /* DonateCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -381,6 +387,7 @@
 				426F6A5A28BCE5E500C9865A /* CellSizeCalculator.swift in Sources */,
 				42D28A9928C731AF00276C27 /* App.swift in Sources */,
 				426F6AA728C0BEBE00C9865A /* SettingsViewController.swift in Sources */,
+				42D28ADA28CA0B2D00276C27 /* DonateCell.swift in Sources */,
 				A64DBB8228BA144900F83D01 /* ProducerCell.swift in Sources */,
 				42DAD95628B8960D00C5FCA3 /* Network.swift in Sources */,
 				42D28AD128C99CD000276C27 /* PhotoListManager.swift in Sources */,
@@ -396,6 +403,7 @@
 				42DAD96528B8CCB000C5FCA3 /* PhotoBrowserViewController.swift in Sources */,
 				42D28ACB28C9996B00276C27 /* LikedPhotosViewController.swift in Sources */,
 				42DAD95B28B89EEC00C5FCA3 /* PhotoCell.swift in Sources */,
+				42D28AD828C9FC0800276C27 /* DonateViewController.swift in Sources */,
 				42D28AB028C8787400276C27 /* LicenseViewController.swift in Sources */,
 				426F6AA528C0B64000C9865A /* ThemeManager.swift in Sources */,
 				42FDB9E728B869B400979471 /* SceneDelegate.swift in Sources */,
