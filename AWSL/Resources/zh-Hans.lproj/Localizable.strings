@@ -43,3 +43,5 @@
 "DonateUnavailable" = "暂时无法支付";
 "PurchaseFailed"    = "支付失败";
 "ThanksForDonate"   = "感谢您的捐赠";
+
+"EmptyLikedPhotos"  = "此处空空如也\n先去收藏图片吧";

@@ -23,6 +23,8 @@ class PhotoListViewController: UIViewController {
     let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
     let collectionView: UICollectionView
     
+    let emptyView: UIView = UIView()
+    
     init(dataSource: PhotoListDataSource) {
         self.dataSource = dataSource
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -43,6 +45,7 @@ class PhotoListViewController: UIViewController {
     
     @objc func refresh() {
         dataSource.refresh { result in
+            self.emptyView.isHidden = !self.dataSource.photos.isEmpty
             self.refreshControl.endRefreshing()
             switch result {
             case .success:
@@ -148,9 +151,15 @@ extension PhotoListViewController {
         layout.sectionInset = UIEdgeInsets(top: 16, left: padding, bottom: 16, right: padding)
         
         view.addSubview(collectionView)
+        view.addSubview(emptyView)
         
         collectionView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
+        }
+        
+        emptyView.snp.makeConstraints { make in
+            make.centerY.equalToSuperview().offset(-88)
+            make.centerX.equalToSuperview()
         }
     }
 }

@@ -43,3 +43,5 @@
 "DonateUnavailable" = "Unavailable";
 "PurchaseFailed"    = "Purchase failed";
 "ThanksForDonate"   = "Thanks for your donation";
+
+"EmptyLikedPhotos"  = "Empty\nTry collecting photos first";

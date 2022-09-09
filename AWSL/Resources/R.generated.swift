@@ -282,7 +282,7 @@ struct R: Rswift.Validatable {
       fileprivate init() {}
     }
 
-    /// This `R.string.localizable` struct is generated, and contains static references to 34 localization keys.
+    /// This `R.string.localizable` struct is generated, and contains static references to 35 localization keys.
     struct localizable {
       /// en translation: About
       ///
@@ -348,6 +348,10 @@ struct R: Rswift.Validatable {
       ///
       /// Locales: zh-Hans, en
       static let donateCoffeeDesc = Rswift.StringResource(key: "DonateCoffeeDesc", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans", "en"], comment: nil)
+      /// en translation: Empty Try collecting photos first
+      ///
+      /// Locales: zh-Hans, en
+      static let emptyLikedPhotos = Rswift.StringResource(key: "EmptyLikedPhotos", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans", "en"], comment: nil)
       /// en translation: License
       ///
       /// Locales: zh-Hans, en
@@ -659,6 +663,21 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("DonateCoffeeDesc", bundle: bundle, comment: "")
+      }
+
+      /// en translation: Empty Try collecting photos first
+      ///
+      /// Locales: zh-Hans, en
+      static func emptyLikedPhotos(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("EmptyLikedPhotos", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "EmptyLikedPhotos"
+        }
+
+        return NSLocalizedString("EmptyLikedPhotos", bundle: bundle, comment: "")
       }
 
       /// en translation: License
