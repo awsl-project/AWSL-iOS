@@ -7,7 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		08FEA4C4B9FE4A8779D8C39C /* Pods_AWSLWidgetExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07E0EB7777F4DA21815F0F53 /* Pods_AWSLWidgetExtension.framework */; };
 		15EBB1313D762FD19ED2E4EE /* Pods_AWSL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 306D608070E05395D6452100 /* Pods_AWSL.framework */; };
+		4235954128D079F700572E61 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4235954028D079F700572E61 /* WidgetKit.framework */; };
+		4235954328D079F700572E61 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4235954228D079F700572E61 /* SwiftUI.framework */; };
+		4235954628D079F700572E61 /* AWSLWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4235954528D079F700572E61 /* AWSLWidget.swift */; };
+		4235954828D079F700572E61 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4235954728D079F700572E61 /* Assets.xcassets */; };
+		4235954C28D079F700572E61 /* AWSLWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 4235953F28D079F700572E61 /* AWSLWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		4235955328D07BC300572E61 /* PhotoWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4235955128D07B9400572E61 /* PhotoWidget.swift */; };
+		4235955528D07D5000572E61 /* GetRandomPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4235955428D07D5000572E61 /* GetRandomPhoto.swift */; };
+		4235955628D07D8300572E61 /* GetRandomPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4235955428D07D5000572E61 /* GetRandomPhoto.swift */; };
+		4235955728D07D8B00572E61 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DAD95528B8960D00C5FCA3 /* Network.swift */; };
+		4235955828D07DE000572E61 /* GetPhotoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DAD95728B89A4400C5FCA3 /* GetPhotoList.swift */; };
+		4235955928D07DF600572E61 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D28A9828C731AF00276C27 /* App.swift */; };
+		4235955B28D0812A00572E61 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426F6AA428C0B64000C9865A /* ThemeManager.swift */; };
+		4235955C28D0814500572E61 /* DefaultsProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426F6AA028BF38F400C9865A /* DefaultsProperty.swift */; };
 		426F6A5A28BCE5E500C9865A /* CellSizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426F6A5928BCE5E500C9865A /* CellSizeCalculator.swift */; };
 		426F6AA128BF38F400C9865A /* DefaultsProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426F6AA028BF38F400C9865A /* DefaultsProperty.swift */; };
 		426F6AA528C0B64000C9865A /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426F6AA428C0B64000C9865A /* ThemeManager.swift */; };
@@ -52,8 +66,41 @@
 		A6F4F57328B909B700AC03CF /* PresentationAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F4F57228B909B700AC03CF /* PresentationAnimator.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		4235954A28D079F700572E61 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 42FDB9D928B869B400979471 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4235953E28D079F700572E61;
+			remoteInfo = AWSLWidgetExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		4235954D28D079F700572E61 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				4235954C28D079F700572E61 /* AWSLWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		07E0EB7777F4DA21815F0F53 /* Pods_AWSLWidgetExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AWSLWidgetExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		306D608070E05395D6452100 /* Pods_AWSL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AWSL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4235953F28D079F700572E61 /* AWSLWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = AWSLWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		4235954028D079F700572E61 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		4235954228D079F700572E61 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		4235954528D079F700572E61 /* AWSLWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWSLWidget.swift; sourceTree = "<group>"; };
+		4235954728D079F700572E61 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4235954928D079F700572E61 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4235955128D07B9400572E61 /* PhotoWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoWidget.swift; sourceTree = "<group>"; };
+		4235955428D07D5000572E61 /* GetRandomPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetRandomPhoto.swift; sourceTree = "<group>"; };
 		426F6A5928BCE5E500C9865A /* CellSizeCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellSizeCalculator.swift; sourceTree = "<group>"; };
 		426F6AA028BF38F400C9865A /* DefaultsProperty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsProperty.swift; sourceTree = "<group>"; };
 		426F6AA428C0B64000C9865A /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
@@ -98,13 +145,25 @@
 		42FDB9F028B869B500979471 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		42FDB9F228B869B500979471 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6329CAC9989CF49DF01C9A2C /* Pods-AWSL.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AWSL.debug.xcconfig"; path = "Target Support Files/Pods-AWSL/Pods-AWSL.debug.xcconfig"; sourceTree = "<group>"; };
+		94CBA30E3F4DEEA4649F2B1A /* Pods-AWSLWidgetExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AWSLWidgetExtension.release.xcconfig"; path = "Target Support Files/Pods-AWSLWidgetExtension/Pods-AWSLWidgetExtension.release.xcconfig"; sourceTree = "<group>"; };
 		A64DBB8128BA144900F83D01 /* ProducerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProducerCell.swift; sourceTree = "<group>"; };
 		A6F4F57028B8FE3000AC03CF /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		A6F4F57228B909B700AC03CF /* PresentationAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationAnimator.swift; sourceTree = "<group>"; };
+		C0E04B3DA65EBCE638358010 /* Pods-AWSLWidgetExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AWSLWidgetExtension.debug.xcconfig"; path = "Target Support Files/Pods-AWSLWidgetExtension/Pods-AWSLWidgetExtension.debug.xcconfig"; sourceTree = "<group>"; };
 		EECD763E72D0C4B5201A2D38 /* Pods-AWSL.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AWSL.release.xcconfig"; path = "Target Support Files/Pods-AWSL/Pods-AWSL.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		4235953C28D079F700572E61 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4235954328D079F700572E61 /* SwiftUI.framework in Frameworks */,
+				4235954128D079F700572E61 /* WidgetKit.framework in Frameworks */,
+				08FEA4C4B9FE4A8779D8C39C /* Pods_AWSLWidgetExtension.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		42FDB9DE28B869B400979471 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -122,8 +181,21 @@
 			children = (
 				6329CAC9989CF49DF01C9A2C /* Pods-AWSL.debug.xcconfig */,
 				EECD763E72D0C4B5201A2D38 /* Pods-AWSL.release.xcconfig */,
+				C0E04B3DA65EBCE638358010 /* Pods-AWSLWidgetExtension.debug.xcconfig */,
+				94CBA30E3F4DEEA4649F2B1A /* Pods-AWSLWidgetExtension.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		4235954428D079F700572E61 /* AWSLWidget */ = {
+			isa = PBXGroup;
+			children = (
+				4235954528D079F700572E61 /* AWSLWidget.swift */,
+				4235955128D07B9400572E61 /* PhotoWidget.swift */,
+				4235954728D079F700572E61 /* Assets.xcassets */,
+				4235954928D079F700572E61 /* Info.plist */,
+			);
+			path = AWSLWidget;
 			sourceTree = "<group>";
 		};
 		427F1AA328CB429C006998DE /* Settings */ = {
@@ -291,6 +363,7 @@
 			children = (
 				42D28A9028C7218B00276C27 /* GetInReviewInfo.swift */,
 				42DAD95728B89A4400C5FCA3 /* GetPhotoList.swift */,
+				4235955428D07D5000572E61 /* GetRandomPhoto.swift */,
 				42DAD96028B8C9B500C5FCA3 /* GetProducers.swift */,
 				42DAD96228B8CA4800C5FCA3 /* AddProducer.swift */,
 			);
@@ -301,6 +374,7 @@
 			isa = PBXGroup;
 			children = (
 				42FDB9E328B869B400979471 /* AWSL */,
+				4235954428D079F700572E61 /* AWSLWidget */,
 				42FDB9E228B869B400979471 /* Products */,
 				214C38C3B9462C3A81AFDD87 /* Pods */,
 				B80906257F0FD35411ED9687 /* Frameworks */,
@@ -311,6 +385,7 @@
 			isa = PBXGroup;
 			children = (
 				42FDB9E128B869B400979471 /* AWSL.app */,
+				4235953F28D079F700572E61 /* AWSLWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -350,6 +425,9 @@
 			children = (
 				42D28AC128C8F51600276C27 /* CloudKit.framework */,
 				306D608070E05395D6452100 /* Pods_AWSL.framework */,
+				4235954028D079F700572E61 /* WidgetKit.framework */,
+				4235954228D079F700572E61 /* SwiftUI.framework */,
+				07E0EB7777F4DA21815F0F53 /* Pods_AWSLWidgetExtension.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -357,6 +435,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		4235953E28D079F700572E61 /* AWSLWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4235955028D079F700572E61 /* Build configuration list for PBXNativeTarget "AWSLWidgetExtension" */;
+			buildPhases = (
+				73527CFC615D29262C2DFADE /* [CP] Check Pods Manifest.lock */,
+				4235953B28D079F700572E61 /* Sources */,
+				4235953C28D079F700572E61 /* Frameworks */,
+				4235953D28D079F700572E61 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AWSLWidgetExtension;
+			productName = AWSLWidgetExtension;
+			productReference = 4235953F28D079F700572E61 /* AWSLWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		42FDB9E028B869B400979471 /* AWSL */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 42FDB9F528B869B500979471 /* Build configuration list for PBXNativeTarget "AWSL" */;
@@ -367,11 +463,13 @@
 				42FDB9DE28B869B400979471 /* Frameworks */,
 				42FDB9DF28B869B400979471 /* Resources */,
 				E8FC5C4FBB83B27E59BB811D /* [CP] Embed Pods Frameworks */,
+				4235954D28D079F700572E61 /* Embed Foundation Extensions */,
 				427F1AB528CB4EC1006998DE /* Increse build version */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				4235954B28D079F700572E61 /* PBXTargetDependency */,
 			);
 			name = AWSL;
 			productName = AWSL;
@@ -385,9 +483,12 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1340;
+				LastSwiftUpdateCheck = 1400;
 				LastUpgradeCheck = 1340;
 				TargetAttributes = {
+					4235953E28D079F700572E61 = {
+						CreatedOnToolsVersion = 14.0;
+					};
 					42FDB9E028B869B400979471 = {
 						CreatedOnToolsVersion = 13.4.1;
 					};
@@ -408,11 +509,20 @@
 			projectRoot = "";
 			targets = (
 				42FDB9E028B869B400979471 /* AWSL */,
+				4235953E28D079F700572E61 /* AWSLWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		4235953D28D079F700572E61 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4235954828D079F700572E61 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		42FDB9DF28B869B400979471 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -442,7 +552,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nagvtool next-version -all\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n#agvtool next-version -all\n";
 		};
 		42D28AB128C87B9E00276C27 /* R.swift */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -463,6 +573,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/AWSL/Resources/R.generated.swift\"\n";
+		};
+		73527CFC615D29262C2DFADE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AWSLWidgetExtension-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
 		};
 		B226C0553ACEDD38E1D42967 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -506,6 +638,21 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		4235953B28D079F700572E61 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4235955328D07BC300572E61 /* PhotoWidget.swift in Sources */,
+				4235955828D07DE000572E61 /* GetPhotoList.swift in Sources */,
+				4235954628D079F700572E61 /* AWSLWidget.swift in Sources */,
+				4235955928D07DF600572E61 /* App.swift in Sources */,
+				4235955728D07D8B00572E61 /* Network.swift in Sources */,
+				4235955628D07D8300572E61 /* GetRandomPhoto.swift in Sources */,
+				4235955C28D0814500572E61 /* DefaultsProperty.swift in Sources */,
+				4235955B28D0812A00572E61 /* ThemeManager.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		42FDB9DD28B869B400979471 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -518,6 +665,7 @@
 				42D28ACF28C99CBA00276C27 /* PhotoListDataSource.swift in Sources */,
 				42D28AD628C9C87F00276C27 /* AWSL.xcdatamodeld in Sources */,
 				426F6AC428C1B34A00C9865A /* SelectionCell.swift in Sources */,
+				4235955528D07D5000572E61 /* GetRandomPhoto.swift in Sources */,
 				42DAD95F28B8BE2A00C5FCA3 /* LoadingCell.swift in Sources */,
 				426F6AC628C1B40C00C9865A /* TitleValueCell.swift in Sources */,
 				42DAD95D28B8A25A00C5FCA3 /* ViewReusable.swift in Sources */,
@@ -553,6 +701,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		4235954B28D079F700572E61 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4235953E28D079F700572E61 /* AWSLWidgetExtension */;
+			targetProxy = 4235954A28D079F700572E61 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		42D28AB928C87ED000276C27 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
@@ -575,6 +731,66 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		4235954E28D079F700572E61 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C0E04B3DA65EBCE638358010 /* Pods-AWSLWidgetExtension.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 16;
+				DEVELOPMENT_TEAM = 77M64ZZJGP;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AWSLWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = AWSLWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.FlyKite.AWSL.AWSLWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		4235954F28D079F700572E61 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 94CBA30E3F4DEEA4649F2B1A /* Pods-AWSLWidgetExtension.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 16;
+				DEVELOPMENT_TEAM = 77M64ZZJGP;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AWSLWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = AWSLWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.FlyKite.AWSL.AWSLWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		42FDB9F328B869B500979471 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -695,6 +911,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6329CAC9989CF49DF01C9A2C /* Pods-AWSL.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = AWSL/AWSL.entitlements;
@@ -727,6 +944,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = EECD763E72D0C4B5201A2D38 /* Pods-AWSL.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = AWSL/AWSL.entitlements;
@@ -758,6 +976,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		4235955028D079F700572E61 /* Build configuration list for PBXNativeTarget "AWSLWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4235954E28D079F700572E61 /* Debug */,
+				4235954F28D079F700572E61 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		42FDB9DC28B869B400979471 /* Build configuration list for PBXProject "AWSL" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

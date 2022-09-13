@@ -11,3 +11,10 @@ target 'AWSL' do
   pod 'Kingfisher'
   pod 'R.swift'
 end
+
+target 'AWSLWidgetExtension' do
+  use_frameworks!
+  
+  pod 'Alamofire'
+  pod 'Kingfisher'
+end
