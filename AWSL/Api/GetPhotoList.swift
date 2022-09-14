@@ -21,7 +21,7 @@ extension Api {
         
         typealias ResponseType = [Photo]
         var path: String {
-            App.isInReview && uid.isEmpty ? "list_in_review" : "v2/list"
+            App.isInReview ? "list_in_review" : "v2/list"
         }
         var params: [String : Any]? {
             [
@@ -68,6 +68,21 @@ struct Photo: Codable, Hashable {
             self.url = url
             self.width = width
             self.height = height
+        }
+    }
+}
+
+extension Photo: DefaultsCustomType {
+    func getStorableValue() -> DefaultsSupportedType {
+        return try? JSONEncoder().encode(self)
+    }
+    
+    init?(storableValue: Any?) {
+        guard let data = storableValue as? Data else { return nil }
+        do {
+            self = try JSONDecoder().decode(Photo.self, from: data)
+        } catch {
+            return nil
         }
     }
 }

@@ -33,6 +33,7 @@ struct AWSLWidget: Widget {
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: RandomPhotoProvider()) { entry in
             AWSLWidgetEntryView(entry: entry)
+                .widgetURL(URL(string: "awsl://random?photo"))
         }
         .configurationDisplayName("看图")
         .description("随机展示一张图片")
@@ -42,7 +43,7 @@ struct AWSLWidget: Widget {
 
 struct AWSLWidget_Previews: PreviewProvider {
     static var previews: some View {
-        AWSLWidgetEntryView(entry: PhotoEntry(date: Date(), image: nil))
+        AWSLWidgetEntryView(entry: PhotoEntry(date: Date(), photo: nil, image: nil))
             .previewContext(WidgetPreviewContext(family: .systemSmall))
     }
 }

@@ -11,7 +11,6 @@
 		15EBB1313D762FD19ED2E4EE /* Pods_AWSL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 306D608070E05395D6452100 /* Pods_AWSL.framework */; };
 		4235954128D079F700572E61 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4235954028D079F700572E61 /* WidgetKit.framework */; };
 		4235954328D079F700572E61 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4235954228D079F700572E61 /* SwiftUI.framework */; };
-		4235954628D079F700572E61 /* AWSLWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4235954528D079F700572E61 /* AWSLWidget.swift */; };
 		4235954828D079F700572E61 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4235954728D079F700572E61 /* Assets.xcassets */; };
 		4235954C28D079F700572E61 /* AWSLWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 4235953F28D079F700572E61 /* AWSLWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		4235955328D07BC300572E61 /* PhotoWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4235955128D07B9400572E61 /* PhotoWidget.swift */; };
@@ -30,6 +29,9 @@
 		426F6AC428C1B34A00C9865A /* SelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426F6AC328C1B34A00C9865A /* SelectionCell.swift */; };
 		426F6AC628C1B40C00C9865A /* TitleValueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426F6AC528C1B40C00C9865A /* TitleValueCell.swift */; };
 		426F6AC828C1B57B00C9865A /* SettingSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426F6AC728C1B57B00C9865A /* SettingSectionHeaderView.swift */; };
+		4287E40C28D17979000D3E02 /* AWSLWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4235954528D079F700572E61 /* AWSLWidget.swift */; };
+		4287E41028D1C410000D3E02 /* RandomPhotoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4287E40F28D1C410000D3E02 /* RandomPhotoManager.swift */; };
+		4287E41128D1C881000D3E02 /* RandomPhotoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4287E40F28D1C410000D3E02 /* RandomPhotoManager.swift */; };
 		42D28A8D28C1E71000276C27 /* ProducerPhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D28A8C28C1E71000276C27 /* ProducerPhotosViewController.swift */; };
 		42D28A9128C7218B00276C27 /* GetInReviewInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D28A9028C7218B00276C27 /* GetInReviewInfo.swift */; };
 		42D28A9928C731AF00276C27 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D28A9828C731AF00276C27 /* App.swift */; };
@@ -109,6 +111,7 @@
 		426F6AC328C1B34A00C9865A /* SelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionCell.swift; sourceTree = "<group>"; };
 		426F6AC528C1B40C00C9865A /* TitleValueCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleValueCell.swift; sourceTree = "<group>"; };
 		426F6AC728C1B57B00C9865A /* SettingSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingSectionHeaderView.swift; sourceTree = "<group>"; };
+		4287E40F28D1C410000D3E02 /* RandomPhotoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomPhotoManager.swift; sourceTree = "<group>"; };
 		42D28A8C28C1E71000276C27 /* ProducerPhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProducerPhotosViewController.swift; sourceTree = "<group>"; };
 		42D28A9028C7218B00276C27 /* GetInReviewInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetInReviewInfo.swift; sourceTree = "<group>"; };
 		42D28A9828C731AF00276C27 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
@@ -254,6 +257,7 @@
 				42D28ACE28C99CBA00276C27 /* PhotoListDataSource.swift */,
 				42D28AD028C99CD000276C27 /* PhotoListManager.swift */,
 				426F6A5928BCE5E500C9865A /* CellSizeCalculator.swift */,
+				4287E40F28D1C410000D3E02 /* RandomPhotoManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -538,6 +542,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		427F1AB528CB4EC1006998DE /* Increse build version */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -552,7 +557,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n#agvtool next-version -all\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n# agvtool next-version\n";
 		};
 		42D28AB128C87B9E00276C27 /* R.swift */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -643,13 +648,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				4235955328D07BC300572E61 /* PhotoWidget.swift in Sources */,
+				4287E41128D1C881000D3E02 /* RandomPhotoManager.swift in Sources */,
 				4235955828D07DE000572E61 /* GetPhotoList.swift in Sources */,
-				4235954628D079F700572E61 /* AWSLWidget.swift in Sources */,
 				4235955928D07DF600572E61 /* App.swift in Sources */,
 				4235955728D07D8B00572E61 /* Network.swift in Sources */,
 				4235955628D07D8300572E61 /* GetRandomPhoto.swift in Sources */,
 				4235955C28D0814500572E61 /* DefaultsProperty.swift in Sources */,
 				4235955B28D0812A00572E61 /* ThemeManager.swift in Sources */,
+				4287E40C28D17979000D3E02 /* AWSLWidget.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -678,6 +684,7 @@
 				42D28AD128C99CD000276C27 /* PhotoListManager.swift in Sources */,
 				42D28AD328C9C70F00276C27 /* LikedPhotosManager.swift in Sources */,
 				42DAD96728B8D07700C5FCA3 /* CircleProgressView.swift in Sources */,
+				4287E41028D1C410000D3E02 /* RandomPhotoManager.swift in Sources */,
 				42D28ADC28CAF62200276C27 /* CloudKitManager.swift in Sources */,
 				A6F4F57328B909B700AC03CF /* PresentationAnimator.swift in Sources */,
 				42D28ADE28CAFB7000276C27 /* ThreadSafe.swift in Sources */,
@@ -739,7 +746,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 16;
+				CURRENT_PROJECT_VERSION = 30;
 				DEVELOPMENT_TEAM = 77M64ZZJGP;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AWSLWidget/Info.plist;
@@ -751,7 +758,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.FlyKite.AWSL.AWSLWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -769,7 +776,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 16;
+				CURRENT_PROJECT_VERSION = 30;
 				DEVELOPMENT_TEAM = 77M64ZZJGP;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AWSLWidget/Info.plist;
@@ -781,7 +788,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.FlyKite.AWSL.AWSLWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -916,7 +923,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = AWSL/AWSL.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 16;
+				CURRENT_PROJECT_VERSION = 30;
 				DEVELOPMENT_TEAM = 77M64ZZJGP;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AWSL/Resources/Info.plist;
@@ -949,7 +956,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = AWSL/AWSL.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 16;
+				CURRENT_PROJECT_VERSION = 30;
 				DEVELOPMENT_TEAM = 77M64ZZJGP;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AWSL/Resources/Info.plist;

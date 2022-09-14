@@ -9,7 +9,7 @@ import Foundation
 
 extension Api {
     struct GetRandomPhoto: AwslApi {
-        typealias ResponseType = String
-        var path: String { "v2/random" }
+        typealias ResponseType = Photo
+        var path: String { "v2/random_json" }
     }
 }
