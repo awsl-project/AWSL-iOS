@@ -16,6 +16,7 @@ protocol DefaultsCustomType: DefaultsSupportedType {
 
 @propertyWrapper struct DefaultsProperty<ValueType: DefaultsSupportedType> {
     var key: String { keyType.key }
+    let suiteName: String?
     let defaultValue: ValueType
     
     private enum KeyType {
@@ -32,19 +33,21 @@ protocol DefaultsCustomType: DefaultsSupportedType {
     
     private let keyType: KeyType
     
-    init(key: String, defaultValue: ValueType) {
+    init(key: String, suiteName: String? = nil, defaultValue: ValueType) {
         self.keyType = .staticKey(key: key)
+        self.suiteName = suiteName
         self.defaultValue = defaultValue
     }
     
-    init(keyProvider: @escaping () -> String, defaultValue: ValueType) {
+    init(keyProvider: @escaping () -> String, suiteName: String? = nil, defaultValue: ValueType) {
         self.keyType = .dynamicKey(provider: keyProvider)
+        self.suiteName = suiteName
         self.defaultValue = defaultValue
     }
     
     var wrappedValue: ValueType {
         get {
-            let value = UserDefaults.standard.value(forKey: key)
+            let value = defaults.value(forKey: key)
             if let storableType = ValueType.self as? DefaultsCustomType.Type {
                 let result = storableType.init(storableValue: value)
                 return (result as? ValueType) ?? defaultValue
@@ -54,13 +57,20 @@ protocol DefaultsCustomType: DefaultsSupportedType {
         }
         set {
             if let value = newValue as? AnyOptional, value.isNil {
-                UserDefaults.standard.removeObject(forKey: key)
+                defaults.removeObject(forKey: key)
             } else if let value = newValue as? DefaultsCustomType {
-                UserDefaults.standard.set(value.getStorableValue(), forKey: key)
+                defaults.set(value.getStorableValue(), forKey: key)
             } else {
-                UserDefaults.standard.set(newValue, forKey: key)
+                defaults.set(newValue, forKey: key)
             }
         }
+    }
+    
+    var defaults: UserDefaults {
+        if let suiteName = suiteName {
+            return UserDefaults(suiteName: suiteName) ?? .standard
+        }
+        return UserDefaults.standard
     }
 }
 

@@ -9,6 +9,9 @@
 "PhotoList"     = "就你辣！";
 "NetworkError"  = "飞到外太空去了，一会再试试吧~";
 
+"RandomPhoto"   = "随机一图";
+"RefreshPhoto"  = " 换一张";
+
 "SavePhoto"     = "保存到相册";
 "ShowWeibo"     = "查看原微博";
 "Confirm"       = "确定";

@@ -9,6 +9,9 @@
 "PhotoList"     = "Photos";
 "NetworkError"  = "Request failed, please try later.";
 
+"RandomPhoto"   = "Good luck";
+"RefreshPhoto"  = " Next Photo";
+
 "SavePhoto"     = "Save photo";
 "ShowWeibo"     = "View original weibo";
 "Confirm"       = "Confirm";

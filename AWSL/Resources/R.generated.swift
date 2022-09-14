@@ -130,7 +130,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.entitlements` struct is generated, and contains static references to 3 properties.
+  /// This `R.entitlements` struct is generated, and contains static references to 4 properties.
   struct entitlements {
     static let apsEnvironment = infoPlistString(path: [], key: "aps-environment") ?? "development"
 
@@ -142,6 +142,12 @@ struct R: Rswift.Validatable {
 
     struct comAppleDeveloperIcloudServices {
       static let cloudKit = infoPlistString(path: ["com.apple.developer.icloud-services"], key: "CloudKit") ?? "CloudKit"
+
+      fileprivate init() {}
+    }
+
+    struct comAppleSecurityApplicationGroups {
+      static let groupComFlyKiteAWSL = infoPlistString(path: ["com.apple.security.application-groups"], key: "group.com.FlyKite.AWSL") ?? "group.com.FlyKite.AWSL"
 
       fileprivate init() {}
     }
@@ -282,8 +288,12 @@ struct R: Rswift.Validatable {
       fileprivate init() {}
     }
 
-    /// This `R.string.localizable` struct is generated, and contains static references to 35 localization keys.
+    /// This `R.string.localizable` struct is generated, and contains static references to 37 localization keys.
     struct localizable {
+      /// en translation:  Next Photo
+      ///
+      /// Locales: zh-Hans, en
+      static let refreshPhoto = Rswift.StringResource(key: "RefreshPhoto", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans", "en"], comment: nil)
       /// en translation: About
       ///
       /// Locales: zh-Hans, en
@@ -352,6 +362,10 @@ struct R: Rswift.Validatable {
       ///
       /// Locales: zh-Hans, en
       static let emptyLikedPhotos = Rswift.StringResource(key: "EmptyLikedPhotos", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans", "en"], comment: nil)
+      /// en translation: Good luck
+      ///
+      /// Locales: zh-Hans, en
+      static let randomPhoto = Rswift.StringResource(key: "RandomPhoto", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans", "en"], comment: nil)
       /// en translation: License
       ///
       /// Locales: zh-Hans, en
@@ -424,6 +438,21 @@ struct R: Rswift.Validatable {
       ///
       /// Locales: zh-Hans, en
       static let showWeibo = Rswift.StringResource(key: "ShowWeibo", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans", "en"], comment: nil)
+
+      /// en translation:  Next Photo
+      ///
+      /// Locales: zh-Hans, en
+      static func refreshPhoto(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("RefreshPhoto", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "RefreshPhoto"
+        }
+
+        return NSLocalizedString("RefreshPhoto", bundle: bundle, comment: "")
+      }
 
       /// en translation: About
       ///
@@ -678,6 +707,21 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("EmptyLikedPhotos", bundle: bundle, comment: "")
+      }
+
+      /// en translation: Good luck
+      ///
+      /// Locales: zh-Hans, en
+      static func randomPhoto(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("RandomPhoto", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "RandomPhoto"
+        }
+
+        return NSLocalizedString("RandomPhoto", bundle: bundle, comment: "")
       }
 
       /// en translation: License

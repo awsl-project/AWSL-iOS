@@ -34,6 +34,7 @@ struct RandomPhotoProvider: TimelineProvider {
         RandomPhotoManager.shared.getRandomPhoto(displaySize: context.displaySize) { result in
             switch result {
             case let .success(response):
+                print(response.photo.id)
                 let currentDate = Date()
                 let entries = [
                     PhotoEntry(date: currentDate, photo: response.photo, image: response.image),

@@ -19,10 +19,14 @@ class RandomPhotoManager {
         let image: UIImage?
     }
     
-    @DefaultsProperty(key: "lastPhoto", defaultValue: nil)
+    @DefaultsProperty(key: "lastPhoto",
+                      suiteName: "group.com.FlyKite.AWSL",
+                      defaultValue: nil)
     private var lastPhoto: Photo?
     
-    @DefaultsProperty(key: "nextRefreshDate", defaultValue: Date(timeIntervalSince1970: 0))
+    @DefaultsProperty(key: "nextRefreshDate",
+                      suiteName: "group.com.FlyKite.AWSL",
+                      defaultValue: Date(timeIntervalSince1970: 0))
     private var nextRefreshDate: Date
     
     private var lastRandomPhoto: RandomPhoto?
@@ -32,7 +36,7 @@ class RandomPhotoManager {
     
     private init() { }
     
-    func getRandomPhoto(displaySize: CGSize, completion: @escaping Completion) {
+    func getRandomPhoto(displaySize: CGSize? = nil, completion: @escaping Completion) {
         queue.async {
             self.semaphore.wait()
             let callback: (Result<Response, Error>) -> Void = { result in
@@ -47,7 +51,12 @@ class RandomPhotoManager {
                     self.lastPhoto = randomPhoto.photo
                     self.lastRandomPhoto = randomPhoto
                     self.nextRefreshDate = Date(timeIntervalSinceNow: 120)
-                    let image = randomPhoto.getImage(displaySize: displaySize)
+                    let image: UIImage?
+                    if let displaySize = displaySize {
+                        image = randomPhoto.getImage(displaySize: displaySize)
+                    } else {
+                        image = randomPhoto.originalImage
+                    }
                     let response = Response(photo: randomPhoto.photo, image: image)
                     responseResult = .success(response)
                 case let .failure(error):
@@ -56,17 +65,30 @@ class RandomPhotoManager {
                 callback(responseResult)
                 self.semaphore.signal()
             }
-            if Date() < self.nextRefreshDate, let lastRandomPhoto = self.lastRandomPhoto {
-                let image = lastRandomPhoto.getImage(displaySize: displaySize)
-                let response = Response(photo: lastRandomPhoto.photo, image: image)
-                callback(.success(response))
-                self.semaphore.signal()
-            } else if let photo = self.lastPhoto {
-                self.download(photo: photo, completion: handler)
+            if Date() < self.nextRefreshDate {
+                if let lastRandomPhoto = self.lastRandomPhoto {
+                    let image: UIImage?
+                    if let displaySize = displaySize {
+                        image = lastRandomPhoto.getImage(displaySize: displaySize)
+                    } else {
+                        image = lastRandomPhoto.originalImage
+                    }
+                    let response = Response(photo: lastRandomPhoto.photo, image: image)
+                    callback(.success(response))
+                    self.semaphore.signal()
+                } else if let photo = self.lastPhoto {
+                    self.download(photo: photo, completion: handler)
+                } else {
+                    self.requestRandomPhoto(completion: handler)
+                }
             } else {
                 self.requestRandomPhoto(completion: handler)
             }
         }
+    }
+    
+    func invalidateRefreshDate() {
+        nextRefreshDate = Date(timeIntervalSince1970: 0)
     }
     
     private func requestRandomPhoto(completion: @escaping (Result<RandomPhoto, Error>) -> Void) {

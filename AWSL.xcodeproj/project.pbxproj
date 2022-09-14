@@ -32,6 +32,7 @@
 		4287E40C28D17979000D3E02 /* AWSLWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4235954528D079F700572E61 /* AWSLWidget.swift */; };
 		4287E41028D1C410000D3E02 /* RandomPhotoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4287E40F28D1C410000D3E02 /* RandomPhotoManager.swift */; };
 		4287E41128D1C881000D3E02 /* RandomPhotoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4287E40F28D1C410000D3E02 /* RandomPhotoManager.swift */; };
+		4287E41328D1D003000D3E02 /* RandomPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4287E41228D1D003000D3E02 /* RandomPhotoViewController.swift */; };
 		42D28A8D28C1E71000276C27 /* ProducerPhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D28A8C28C1E71000276C27 /* ProducerPhotosViewController.swift */; };
 		42D28A9128C7218B00276C27 /* GetInReviewInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D28A9028C7218B00276C27 /* GetInReviewInfo.swift */; };
 		42D28A9928C731AF00276C27 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D28A9828C731AF00276C27 /* App.swift */; };
@@ -112,6 +113,8 @@
 		426F6AC528C1B40C00C9865A /* TitleValueCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleValueCell.swift; sourceTree = "<group>"; };
 		426F6AC728C1B57B00C9865A /* SettingSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingSectionHeaderView.swift; sourceTree = "<group>"; };
 		4287E40F28D1C410000D3E02 /* RandomPhotoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomPhotoManager.swift; sourceTree = "<group>"; };
+		4287E41228D1D003000D3E02 /* RandomPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomPhotoViewController.swift; sourceTree = "<group>"; };
+		4287E41528D1D906000D3E02 /* AWSLWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AWSLWidgetExtension.entitlements; sourceTree = "<group>"; };
 		42D28A8C28C1E71000276C27 /* ProducerPhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProducerPhotosViewController.swift; sourceTree = "<group>"; };
 		42D28A9028C7218B00276C27 /* GetInReviewInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetInReviewInfo.swift; sourceTree = "<group>"; };
 		42D28A9828C731AF00276C27 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
@@ -268,6 +271,7 @@
 				42DAD95328B8853900C5FCA3 /* PhotoListViewController.swift */,
 				42D28ACC28C999D000276C27 /* HomeViewController.swift */,
 				42DAD96428B8CCB000C5FCA3 /* PhotoBrowserViewController.swift */,
+				4287E41228D1D003000D3E02 /* RandomPhotoViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -377,6 +381,7 @@
 		42FDB9D828B869B400979471 = {
 			isa = PBXGroup;
 			children = (
+				4287E41528D1D906000D3E02 /* AWSLWidgetExtension.entitlements */,
 				42FDB9E328B869B400979471 /* AWSL */,
 				4235954428D079F700572E61 /* AWSLWidget */,
 				42FDB9E228B869B400979471 /* Products */,
@@ -672,6 +677,7 @@
 				42D28AD628C9C87F00276C27 /* AWSL.xcdatamodeld in Sources */,
 				426F6AC428C1B34A00C9865A /* SelectionCell.swift in Sources */,
 				4235955528D07D5000572E61 /* GetRandomPhoto.swift in Sources */,
+				4287E41328D1D003000D3E02 /* RandomPhotoViewController.swift in Sources */,
 				42DAD95F28B8BE2A00C5FCA3 /* LoadingCell.swift in Sources */,
 				426F6AC628C1B40C00C9865A /* TitleValueCell.swift in Sources */,
 				42DAD95D28B8A25A00C5FCA3 /* ViewReusable.swift in Sources */,
@@ -745,6 +751,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_ENTITLEMENTS = AWSLWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 30;
 				DEVELOPMENT_TEAM = 77M64ZZJGP;
@@ -775,6 +782,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_ENTITLEMENTS = AWSLWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 30;
 				DEVELOPMENT_TEAM = 77M64ZZJGP;
