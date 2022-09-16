@@ -14,10 +14,12 @@ protocol DefaultsCustomType: DefaultsSupportedType {
     init?(storableValue: Any?)
 }
 
-@propertyWrapper struct DefaultsProperty<ValueType: DefaultsSupportedType> {
+@propertyWrapper class DefaultsProperty<ValueType: DefaultsSupportedType> {
     var key: String { keyType.key }
     let suiteName: String?
     let defaultValue: ValueType
+    
+    let defaults: UserDefaults
     
     private enum KeyType {
         case staticKey(key: String)
@@ -33,29 +35,46 @@ protocol DefaultsCustomType: DefaultsSupportedType {
     
     private let keyType: KeyType
     
-    init(key: String, suiteName: String? = nil, defaultValue: ValueType) {
-        self.keyType = .staticKey(key: key)
-        self.suiteName = suiteName
-        self.defaultValue = defaultValue
+    convenience init(key: String, suiteName: String? = nil, defaultValue: ValueType) {
+        self.init(keyType: .staticKey(key: key), suiteName: suiteName, defaultValue: defaultValue)
     }
     
-    init(keyProvider: @escaping () -> String, suiteName: String? = nil, defaultValue: ValueType) {
-        self.keyType = .dynamicKey(provider: keyProvider)
-        self.suiteName = suiteName
-        self.defaultValue = defaultValue
+    convenience init(keyProvider: @escaping () -> String,
+                     suiteName: String? = nil,
+                     defaultValue: ValueType) {
+        self.init(keyType: .dynamicKey(provider: keyProvider), suiteName: suiteName, defaultValue: defaultValue)
     }
     
+    private init(keyType: KeyType, suiteName: String?, defaultValue: ValueType) {
+        self.keyType = keyType
+        self.suiteName = suiteName
+        self.defaultValue = defaultValue
+        if let suiteName = suiteName {
+            defaults = UserDefaults(suiteName: suiteName) ?? .standard
+        } else {
+            defaults = UserDefaults.standard
+        }
+    }
+    
+    private var value: ValueType?
     var wrappedValue: ValueType {
         get {
+            if let value = value {
+                return value
+            }
             let value = defaults.value(forKey: key)
             if let storableType = ValueType.self as? DefaultsCustomType.Type {
-                let result = storableType.init(storableValue: value)
-                return (result as? ValueType) ?? defaultValue
+                let result = (storableType.init(storableValue: value) as? ValueType) ?? defaultValue
+                self.value = result
+                return result
             } else {
-                return value as? ValueType ?? defaultValue
+                let result = value as? ValueType ?? defaultValue
+                self.value = result
+                return result
             }
         }
         set {
+            value = newValue
             if let value = newValue as? AnyOptional, value.isNil {
                 defaults.removeObject(forKey: key)
             } else if let value = newValue as? DefaultsCustomType {
@@ -64,13 +83,6 @@ protocol DefaultsCustomType: DefaultsSupportedType {
                 defaults.set(newValue, forKey: key)
             }
         }
-    }
-    
-    var defaults: UserDefaults {
-        if let suiteName = suiteName {
-            return UserDefaults(suiteName: suiteName) ?? .standard
-        }
-        return UserDefaults.standard
     }
 }
 

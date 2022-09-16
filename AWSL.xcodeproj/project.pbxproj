@@ -13,7 +13,7 @@
 		4235954328D079F700572E61 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4235954228D079F700572E61 /* SwiftUI.framework */; };
 		4235954828D079F700572E61 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4235954728D079F700572E61 /* Assets.xcassets */; };
 		4235954C28D079F700572E61 /* AWSLWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 4235953F28D079F700572E61 /* AWSLWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		4235955328D07BC300572E61 /* PhotoWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4235955128D07B9400572E61 /* PhotoWidget.swift */; };
+		4235955328D07BC300572E61 /* RandomPhotoWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4235955128D07B9400572E61 /* RandomPhotoWidget.swift */; };
 		4235955528D07D5000572E61 /* GetRandomPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4235955428D07D5000572E61 /* GetRandomPhoto.swift */; };
 		4235955628D07D8300572E61 /* GetRandomPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4235955428D07D5000572E61 /* GetRandomPhoto.swift */; };
 		4235955728D07D8B00572E61 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DAD95528B8960D00C5FCA3 /* Network.swift */; };
@@ -29,7 +29,7 @@
 		426F6AC428C1B34A00C9865A /* SelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426F6AC328C1B34A00C9865A /* SelectionCell.swift */; };
 		426F6AC628C1B40C00C9865A /* TitleValueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426F6AC528C1B40C00C9865A /* TitleValueCell.swift */; };
 		426F6AC828C1B57B00C9865A /* SettingSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426F6AC728C1B57B00C9865A /* SettingSectionHeaderView.swift */; };
-		4287E40C28D17979000D3E02 /* AWSLWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4235954528D079F700572E61 /* AWSLWidget.swift */; };
+		4287E40C28D17979000D3E02 /* RandomPhotoProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4235954528D079F700572E61 /* RandomPhotoProvider.swift */; };
 		4287E41028D1C410000D3E02 /* RandomPhotoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4287E40F28D1C410000D3E02 /* RandomPhotoManager.swift */; };
 		4287E41128D1C881000D3E02 /* RandomPhotoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4287E40F28D1C410000D3E02 /* RandomPhotoManager.swift */; };
 		4287E41328D1D003000D3E02 /* RandomPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4287E41228D1D003000D3E02 /* RandomPhotoViewController.swift */; };
@@ -99,10 +99,10 @@
 		4235953F28D079F700572E61 /* AWSLWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = AWSLWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		4235954028D079F700572E61 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		4235954228D079F700572E61 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
-		4235954528D079F700572E61 /* AWSLWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWSLWidget.swift; sourceTree = "<group>"; };
+		4235954528D079F700572E61 /* RandomPhotoProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomPhotoProvider.swift; sourceTree = "<group>"; };
 		4235954728D079F700572E61 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4235954928D079F700572E61 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4235955128D07B9400572E61 /* PhotoWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoWidget.swift; sourceTree = "<group>"; };
+		4235955128D07B9400572E61 /* RandomPhotoWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomPhotoWidget.swift; sourceTree = "<group>"; };
 		4235955428D07D5000572E61 /* GetRandomPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetRandomPhoto.swift; sourceTree = "<group>"; };
 		426F6A5928BCE5E500C9865A /* CellSizeCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellSizeCalculator.swift; sourceTree = "<group>"; };
 		426F6AA028BF38F400C9865A /* DefaultsProperty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsProperty.swift; sourceTree = "<group>"; };
@@ -196,8 +196,8 @@
 		4235954428D079F700572E61 /* AWSLWidget */ = {
 			isa = PBXGroup;
 			children = (
-				4235954528D079F700572E61 /* AWSLWidget.swift */,
-				4235955128D07B9400572E61 /* PhotoWidget.swift */,
+				4235954528D079F700572E61 /* RandomPhotoProvider.swift */,
+				4235955128D07B9400572E61 /* RandomPhotoWidget.swift */,
 				4235954728D079F700572E61 /* Assets.xcassets */,
 				4235954928D079F700572E61 /* Info.plist */,
 			);
@@ -652,7 +652,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4235955328D07BC300572E61 /* PhotoWidget.swift in Sources */,
+				4235955328D07BC300572E61 /* RandomPhotoWidget.swift in Sources */,
 				4287E41128D1C881000D3E02 /* RandomPhotoManager.swift in Sources */,
 				4235955828D07DE000572E61 /* GetPhotoList.swift in Sources */,
 				4235955928D07DF600572E61 /* App.swift in Sources */,
@@ -660,7 +660,7 @@
 				4235955628D07D8300572E61 /* GetRandomPhoto.swift in Sources */,
 				4235955C28D0814500572E61 /* DefaultsProperty.swift in Sources */,
 				4235955B28D0812A00572E61 /* ThemeManager.swift in Sources */,
-				4287E40C28D17979000D3E02 /* AWSLWidget.swift in Sources */,
+				4287E40C28D17979000D3E02 /* RandomPhotoProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

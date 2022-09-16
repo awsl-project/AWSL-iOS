@@ -1,5 +1,5 @@
 //
-//  PhotoWidget.swift
+//  RandomPhotoWidget.swift
 //  AWSL
 //
 //  Created by FlyKite on 2022/9/13.
@@ -8,7 +8,7 @@
 import WidgetKit
 import SwiftUI
 
-struct AWSLWidgetEntryView : View {
+struct RandomPhotoWidgetEntryView : View {
     var entry: RandomPhotoProvider.Entry
 
     var body: some View {
@@ -27,12 +27,12 @@ struct AWSLWidgetEntryView : View {
 }
 
 @main
-struct AWSLWidget: Widget {
+struct RandomPhotoWidget: Widget {
     let kind: String = "AWSLWidget"
 
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: RandomPhotoProvider()) { entry in
-            AWSLWidgetEntryView(entry: entry)
+            RandomPhotoWidgetEntryView(entry: entry)
                 .widgetURL(URL(string: "awsl://random?photo"))
         }
         .configurationDisplayName("看图")
@@ -41,9 +41,9 @@ struct AWSLWidget: Widget {
     }
 }
 
-struct AWSLWidget_Previews: PreviewProvider {
+struct RandomPhotoWidget_Previews: PreviewProvider {
     static var previews: some View {
-        AWSLWidgetEntryView(entry: PhotoEntry(date: Date(), photo: nil, image: nil))
+        RandomPhotoWidgetEntryView(entry: PhotoEntry(date: Date(), photo: nil, image: nil))
             .previewContext(WidgetPreviewContext(family: .systemSmall))
     }
 }

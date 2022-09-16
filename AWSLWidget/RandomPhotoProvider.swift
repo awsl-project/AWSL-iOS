@@ -1,12 +1,11 @@
 //
-//  AWSLWidget.swift
+//  RandomPhotoProvider.swift
 //  AWSLWidget
 //
 //  Created by FlyKite on 2022/9/13.
 //
 
 import WidgetKit
-import SwiftUI
 import Kingfisher
 
 struct PhotoEntry: TimelineEntry {
@@ -31,10 +30,10 @@ struct RandomPhotoProvider: TimelineProvider {
     }
 
     func getTimeline(in context: Context, completion: @escaping Completion) {
+        KingfisherCacheManager.shared.setupCache()
         RandomPhotoManager.shared.getRandomPhoto(displaySize: context.displaySize) { result in
             switch result {
             case let .success(response):
-                print(response.photo.id)
                 let currentDate = Date()
                 let entries = [
                     PhotoEntry(date: currentDate, photo: response.photo, image: response.image),

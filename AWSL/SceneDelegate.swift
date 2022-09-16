@@ -18,6 +18,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let scene = (scene as? UIWindowScene) else { return }
         
+        KingfisherCacheManager.shared.setupCache()
+        
         let tab = UITabBarController()
         tab.overrideUserInterfaceStyle = ThemeManager.shared.themeMode.userInterfaceStyle
         tab.tabBar.tintColor = .systemPink

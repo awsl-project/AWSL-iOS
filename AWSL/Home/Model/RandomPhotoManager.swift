@@ -161,3 +161,25 @@ class RandomPhoto {
         return image
     }
 }
+
+class KingfisherCacheManager {
+    static let shared: KingfisherCacheManager = KingfisherCacheManager()
+    
+    private let queue: DispatchQueue = DispatchQueue(label: "com.FlyKite.AWSL.SC")
+    private var isSet = false
+    
+    func setupCache() {
+        queue.sync {
+            guard !self.isSet else { return }
+            self.isSet = true
+            if let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.FlyKite.AWSL") {
+                do {
+                    let myCache = try ImageCache(name: "AWSL", cacheDirectoryURL: url)
+                    KingfisherManager.shared.cache = myCache
+                } catch {
+                    print(error)
+                }
+            }
+        }
+    }
+}
