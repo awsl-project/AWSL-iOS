@@ -35,6 +35,7 @@
 "ClearCache"        = "清除缓存";
 "ClearCahceTitle"   = "确定清除缓存？";
 "Version"           = "版本";
+"WidgetSettings"    = "小组件设置";
 "Donate"            = "捐赠";
 "OpenSourceLicense" = "开源许可";
 "ContactUs"         = "联系我们";

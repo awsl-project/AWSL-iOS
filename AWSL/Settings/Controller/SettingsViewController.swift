@@ -77,7 +77,7 @@ class SettingsViewController: UIViewController {
     }
     
     private func updateImageCache() {
-        ImageCache.default.calculateDiskStorageSize { [weak self] result in
+        KingfisherManager.shared.cache.calculateDiskStorageSize { [weak self] result in
             guard let self = self else { return }
             switch result {
             case let .success(size):
@@ -94,7 +94,7 @@ class SettingsViewController: UIViewController {
         let alert = UIAlertController(title: R.string.localizable.clearCahceTitle(), message: nil, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: R.string.localizable.confirm(), style: .default, handler: { action in
             DispatchQueue.global().async {
-                ImageCache.default.clearDiskCache { [weak self] in
+                KingfisherManager.shared.cache.clearDiskCache { [weak self] in
                     guard let self = self else { return }
                     self.cacheSize = 0
                     self.updateData()
@@ -159,6 +159,11 @@ class SettingsViewController: UIViewController {
                                title: R.string.localizable.clearCache(),
                                value: cacheSize, action: { [weak self] in
                 self?.clearImageCache()
+            }),
+            NormalSection.Item(icon: R.image.clear(),
+                               title: R.string.localizable.widgetSettings(),
+                               action: { [weak self] in
+                self?.navigationController?.pushViewController(WidgetSettingsViewController(), animated: true)
             }),
             NormalSection.Item(icon: R.image.donate(),
                                title: R.string.localizable.donate(),

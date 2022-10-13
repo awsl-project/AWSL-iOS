@@ -35,6 +35,7 @@
 "ClearCache"        = "Clear disk cache";
 "ClearCahceTitle"   = "Do you want to clear disk cache?";
 "Version"           = "Version";
+"WidgetSettings"    = "Widget Settings";
 "Donate"            = "Donate";
 "OpenSourceLicense" = "License";
 "ContactUs"         = "Contact us";
