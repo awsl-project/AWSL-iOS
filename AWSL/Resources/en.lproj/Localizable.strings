@@ -9,7 +9,7 @@
 "PhotoList"     = "Photos";
 "NetworkError"  = "Request failed, please try later.";
 
-"RandomPhoto"   = "Good luck";
+"RandomPhoto"   = "Good Luck";
 "RefreshPhoto"  = " Next Photo";
 
 "SavePhoto"     = "Save photo";
@@ -25,14 +25,14 @@
 "GoBack"    = "Back";
 "Appearance"        = "Appearance";
 "ThemeAutomatic"    = "Automatic";
-"ThemeDark"         = "Dark mode";
-"ThemeLight"        = "Light mode";
-"ViewMode"          = "View mode";
+"ThemeDark"         = "Dark Mode";
+"ThemeLight"        = "Light Mode";
+"ViewMode"          = "View Mode";
 "CompactView"       = "Compact";
 "NormalView"        = "Loose";
 "ChangeViewModeTip" = "Changing view mode will take effect after restart";
 "About"             = "About";
-"ClearCache"        = "Clear disk cache";
+"ClearCache"        = "Clear Disk Cache";
 "ClearCahceTitle"   = "Do you want to clear disk cache?";
 "Version"           = "Version";
 "WidgetSettings"    = "Widget Settings";
@@ -47,5 +47,14 @@
 "DonateUnavailable" = "Unavailable";
 "PurchaseFailed"    = "Purchase failed";
 "ThanksForDonate"   = "Thanks for your donation";
+
+"WidgetImageSource" = "Image Source";
+"FromRandomImage"   = "Random";
+"FromCollection"    = "My Collection";
+"RefreshInterval"   = "Refresh Interval";
+"fourHours"         = "4 hours";
+"sixHours"          = "6 hours";
+"twelveHours"       = "12 hours";
+"twentyFourHours"   = "24 hours";
 
 "EmptyLikedPhotos"  = "Empty\nTry collecting photos first";

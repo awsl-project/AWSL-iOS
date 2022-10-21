@@ -288,12 +288,28 @@ struct R: Rswift.Validatable {
       fileprivate init() {}
     }
 
-    /// This `R.string.localizable` struct is generated, and contains static references to 38 localization keys.
+    /// This `R.string.localizable` struct is generated, and contains static references to 46 localization keys.
     struct localizable {
       /// en translation:  Next Photo
       ///
       /// Locales: zh-Hans, en
       static let refreshPhoto = Rswift.StringResource(key: "RefreshPhoto", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans", "en"], comment: nil)
+      /// en translation: 12 hours
+      ///
+      /// Locales: zh-Hans, en
+      static let twelveHours = Rswift.StringResource(key: "twelveHours", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans", "en"], comment: nil)
+      /// en translation: 24 hours
+      ///
+      /// Locales: zh-Hans, en
+      static let twentyFourHours = Rswift.StringResource(key: "twentyFourHours", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans", "en"], comment: nil)
+      /// en translation: 4 hours
+      ///
+      /// Locales: zh-Hans, en
+      static let fourHours = Rswift.StringResource(key: "fourHours", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans", "en"], comment: nil)
+      /// en translation: 6 hours
+      ///
+      /// Locales: zh-Hans, en
+      static let sixHours = Rswift.StringResource(key: "sixHours", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans", "en"], comment: nil)
       /// en translation: About
       ///
       /// Locales: zh-Hans, en
@@ -318,7 +334,7 @@ struct R: Rswift.Validatable {
       ///
       /// Locales: zh-Hans, en
       static let changeViewModeTip = Rswift.StringResource(key: "ChangeViewModeTip", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans", "en"], comment: nil)
-      /// en translation: Clear disk cache
+      /// en translation: Clear Disk Cache
       ///
       /// Locales: zh-Hans, en
       static let clearCache = Rswift.StringResource(key: "ClearCache", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans", "en"], comment: nil)
@@ -338,7 +354,7 @@ struct R: Rswift.Validatable {
       ///
       /// Locales: zh-Hans, en
       static let contactUs = Rswift.StringResource(key: "ContactUs", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans", "en"], comment: nil)
-      /// en translation: Dark mode
+      /// en translation: Dark Mode
       ///
       /// Locales: zh-Hans, en
       static let themeDark = Rswift.StringResource(key: "ThemeDark", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans", "en"], comment: nil)
@@ -362,15 +378,19 @@ struct R: Rswift.Validatable {
       ///
       /// Locales: zh-Hans, en
       static let emptyLikedPhotos = Rswift.StringResource(key: "EmptyLikedPhotos", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans", "en"], comment: nil)
-      /// en translation: Good luck
+      /// en translation: Good Luck
       ///
       /// Locales: zh-Hans, en
       static let randomPhoto = Rswift.StringResource(key: "RandomPhoto", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans", "en"], comment: nil)
+      /// en translation: Image Source
+      ///
+      /// Locales: zh-Hans, en
+      static let widgetImageSource = Rswift.StringResource(key: "WidgetImageSource", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans", "en"], comment: nil)
       /// en translation: License
       ///
       /// Locales: zh-Hans, en
       static let openSourceLicense = Rswift.StringResource(key: "OpenSourceLicense", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans", "en"], comment: nil)
-      /// en translation: Light mode
+      /// en translation: Light Mode
       ///
       /// Locales: zh-Hans, en
       static let themeLight = Rswift.StringResource(key: "ThemeLight", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans", "en"], comment: nil)
@@ -382,6 +402,10 @@ struct R: Rswift.Validatable {
       ///
       /// Locales: zh-Hans, en
       static let donateMilk = Rswift.StringResource(key: "DonateMilk", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans", "en"], comment: nil)
+      /// en translation: My Collection
+      ///
+      /// Locales: zh-Hans, en
+      static let fromCollection = Rswift.StringResource(key: "FromCollection", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans", "en"], comment: nil)
       /// en translation: Photos
       ///
       /// Locales: zh-Hans, en
@@ -394,6 +418,14 @@ struct R: Rswift.Validatable {
       ///
       /// Locales: zh-Hans, en
       static let purchaseFailed = Rswift.StringResource(key: "PurchaseFailed", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans", "en"], comment: nil)
+      /// en translation: Random
+      ///
+      /// Locales: zh-Hans, en
+      static let fromRandomImage = Rswift.StringResource(key: "FromRandomImage", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans", "en"], comment: nil)
+      /// en translation: Refresh Interval
+      ///
+      /// Locales: zh-Hans, en
+      static let refreshInterval = Rswift.StringResource(key: "RefreshInterval", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans", "en"], comment: nil)
       /// en translation: Request failed, please try later.
       ///
       /// Locales: zh-Hans, en
@@ -430,7 +462,7 @@ struct R: Rswift.Validatable {
       ///
       /// Locales: zh-Hans, en
       static let version = Rswift.StringResource(key: "Version", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans", "en"], comment: nil)
-      /// en translation: View mode
+      /// en translation: View Mode
       ///
       /// Locales: zh-Hans, en
       static let viewMode = Rswift.StringResource(key: "ViewMode", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans", "en"], comment: nil)
@@ -456,6 +488,66 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("RefreshPhoto", bundle: bundle, comment: "")
+      }
+
+      /// en translation: 12 hours
+      ///
+      /// Locales: zh-Hans, en
+      static func twelveHours(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("twelveHours", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "twelveHours"
+        }
+
+        return NSLocalizedString("twelveHours", bundle: bundle, comment: "")
+      }
+
+      /// en translation: 24 hours
+      ///
+      /// Locales: zh-Hans, en
+      static func twentyFourHours(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("twentyFourHours", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "twentyFourHours"
+        }
+
+        return NSLocalizedString("twentyFourHours", bundle: bundle, comment: "")
+      }
+
+      /// en translation: 4 hours
+      ///
+      /// Locales: zh-Hans, en
+      static func fourHours(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("fourHours", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "fourHours"
+        }
+
+        return NSLocalizedString("fourHours", bundle: bundle, comment: "")
+      }
+
+      /// en translation: 6 hours
+      ///
+      /// Locales: zh-Hans, en
+      static func sixHours(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("sixHours", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "sixHours"
+        }
+
+        return NSLocalizedString("sixHours", bundle: bundle, comment: "")
       }
 
       /// en translation: About
@@ -548,7 +640,7 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("ChangeViewModeTip", bundle: bundle, comment: "")
       }
 
-      /// en translation: Clear disk cache
+      /// en translation: Clear Disk Cache
       ///
       /// Locales: zh-Hans, en
       static func clearCache(preferredLanguages: [String]? = nil) -> String {
@@ -623,7 +715,7 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("ContactUs", bundle: bundle, comment: "")
       }
 
-      /// en translation: Dark mode
+      /// en translation: Dark Mode
       ///
       /// Locales: zh-Hans, en
       static func themeDark(preferredLanguages: [String]? = nil) -> String {
@@ -713,7 +805,7 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("EmptyLikedPhotos", bundle: bundle, comment: "")
       }
 
-      /// en translation: Good luck
+      /// en translation: Good Luck
       ///
       /// Locales: zh-Hans, en
       static func randomPhoto(preferredLanguages: [String]? = nil) -> String {
@@ -726,6 +818,21 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("RandomPhoto", bundle: bundle, comment: "")
+      }
+
+      /// en translation: Image Source
+      ///
+      /// Locales: zh-Hans, en
+      static func widgetImageSource(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("WidgetImageSource", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "WidgetImageSource"
+        }
+
+        return NSLocalizedString("WidgetImageSource", bundle: bundle, comment: "")
       }
 
       /// en translation: License
@@ -743,7 +850,7 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("OpenSourceLicense", bundle: bundle, comment: "")
       }
 
-      /// en translation: Light mode
+      /// en translation: Light Mode
       ///
       /// Locales: zh-Hans, en
       static func themeLight(preferredLanguages: [String]? = nil) -> String {
@@ -786,6 +893,21 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("DonateMilk", bundle: bundle, comment: "")
+      }
+
+      /// en translation: My Collection
+      ///
+      /// Locales: zh-Hans, en
+      static func fromCollection(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("FromCollection", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "FromCollection"
+        }
+
+        return NSLocalizedString("FromCollection", bundle: bundle, comment: "")
       }
 
       /// en translation: Photos
@@ -831,6 +953,36 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("PurchaseFailed", bundle: bundle, comment: "")
+      }
+
+      /// en translation: Random
+      ///
+      /// Locales: zh-Hans, en
+      static func fromRandomImage(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("FromRandomImage", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "FromRandomImage"
+        }
+
+        return NSLocalizedString("FromRandomImage", bundle: bundle, comment: "")
+      }
+
+      /// en translation: Refresh Interval
+      ///
+      /// Locales: zh-Hans, en
+      static func refreshInterval(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("RefreshInterval", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "RefreshInterval"
+        }
+
+        return NSLocalizedString("RefreshInterval", bundle: bundle, comment: "")
       }
 
       /// en translation: Request failed, please try later.
@@ -968,7 +1120,7 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("Version", bundle: bundle, comment: "")
       }
 
-      /// en translation: View mode
+      /// en translation: View Mode
       ///
       /// Locales: zh-Hans, en
       static func viewMode(preferredLanguages: [String]? = nil) -> String {

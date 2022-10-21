@@ -48,4 +48,13 @@
 "PurchaseFailed"    = "支付失败";
 "ThanksForDonate"   = "感谢您的捐赠";
 
+"WidgetImageSource" = "图片来源";
+"FromRandomImage"   = "随机一图";
+"FromCollection"    = "我的收藏";
+"RefreshInterval"   = "刷新间隔";
+"fourHours"         = "4小时";
+"sixHours"          = "6小时";
+"twelveHours"       = "12小时";
+"twentyFourHours"   = "24小时";
+
 "EmptyLikedPhotos"  = "此处空空如也\n先去收藏图片吧";
