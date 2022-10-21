@@ -9,6 +9,17 @@ import UIKit
 
 class SelectionCell: UITableViewCell {
     
+    var item: SelectionSection.Item? {
+        didSet {
+            icon = item?.icon
+            title = item?.title
+            isChecked = item?.isSelected.value ?? false
+            checkedObserver = item?.isSelected.onChange { [weak self] value in
+                self?.isChecked = value
+            }
+        }
+    }
+    
     var icon: UIImage? {
         get { iconView.image }
         set {
@@ -27,6 +38,8 @@ class SelectionCell: UITableViewCell {
             checkView.isHidden = !isChecked
         }
     }
+    
+    private var checkedObserver: ValueObserver<Bool>?
     
     private let iconView: UIImageView = UIImageView()
     private let titleLabel: UILabel = UILabel()

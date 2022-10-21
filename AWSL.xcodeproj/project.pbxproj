@@ -23,6 +23,8 @@
 		4235955C28D0814500572E61 /* DefaultsProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426F6AA028BF38F400C9865A /* DefaultsProperty.swift */; };
 		425004B028F7EE5200554DB2 /* GetInReviewInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D28A9028C7218B00276C27 /* GetInReviewInfo.swift */; };
 		425004B228F7F08600554DB2 /* WidgetSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425004B128F7F08600554DB2 /* WidgetSettingsViewController.swift */; };
+		425004B428F7F52900554DB2 /* ValueListenable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425004B328F7F52900554DB2 /* ValueListenable.swift */; };
+		425004B628FD7B9F00554DB2 /* SettingItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425004B528FD7B9F00554DB2 /* SettingItems.swift */; };
 		426F6A5A28BCE5E500C9865A /* CellSizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426F6A5928BCE5E500C9865A /* CellSizeCalculator.swift */; };
 		426F6AA128BF38F400C9865A /* DefaultsProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426F6AA028BF38F400C9865A /* DefaultsProperty.swift */; };
 		426F6AA528C0B64000C9865A /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426F6AA428C0B64000C9865A /* ThemeManager.swift */; };
@@ -107,6 +109,8 @@
 		4235955128D07B9400572E61 /* RandomPhotoWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomPhotoWidget.swift; sourceTree = "<group>"; };
 		4235955428D07D5000572E61 /* GetRandomPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetRandomPhoto.swift; sourceTree = "<group>"; };
 		425004B128F7F08600554DB2 /* WidgetSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetSettingsViewController.swift; sourceTree = "<group>"; };
+		425004B328F7F52900554DB2 /* ValueListenable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueListenable.swift; sourceTree = "<group>"; };
+		425004B528FD7B9F00554DB2 /* SettingItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingItems.swift; sourceTree = "<group>"; };
 		426F6A5928BCE5E500C9865A /* CellSizeCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellSizeCalculator.swift; sourceTree = "<group>"; };
 		426F6AA028BF38F400C9865A /* DefaultsProperty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsProperty.swift; sourceTree = "<group>"; };
 		426F6AA428C0B64000C9865A /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
@@ -342,6 +346,7 @@
 			children = (
 				42D28A9828C731AF00276C27 /* App.swift */,
 				426F6AA428C0B64000C9865A /* ThemeManager.swift */,
+				425004B528FD7B9F00554DB2 /* SettingItems.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -429,6 +434,7 @@
 				426F6AA028BF38F400C9865A /* DefaultsProperty.swift */,
 				42D28ADB28CAF62200276C27 /* CloudKitManager.swift */,
 				42D28ADD28CAFB7000276C27 /* ThreadSafe.swift */,
+				425004B328F7F52900554DB2 /* ValueListenable.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -706,6 +712,7 @@
 				42D28A9128C7218B00276C27 /* GetInReviewInfo.swift in Sources */,
 				426F6AA128BF38F400C9865A /* DefaultsProperty.swift in Sources */,
 				42DAD96528B8CCB000C5FCA3 /* PhotoBrowserViewController.swift in Sources */,
+				425004B628FD7B9F00554DB2 /* SettingItems.swift in Sources */,
 				42D28ACB28C9996B00276C27 /* LikedPhotosViewController.swift in Sources */,
 				42DAD95B28B89EEC00C5FCA3 /* PhotoCell.swift in Sources */,
 				42D28AD828C9FC0800276C27 /* DonateViewController.swift in Sources */,
@@ -714,6 +721,7 @@
 				426F6AA528C0B64000C9865A /* ThemeManager.swift in Sources */,
 				42FDB9E728B869B400979471 /* SceneDelegate.swift in Sources */,
 				42DAD96328B8CA4800C5FCA3 /* AddProducer.swift in Sources */,
+				425004B428F7F52900554DB2 /* ValueListenable.swift in Sources */,
 				A6F4F57128B8FE3000AC03CF /* Toast.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

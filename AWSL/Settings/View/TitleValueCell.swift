@@ -9,6 +9,22 @@ import UIKit
 
 class TitleValueCell: UITableViewCell {
     
+    var item: NormalSection.Item? {
+        didSet {
+            icon = item?.icon
+            title = item?.title
+            value = item?.value.value
+            valueObserver = item?.value.onChange { [weak self] value in
+                self?.value = value
+                if value.isEmpty && self?.item?.action != nil {
+                    self?.accessoryType = .disclosureIndicator
+                } else {
+                    self?.accessoryType = .none
+                }
+            }
+        }
+    }
+    
     var icon: UIImage? {
         get { iconView.image }
         set {
@@ -26,6 +42,8 @@ class TitleValueCell: UITableViewCell {
         get { valueLabel.text }
         set { valueLabel.text = newValue }
     }
+    
+    private var valueObserver: ValueObserver<String>?
     
     private let iconView: UIImageView = UIImageView()
     private let titleLabel: UILabel = UILabel()
