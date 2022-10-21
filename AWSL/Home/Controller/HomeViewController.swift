@@ -26,11 +26,18 @@ class HomeViewController: PhotoListViewController {
         super.viewDidLoad()
         setupViews()
     }
+    
+    @objc private func showRandomPhoto() {
+        let controller = RandomPhotoViewController()
+        controller.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(controller, animated: true)
+    }
 }
 
 extension HomeViewController {
     private func setupViews() {
         navigationController?.navigationBar.scrollEdgeAppearance = navigationController?.navigationBar.standardAppearance
         navigationItem.title = R.string.localizable.photoList()
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "dice"), style: .plain, target: self, action: #selector(showRandomPhoto))
     }
 }

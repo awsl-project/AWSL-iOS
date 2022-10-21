@@ -23,22 +23,30 @@ class WidgetSettingsViewController: UIViewController {
     private let data: [Section] = [
         SelectionSection(title: R.string.localizable.widgetImageSource(),
                          items: [
-                            SelectionSection.Item(title: R.string.localizable.fromRandomImage(), isSelected: true),
-                            SelectionSection.Item(title: R.string.localizable.fromCollection(), isSelected: false),
+                            SelectionSection.Item(title: R.string.localizable.fromRandomImage(),
+                                                  isSelected: WidgetManager.shared.imageSource == .fromRandomImage),
+                            SelectionSection.Item(title: R.string.localizable.fromCollection(),
+                                                  isSelected: WidgetManager.shared.imageSource == .fromCollection),
                          ],
                          onItemSelect: { section, selectedIndex in
+                             WidgetManager.shared.imageSource = WidgetImageSource.allCases[selectedIndex]
                              for (index, item) in section.items.enumerated() {
                                  item.isSelected.value = index == selectedIndex
                              }
                          }),
         SelectionSection(title: R.string.localizable.refreshInterval(),
                          items: [
-                            SelectionSection.Item(title: R.string.localizable.fourHours(), isSelected: false),
-                            SelectionSection.Item(title: R.string.localizable.sixHours(), isSelected: false),
-                            SelectionSection.Item(title: R.string.localizable.twelveHours(), isSelected: false),
-                            SelectionSection.Item(title: R.string.localizable.twentyFourHours(), isSelected: true),
+                            SelectionSection.Item(title: R.string.localizable.fourHours(),
+                                                  isSelected: WidgetManager.shared.refreshInterval == .fourHours),
+                            SelectionSection.Item(title: R.string.localizable.sixHours(),
+                                                  isSelected: WidgetManager.shared.refreshInterval == .sixHours),
+                            SelectionSection.Item(title: R.string.localizable.twelveHours(),
+                                                  isSelected: WidgetManager.shared.refreshInterval == .twelveHours),
+                            SelectionSection.Item(title: R.string.localizable.twentyFourHours(),
+                                                  isSelected: WidgetManager.shared.refreshInterval == .twentyFourHours),
                          ],
                          onItemSelect: { section, selectedIndex in
+                             WidgetManager.shared.refreshInterval = WidgetRefreshInterval.allCases[selectedIndex]
                              for (index, item) in section.items.enumerated() {
                                  item.isSelected.value = index == selectedIndex
                              }

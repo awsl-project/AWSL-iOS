@@ -78,12 +78,6 @@ class PhotoListViewController: UIViewController {
         }
     }
     
-    @objc private func showRandomPhoto() {
-        let controller = RandomPhotoViewController()
-        controller.hidesBottomBarWhenPushed = true
-        navigationController?.pushViewController(controller, animated: true)
-    }
-    
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         let inset = (view.bounds.width - min(view.bounds.width, view.bounds.height)) / 2
@@ -146,7 +140,6 @@ extension PhotoListViewController {
     private func setupViews() {
         navigationController?.navigationBar.tintColor = .systemPink
         navigationItem.backButtonTitle = R.string.localizable.goBack()
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "dice"), style: .plain, target: self, action: #selector(showRandomPhoto))
         
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         
