@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import FlyUtils
 
 class App {
     static let version: String = {

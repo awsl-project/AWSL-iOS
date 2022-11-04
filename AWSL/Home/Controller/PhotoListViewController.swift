@@ -93,11 +93,11 @@ extension PhotoListViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.item == dataSource.photos.count {
-            let cell = collectionView.ch.dequeueReusableCell(LoadingCell.self, for: indexPath)
+            let cell = collectionView.fl.dequeueReusableCell(LoadingCell.self, for: indexPath)
             cell.startAnimating()
             return cell
         }
-        let cell = collectionView.ch.dequeueReusableCell(PhotoCell.self, for: indexPath)
+        let cell = collectionView.fl.dequeueReusableCell(PhotoCell.self, for: indexPath)
         cell.imageUrl = dataSource.photos[indexPath.item].info.large.url
         return cell
     }
@@ -145,8 +145,8 @@ extension PhotoListViewController {
         
         collectionView.refreshControl = refreshControl
         collectionView.backgroundColor = .systemBackground
-        collectionView.ch.register(PhotoCell.self)
-        collectionView.ch.register(LoadingCell.self)
+        collectionView.fl.register(PhotoCell.self)
+        collectionView.fl.register(LoadingCell.self)
         collectionView.dataSource = self
         collectionView.delegate = self
         layout.minimumLineSpacing = lineSpacing

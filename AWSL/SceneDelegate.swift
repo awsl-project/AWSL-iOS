@@ -6,6 +6,9 @@
 //
 
 import UIKit
+#if DEBUG
+import FlyTools
+#endif
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -17,6 +20,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let scene = (scene as? UIWindowScene) else { return }
+        
+        #if DEBUG
+        FlyTools.setup(windowScene: scene)
+        #endif
         
         KingfisherCacheManager.shared.setupCache()
         

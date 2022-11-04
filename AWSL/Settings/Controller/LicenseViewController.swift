@@ -48,7 +48,7 @@ extension LicenseViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let item = libraries[indexPath.row]
-        let cell = tableView.ch.dequeueReusableCell(TitleValueCell.self, for: indexPath)
+        let cell = tableView.fl.dequeueReusableCell(TitleValueCell.self, for: indexPath)
         cell.title = item.name
         cell.accessoryType = .disclosureIndicator
         return cell
@@ -68,7 +68,7 @@ extension LicenseViewController {
         title = R.string.localizable.openSourceLicense()
         view.backgroundColor = .systemBackground
         
-        tableView.ch.register(TitleValueCell.self)
+        tableView.fl.register(TitleValueCell.self)
         tableView.dataSource = self
         tableView.delegate = self
         tableView.rowHeight = 56

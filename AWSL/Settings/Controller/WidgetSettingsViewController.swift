@@ -70,11 +70,11 @@ extension WidgetSettingsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let section = data[indexPath.section] as? NormalSection {
-            let cell = tableView.ch.dequeueReusableCell(TitleValueCell.self, for: indexPath)
+            let cell = tableView.fl.dequeueReusableCell(TitleValueCell.self, for: indexPath)
             cell.item = section.items[indexPath.row]
             return cell
         } else if let section = data[indexPath.section] as? SelectionSection {
-            let cell = tableView.ch.dequeueReusableCell(SelectionCell.self, for: indexPath)
+            let cell = tableView.fl.dequeueReusableCell(SelectionCell.self, for: indexPath)
             cell.item = section.items[indexPath.row]
             return cell
         }
@@ -94,7 +94,7 @@ extension WidgetSettingsViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let view = tableView.ch.dequeueReusableView(SettingSectionHeaderView.self)
+        let view = tableView.fl.dequeueReusableView(SettingSectionHeaderView.self)
         view?.title = data[section].title
         return view
     }
@@ -109,9 +109,9 @@ extension WidgetSettingsViewController {
         title = R.string.localizable.widgetSettings()
         view.backgroundColor = .systemBackground
         
-        tableView.ch.register(SelectionCell.self)
-        tableView.ch.register(TitleValueCell.self)
-        tableView.ch.register(SettingSectionHeaderView.self)
+        tableView.fl.register(SelectionCell.self)
+        tableView.fl.register(TitleValueCell.self)
+        tableView.fl.register(SettingSectionHeaderView.self)
         tableView.dataSource = self
         tableView.delegate = self
         tableView.rowHeight = 56

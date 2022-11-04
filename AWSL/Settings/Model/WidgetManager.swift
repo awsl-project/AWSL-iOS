@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import FlyUtils
 
 enum WidgetImageSource: String, CaseIterable {
     case fromRandomImage

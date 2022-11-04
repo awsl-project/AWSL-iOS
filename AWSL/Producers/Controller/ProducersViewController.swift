@@ -103,7 +103,7 @@ extension ProducersViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let producer = producers[indexPath.section]
         if indexPath.item == 0 {
-            let cell = collectionView.ch.dequeueReusableCell(ProducerCell.self, for: indexPath)
+            let cell = collectionView.fl.dequeueReusableCell(ProducerCell.self, for: indexPath)
             cell.producer = producer
             cell.onViewAllClicked = { [weak self] cell in
                 guard let self = self else { return }
@@ -113,7 +113,7 @@ extension ProducersViewController: UICollectionViewDataSource {
             return cell
         }
         let photo = producer.photos[indexPath.item - 1]
-        let cell = collectionView.ch.dequeueReusableCell(PhotoCell.self, for: indexPath)
+        let cell = collectionView.fl.dequeueReusableCell(PhotoCell.self, for: indexPath)
         cell.imageUrl = photo.info.large.url
         return cell
     }
@@ -153,8 +153,8 @@ extension ProducersViewController {
         
         collectionView.refreshControl = refreshControl
         collectionView.backgroundColor = .systemBackground
-        collectionView.ch.register(PhotoCell.self)
-        collectionView.ch.register(ProducerCell.self)
+        collectionView.fl.register(PhotoCell.self)
+        collectionView.fl.register(ProducerCell.self)
         collectionView.dataSource = self
         collectionView.delegate = self
         layout.minimumLineSpacing = lineSpacing

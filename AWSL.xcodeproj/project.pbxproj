@@ -20,7 +20,6 @@
 		4235955828D07DE000572E61 /* GetPhotoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DAD95728B89A4400C5FCA3 /* GetPhotoList.swift */; };
 		4235955928D07DF600572E61 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D28A9828C731AF00276C27 /* App.swift */; };
 		4235955B28D0812A00572E61 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426F6AA428C0B64000C9865A /* ThemeManager.swift */; };
-		4235955C28D0814500572E61 /* DefaultsProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426F6AA028BF38F400C9865A /* DefaultsProperty.swift */; };
 		425004B028F7EE5200554DB2 /* GetInReviewInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D28A9028C7218B00276C27 /* GetInReviewInfo.swift */; };
 		425004B228F7F08600554DB2 /* WidgetSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425004B128F7F08600554DB2 /* WidgetSettingsViewController.swift */; };
 		425004B428F7F52900554DB2 /* ValueListenable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425004B328F7F52900554DB2 /* ValueListenable.swift */; };
@@ -28,7 +27,6 @@
 		425004BF2902C70D00554DB2 /* WidgetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425004BE2902C70D00554DB2 /* WidgetManager.swift */; };
 		425004C02902CA0100554DB2 /* WidgetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425004BE2902C70D00554DB2 /* WidgetManager.swift */; };
 		426F6A5A28BCE5E500C9865A /* CellSizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426F6A5928BCE5E500C9865A /* CellSizeCalculator.swift */; };
-		426F6AA128BF38F400C9865A /* DefaultsProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426F6AA028BF38F400C9865A /* DefaultsProperty.swift */; };
 		426F6AA528C0B64000C9865A /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426F6AA428C0B64000C9865A /* ThemeManager.swift */; };
 		426F6AA728C0BEBE00C9865A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426F6AA628C0BEBE00C9865A /* SettingsViewController.swift */; };
 		426F6AA928C0BECB00C9865A /* ProducersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426F6AA828C0BECB00C9865A /* ProducersViewController.swift */; };
@@ -60,7 +58,6 @@
 		42DAD95628B8960D00C5FCA3 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DAD95528B8960D00C5FCA3 /* Network.swift */; };
 		42DAD95828B89A4400C5FCA3 /* GetPhotoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DAD95728B89A4400C5FCA3 /* GetPhotoList.swift */; };
 		42DAD95B28B89EEC00C5FCA3 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DAD95A28B89EEC00C5FCA3 /* PhotoCell.swift */; };
-		42DAD95D28B8A25A00C5FCA3 /* ViewReusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DAD95C28B8A25A00C5FCA3 /* ViewReusable.swift */; };
 		42DAD95F28B8BE2A00C5FCA3 /* LoadingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DAD95E28B8BE2A00C5FCA3 /* LoadingCell.swift */; };
 		42DAD96128B8C9B500C5FCA3 /* GetProducers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DAD96028B8C9B500C5FCA3 /* GetProducers.swift */; };
 		42DAD96328B8CA4800C5FCA3 /* AddProducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DAD96228B8CA4800C5FCA3 /* AddProducer.swift */; };
@@ -72,7 +69,6 @@
 		42FDB9F128B869B500979471 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42FDB9EF28B869B500979471 /* LaunchScreen.storyboard */; };
 		A64DBB8228BA144900F83D01 /* ProducerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64DBB8128BA144900F83D01 /* ProducerCell.swift */; };
 		A6F4F57128B8FE3000AC03CF /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F4F57028B8FE3000AC03CF /* Toast.swift */; };
-		A6F4F57328B909B700AC03CF /* PresentationAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F4F57228B909B700AC03CF /* PresentationAnimator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,7 +111,6 @@
 		425004B528FD7B9F00554DB2 /* SettingItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingItems.swift; sourceTree = "<group>"; };
 		425004BE2902C70D00554DB2 /* WidgetManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetManager.swift; sourceTree = "<group>"; };
 		426F6A5928BCE5E500C9865A /* CellSizeCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellSizeCalculator.swift; sourceTree = "<group>"; };
-		426F6AA028BF38F400C9865A /* DefaultsProperty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsProperty.swift; sourceTree = "<group>"; };
 		426F6AA428C0B64000C9865A /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
 		426F6AA628C0BEBE00C9865A /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		426F6AA828C0BECB00C9865A /* ProducersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProducersViewController.swift; sourceTree = "<group>"; };
@@ -148,7 +143,6 @@
 		42DAD95528B8960D00C5FCA3 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		42DAD95728B89A4400C5FCA3 /* GetPhotoList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPhotoList.swift; sourceTree = "<group>"; };
 		42DAD95A28B89EEC00C5FCA3 /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
-		42DAD95C28B8A25A00C5FCA3 /* ViewReusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewReusable.swift; sourceTree = "<group>"; };
 		42DAD95E28B8BE2A00C5FCA3 /* LoadingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCell.swift; sourceTree = "<group>"; };
 		42DAD96028B8C9B500C5FCA3 /* GetProducers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetProducers.swift; sourceTree = "<group>"; };
 		42DAD96228B8CA4800C5FCA3 /* AddProducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProducer.swift; sourceTree = "<group>"; };
@@ -164,7 +158,6 @@
 		94CBA30E3F4DEEA4649F2B1A /* Pods-AWSLWidgetExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AWSLWidgetExtension.release.xcconfig"; path = "Target Support Files/Pods-AWSLWidgetExtension/Pods-AWSLWidgetExtension.release.xcconfig"; sourceTree = "<group>"; };
 		A64DBB8128BA144900F83D01 /* ProducerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProducerCell.swift; sourceTree = "<group>"; };
 		A6F4F57028B8FE3000AC03CF /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
-		A6F4F57228B909B700AC03CF /* PresentationAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationAnimator.swift; sourceTree = "<group>"; };
 		C0E04B3DA65EBCE638358010 /* Pods-AWSLWidgetExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AWSLWidgetExtension.debug.xcconfig"; path = "Target Support Files/Pods-AWSLWidgetExtension/Pods-AWSLWidgetExtension.debug.xcconfig"; sourceTree = "<group>"; };
 		EECD763E72D0C4B5201A2D38 /* Pods-AWSL.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AWSL.release.xcconfig"; path = "Target Support Files/Pods-AWSL/Pods-AWSL.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -433,9 +426,6 @@
 			children = (
 				A6F4F57028B8FE3000AC03CF /* Toast.swift */,
 				42DAD95528B8960D00C5FCA3 /* Network.swift */,
-				A6F4F57228B909B700AC03CF /* PresentationAnimator.swift */,
-				42DAD95C28B8A25A00C5FCA3 /* ViewReusable.swift */,
-				426F6AA028BF38F400C9865A /* DefaultsProperty.swift */,
 				42D28ADB28CAF62200276C27 /* CloudKitManager.swift */,
 				42D28ADD28CAFB7000276C27 /* ThreadSafe.swift */,
 				425004B328F7F52900554DB2 /* ValueListenable.swift */,
@@ -672,7 +662,6 @@
 				4235955928D07DF600572E61 /* App.swift in Sources */,
 				4235955728D07D8B00572E61 /* Network.swift in Sources */,
 				4235955628D07D8300572E61 /* GetRandomPhoto.swift in Sources */,
-				4235955C28D0814500572E61 /* DefaultsProperty.swift in Sources */,
 				4235955B28D0812A00572E61 /* ThemeManager.swift in Sources */,
 				425004C02902CA0100554DB2 /* WidgetManager.swift in Sources */,
 				4287E40C28D17979000D3E02 /* RandomPhotoProvider.swift in Sources */,
@@ -696,7 +685,6 @@
 				4287E41328D1D003000D3E02 /* RandomPhotoViewController.swift in Sources */,
 				42DAD95F28B8BE2A00C5FCA3 /* LoadingCell.swift in Sources */,
 				426F6AC628C1B40C00C9865A /* TitleValueCell.swift in Sources */,
-				42DAD95D28B8A25A00C5FCA3 /* ViewReusable.swift in Sources */,
 				426F6A5A28BCE5E500C9865A /* CellSizeCalculator.swift in Sources */,
 				42D28A9928C731AF00276C27 /* App.swift in Sources */,
 				426F6AA728C0BEBE00C9865A /* SettingsViewController.swift in Sources */,
@@ -708,14 +696,12 @@
 				42DAD96728B8D07700C5FCA3 /* CircleProgressView.swift in Sources */,
 				4287E41028D1C410000D3E02 /* RandomPhotoManager.swift in Sources */,
 				42D28ADC28CAF62200276C27 /* CloudKitManager.swift in Sources */,
-				A6F4F57328B909B700AC03CF /* PresentationAnimator.swift in Sources */,
 				42D28ADE28CAFB7000276C27 /* ThreadSafe.swift in Sources */,
 				42D28AB328C87BD600276C27 /* R.generated.swift in Sources */,
 				42DAD95828B89A4400C5FCA3 /* GetPhotoList.swift in Sources */,
 				42DAD96128B8C9B500C5FCA3 /* GetProducers.swift in Sources */,
 				426F6AA928C0BECB00C9865A /* ProducersViewController.swift in Sources */,
 				42D28A9128C7218B00276C27 /* GetInReviewInfo.swift in Sources */,
-				426F6AA128BF38F400C9865A /* DefaultsProperty.swift in Sources */,
 				42DAD96528B8CCB000C5FCA3 /* PhotoBrowserViewController.swift in Sources */,
 				425004B628FD7B9F00554DB2 /* SettingItems.swift in Sources */,
 				42D28ACB28C9996B00276C27 /* LikedPhotosViewController.swift in Sources */,

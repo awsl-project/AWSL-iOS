@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import FlyUtils
 
 extension Api {
     struct GetPhotoList: AwslApi {

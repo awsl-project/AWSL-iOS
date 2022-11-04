@@ -152,7 +152,7 @@ extension DonateViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.ch.dequeueReusableCell(DonateCell.self, for: indexPath)
+        let cell = tableView.fl.dequeueReusableCell(DonateCell.self, for: indexPath)
         cell.icon = donateItems[indexPath.row].icon
         cell.name = donateItems[indexPath.row].name
         cell.desc = donateItems[indexPath.row].desc
@@ -171,7 +171,7 @@ extension DonateViewController {
         view.backgroundColor = .systemBackground
         SKPaymentQueue.default().add(self)
         
-        tableView.ch.register(DonateCell.self)
+        tableView.fl.register(DonateCell.self)
         tableView.dataSource = self
         tableView.rowHeight = 88
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 0)

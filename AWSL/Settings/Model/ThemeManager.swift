@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FlyUtils
 
 enum ThemeMode: String {
     case automatic

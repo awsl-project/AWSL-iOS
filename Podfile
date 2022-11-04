@@ -11,6 +11,8 @@ target 'AWSL' do
   pod 'SnapKit'
   pod 'Kingfisher'
   pod 'R.swift'
+  pod 'FlyUtils', :git=>'https://github.com/FlyKite/FlyUtils'
+  pod 'FlyTools', :git=>'https://github.com/FlyKite/FlyTools', :configurations=>['DEBUG']
 end
 
 target 'AWSLWidgetExtension' do
@@ -18,4 +20,5 @@ target 'AWSLWidgetExtension' do
   
   pod 'Alamofire'
   pod 'Kingfisher'
+  pod 'FlyUtils', :git=>'https://github.com/FlyKite/FlyUtils'
 end
