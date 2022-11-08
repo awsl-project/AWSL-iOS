@@ -4,7 +4,7 @@ PODS:
     - FlyUtils
     - SnapKit
   - FlyUtils (0.0.1)
-  - Kingfisher (7.4.1)
+  - Kingfisher (7.3.2)
   - R.swift (6.1.0):
     - R.swift.Library (~> 5.3.0)
   - R.swift.Library (5.3.0)
@@ -12,8 +12,8 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire
-  - FlyTools (from `../FlyTools`)
-  - FlyUtils (from `../FlyUtils`)
+  - FlyTools (from `https://github.com/FlyKite/FlyTools`)
+  - FlyUtils (from `https://github.com/FlyKite/FlyUtils`)
   - Kingfisher
   - R.swift
   - SnapKit
@@ -28,19 +28,27 @@ SPEC REPOS:
 
 EXTERNAL SOURCES:
   FlyTools:
-    :path: "../FlyTools"
+    :git: https://github.com/FlyKite/FlyTools
   FlyUtils:
-    :path: "../FlyUtils"
+    :git: https://github.com/FlyKite/FlyUtils
+
+CHECKOUT OPTIONS:
+  FlyTools:
+    :commit: ce54cc3d724c6d0fdb9c7c1827f98b079233baf8
+    :git: https://github.com/FlyKite/FlyTools
+  FlyUtils:
+    :commit: 621ce74611efbdeeacea4814d7119130d99d9c86
+    :git: https://github.com/FlyKite/FlyUtils
 
 SPEC CHECKSUMS:
   Alamofire: d368e1ff8a298e6dde360e35a3e68e6c610e7204
   FlyTools: d99ff73888b7c4803536878bbf5fa31696b10387
   FlyUtils: 4d418a4160e03cb08f7acd0f427883dd565b70d7
-  Kingfisher: cd762a593a61b2fbecf7645c00f9a801a3ebfc9c
+  Kingfisher: 0086ad83719761ba9b2cdaf6ef4d5b4878cbae23
   R.swift: ec98ff71c4ab2f6fd01dd077e5afd15e63a4834c
   R.swift.Library: 0fc583cb55a99e28901299cc451614cad1161962
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
 
-PODFILE CHECKSUM: ff55246819c5588b124e2fcc039def1c6f01de14
+PODFILE CHECKSUM: 75e6fe47ffadc0cb3dd3d495ac9bf8e4dd6524a8
 
 COCOAPODS: 1.11.3
