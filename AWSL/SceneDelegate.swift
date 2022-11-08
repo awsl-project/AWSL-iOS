@@ -22,7 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else { return }
         
         #if DEBUG
-        FlyTools.setup(windowScene: scene)
+        FlyTools.setup(windowScene: scene, logLevel: .verbose)
         #endif
         
         KingfisherCacheManager.shared.setupCache()
